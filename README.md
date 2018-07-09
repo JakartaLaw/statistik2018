@@ -1,7 +1,7 @@
 # Sandsynlighedsteori og statistik
 Kursusmateriale til **Sandsynlighedsteori og statistik**
 
-(binder link)[https://mybinder.org/v2/gh/JakartaLaw/statistik2018/master]
+Link til binder: https://mybinder.org/v2/gh/JakartaLaw/statistik2018/master
 
 ### Python Basics
 
@@ -35,11 +35,14 @@ Efter at conda miljøet er fjernet, kan det være nødvendigt skulle fjerne kern
 ### Resourcer
 - [Installing Anaconda (video)](https://www.youtube.com/watch?v=HW29067qVWk&t=19s)
 - [Managing conda environments (article)](https://conda.io/docs/user-guide/tasks/manage-environments.html)
+- [Reproducible Data Analysis in Jupyter (video series)](https://www.youtube.com/watch?v=_ZEWDGpM-vM&list=PLYCpMb24GpOC704uO9svUrihl-HY1tTJJ)
 - [course description](http://kurser.ku.dk/course/a%c3%98kb08019u/2018-2019)
-- [Linear Algebra](http://www.deeplearningbook.org/contents/linear_algebra.html)
-- [Probability and information theory](http://www.deeplearningbook.org/contents/prob.html)
-- [Numerical computation](http://www.deeplearningbook.org/contents/numerical.html)
-- [Notation for resources](http://www.deeplearningbook.org/contents/notation.html)
+- **Math refresher** (book)
+    - [Notation](http://www.deeplearningbook.org/contents/notation.html)
+    - [Linear Algebra](http://www.deeplearningbook.org/contents/linear_algebra.html)
+    - [Probability and information theory](http://www.deeplearningbook.org/contents/prob.html)
+    - [Numerical computation](http://www.deeplearningbook.org/contents/numerical.html)
+
 
 # Bøger
 - **Michael Sørensen**: ”En Introduktion til sandsynlighedsregning”, 9. udgave 2008, kapitel 1-8.
