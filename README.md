@@ -1,13 +1,13 @@
-# statistik2018
+# Sandsynlighedsteori og statistik
 Kursusmateriale til **Sandsynlighedsteori og statistik**
 
-## Jupyter notebook
+### Jupyter notebook
 
 Jupyter notebook er et interaktivt programmerings miljø, som tilgås fra en browser. Man skriver kode/markdown/latex i små celler, som derefter kan køres.
 
 ### MyBinder
 
-## Conda miljø
+### Conda miljø
 
 Dependencies
 
@@ -27,8 +27,11 @@ After the environment is removed, one might have to remove the kernel from jupyt
 
 Efter at conda miljøet er fjernet, kan det være nødvendigt skulle fjerne kernen fra jupyter, for ikke at kunne se det når man vælger kernel i sin notebook. Dette gøres i: `~Library/Jupyter/kernels/stat18`
 
-# Resourcer
+### Resourcer
 - [Installing Anaconda (video)](https://www.youtube.com/watch?v=HW29067qVWk&t=19s)
 - [Managing conda environments (article)](https://conda.io/docs/user-guide/tasks/manage-environments.html)
+- [course description](http://kurser.ku.dk/course/a%c3%98kb08019u/2018-2019)
 
 # Bøger
+- **Michael Sørensen**: ”En Introduktion til sandsynlighedsregning”, 9. udgave 2008, kapitel 1-8.
+- **Heino Bohn Nielsen**: ”Introduction to Likelihood-Based Estimation and Inference”, 3rd edition, 2016.
