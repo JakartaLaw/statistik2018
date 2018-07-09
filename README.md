@@ -1,6 +1,9 @@
 # Sandsynlighedsteori og statistik
 Kursusmateriale til **Sandsynlighedsteori og statistik**
 
+### Python Basics
+
+
 ### Jupyter notebook
 
 Jupyter notebook er et interaktivt programmerings miljø, som tilgås fra en browser. Man skriver kode/markdown/latex i små celler, som derefter kan køres.
