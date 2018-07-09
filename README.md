@@ -1,7 +1,15 @@
 # statistik2018
 Kursusmateriale til **Sandsynlighedsteori og statistik**
 
+## Jupyter notebook
+
+Jupyter notebook er et interaktivt programmerings miljø, som tilgås fra en browser. Man skriver kode/markdown/latex i små celler, som derefter kan køres.
+
 ### MyBinder
+
+## Conda miljø
+
+Dependencies
 
 ### Installér Conda miljø
 
