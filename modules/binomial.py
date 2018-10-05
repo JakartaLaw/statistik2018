@@ -15,6 +15,7 @@ class Binomial(Distribution):
 
     def __init__(self, n, p):
 
+        super().__init__(def_maengde='endelig')
         self.n = n
         self.p = p
         self.min = 0  # nederste bservation når distribution skal plottes
@@ -34,10 +35,6 @@ class Binomial(Distribution):
         binomkoef = self.binomialkoeefficient(x)
 
         return binomkoef * (self.p**x) * ((1 - self.p)**(self.n - x))
-
-    def cdf(self, x):
-        """fordelingsfunktion"""
-        pass
 
     def middel(self):
         return self.n * self.p

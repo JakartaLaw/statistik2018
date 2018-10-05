@@ -21,8 +21,28 @@ class Distribution(object):
     def pdf(self):
         pass
 
-    def cdf(self):
-        pass
+    def cdf(self, x):
+        """fordelingsfunktion"""
+
+        if self.def_maengde is 'endelig':
+            # bruger samme cdf udregner som diskret distriubtion. det er en sum
+            cdf = self._diskret_cdf(x)
+        elif self.def_maengde is 'diskret':
+            cdf = self._diskret_cdf(x)
+        elif self.def_maengde is 'kontinuer':
+            pass
+        else:
+            raise ValueError('def mængde skal være endelig, diskret eller kontinuer')
+
+        return cdf
+
+    def _diskret_cdf(self, x):
+
+        res = 0
+        for i in range(0, x + 1):
+            res = res + self.pdf(i)
+
+        return res
 
     def middel(self):
         pass

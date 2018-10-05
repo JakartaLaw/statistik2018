@@ -12,6 +12,8 @@ class Poisson(Distribution):
 
         return (self.param_lambda**x / self.factorial(x)) * self.exp(-self.param_lambda)
 
-    def cdf(self, x):
+    def middel(self):
+        return self.param_lambda
 
-        pass
+    def varians(self):
+        return self.param_lambda
