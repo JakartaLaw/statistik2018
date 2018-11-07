@@ -1,0 +1,198 @@
+\horizline
+
+\subsection{Øvelse 8}
+
+\textbf{Opgaver: 4.4, opgave A, (Opgave H)}
+
+
+\subsubsection{Opgave 4.4}
+
+\begin{itemize}
+    \item A står ved en lidet trafikkeret vej
+    \item Antal taxaer pr. minut, er poisson fordelt med $\lambda = \frac{1}{30}$
+\end{itemize}
+
+\textbf{Del 1) Hvad er ssh for A må vente mere end en halv time}
+
+Altså poisson fordelingen måler "antal observationer" som vores x. og vores $\lambda$ som vores parameter. Vi bliver nødt til at gange lambda (det er på minut basis, og vi skal have det på halv time basis) $t$.
+
+$Y \sim Poisson( \lambda = 1/30 t)$
+
+
+$\lambda = 1/3 * 30$
+\begin{equation}
+    P(Y = 0) =\frac{\lambda^x}{x!}e^{-1} = \frac{1^0}{0!}e^{-1} = 0.36787
+\end{equation}
+
+\textbf{Del 2) Hvad er ssh for at vente 1 1/2 time.}
+
+
+$\lambda = 1/30 * 90 = 3$
+\begin{equation}
+    P(Y = 0) =\frac{3^x}{x!}e^{-3} = \frac{3^0}{0!}e^{-3} = 0.04978
+\end{equation}
+
+
+\textbf{Del 3) SSh for $Y>0$ Taxa er der før 10 minutter}
+
+$\lambda = 1/30 * 10 = 1/3$
+\begin{equation}
+    P(Y > 0) =1 - P(Y=0) = 1 -  \frac{(1/3)^0}{0!}e^{-(1/3)} = 0.28346
+\end{equation}
+
+
+\textbf{Del 4)} Vis at ventetiden, afrundet nedad til helt minuttal, er geometrisk fordelt med $p=1 - e^{1/30}$
+
+Den geometriske fordeling:
+
+Antal forsøg inden succes
+
+\begin{equation}
+    pdf = (1-p)^k p
+\end{equation}
+
+Først ser vi at:
+\begin{equation}
+    P(Y = y) = P(X_y > 0, X_{y-1} = 0)
+\end{equation}
+
+Altså ventetiden må være sådan at man ikke har fået taxa i sidste minut, men har i dette minut.
+
+Brug nu at en simultan fordeling kan skrives som en betinget fordeling
+\begin{align}
+    &P(X_y > 0, X_{y-1} = 0) \\
+    = &P(X_y > 0 \mid X_{y - 1} = 0)P(X_{y - 1}=0) \\
+    \overset{(*)}{=} &(1 - P(X_{y=1}=0))P(X_{y-1}=0)
+\end{align}
+
+Vi har i (*) brugt at $P(X_{y} > 0 \mid X_{y - 1}= 0)$ Svarer til $ P(X_{1} > 0)$ som svarer til $1 - P(X_{1} = 0)$
+
+Indsæt nødvendige tal:
+
+\begin{align}
+    \left(1 -  \frac{(1/30)^0}{0!}e^{-1/30}\right)\left(\frac{((t - 1)/30)^0}{0!}e^{-(t - 1)/30} \right)    
+\end{align}
+
+Vi ser at: $ \frac{(t - 1/30)^0}{0!} = \frac{1}{1} =  1$
+
+Hvilket betyder:
+
+\begin{align}
+    &\left(1 -  \frac{(1/30)^0}{0!}e^{-1/30}\right)\left(\frac{((t - 1)/30)^0}{0!}e^{-(t - 1)/30} \right)    \\
+    = &\left(1 -  e^{-1/30}\right)\left(e^{-(t-1)/30} \right) \\
+    \approx & \left(1 -  e^{-1/30}\right)\left(e^{-1/30\cdot t} \right)
+\end{align}
+
+Vi skulle have i den geometriske fordeling: $p = 1 - e^{-1/30}$
+
+\begin{equation}
+    (1-p)^k p = (1 - (1 - e^{-1/30}))^t (1 - e^{-1/30})
+\end{equation}
+
+Vi forkorter
+
+\begin{equation}
+    (1-p)^k p = e^{-1/30\cdot t} (1 - e^{-1/30})
+\end{equation}
+
+Vi har vist udtrykket!
+
+\subsubsection{Opgave A}
+
+Lav i klassen!!!
+
+Cykelforsikring fortsat!
+
+\begin{itemize}
+    \item udbetaling ved mistet cykel 4000
+    \item ssh for cykel stjålet pr. år: $5 \%$
+    \item Maks en cykel stjålet om året
+    \item forsikring pris 400
+\end{itemize}
+
+\textbf{Del 1)}
+
+10 cyklister tegner forsikring:
+
+\begin{equation}
+    Y \sim Binomial(n = 10, p=0.05)
+\end{equation}
+
+\textbf{Del 2) Udregn Forventet antal stjålne cykler, samt forventet udgift}
+
+\begin{equation}
+    \E(Y) = n \cdot p = 10 \cdot 0.05 = 0.5
+\end{equation}
+
+Forventet udgift:
+
+\begin{equation}
+    \E(Y) \cdot 4000 = 2000
+\end{equation}
+
+\textbf{Del 3) SSh for mere end en cykel bliver stjålet}
+
+\textit{Få folk til at opskrive binomial koefficienter osv.}
+
+\begin{equation}
+    P(Y>1) = 1 - P(Y =  1) - P(Y = 0) = 0.08613
+\end{equation}
+
+\textbf{Del 4) Antag nu  100 cyklister}
+
+\begin{equation}
+    Z \sim Binomial(n = 100, p=0.05)
+\end{equation}
+
+\begin{equation}
+    \E(Z) = 100 \cdot 0.05 = 5
+\end{equation}
+
+Forventede indtægter:
+
+\begin{equation}
+    400 \cdot 100 = 40000
+\end{equation}
+
+Forventede udgifter:
+
+\begin{equation}
+    4000 \cdot \E(Z) = 4000 \cdot 5 = 20000
+\end{equation}
+
+\textbf{Del 5)Ssh for man udgifter overstiger indtægter}
+
+Udgifer overstiger indtægter når der er 11, som får stjålet sin cykel:
+
+Med binomial (udregnet på com):
+
+\begin{equation}
+    P(Z > 10) = 1 - \sum_{i=0}^{10}P(Z=i) = 0.01147
+\end{equation}
+
+Med poisson:
+
+$lambda = 100 \cdot 0.05 = 5$
+
+\begin{equation}
+    P(Z > 10) = 1 - P(Z\leq 10) = 0.013695
+\end{equation}
+
+\textbf{Del 6) Antag nu nu n=200, Ssh udgifter over indtægter}
+
+Dette sker når der er 21 som får stjålet cyklen
+
+$lambda = 200 \cdot 0.05 = 10$
+
+$W \sim Poisson(10)$
+
+\begin{equation}
+    P(W>20) = 0.0015882
+\end{equation}
+
+\textbf{Del 7)}
+
+Klasse diskussion!!!
+
+\subsubsection{(Optional) Opgave H}
+

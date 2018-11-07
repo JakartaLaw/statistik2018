@@ -1,0 +1,206 @@
+\horizline
+
+\subsection{Øvelse 6}
+
+\textbf{28/09/2018 - C.4 \& Opgave 1}
+
+\subsubsection{Opgave C.4}
+
+\begin{itemize}
+    \item Poisson distribution
+    \item Antal opkald kan modelleres med en stokastisk variabel kaldet $X:= Poisson(\lambda)$.
+\end{itemize}
+
+Om Poisson fordelingen:
+En ventetidsfordeling! Citat wikipedia:
+
+\begin{displayquote}
+"[Poisson fordelingen] is a discrete probability distribution that expresses the probability of a given number of events occurring in a fixed interval of time or space if these events occur with a known constant rate and independently of the time since the last event." - Wikipedia
+\end{displayquote}
+
+Den har den egenskab at:
+$\E(X) = \Var(X) = \lambda$
+
+Om denne fordeling kan vi sige at sandsynligheden for et givent udfald er (pdf):
+
+\begin{equation}
+    p(x) = \frac{\lambda^x}{x!}e^{-\lambda}
+\end{equation}
+
+Lad dem regne selv
+
+\textbf{Ssh for præcis 7}
+
+\begin{equation}
+    p(7) = \frac{7^{10}}{7!}e^{-10} = 0.090079 
+\end{equation}
+
+\textbf{Ssh for max 7 opkald}
+
+\begin{equation}
+    P(X \leq 7) = \sum_{i=0}^7 \frac{i^{10}}{i!}e^{-10} = 0.22022
+\end{equation}
+
+\begin{equation}
+    P(3 \leq X \leq 7) = \sum_{i=3}^7 \frac{i^{10}}{i!}e^{-10} = \sum_{i=0}^7 \frac{i^{10}}{i!}e^{-10} - \sum_{i=0}^2 \frac{i^{10}}{i!}e^{-10} 
+\end{equation}
+
+Indsæt værdier udregnet i python
+
+\begin{equation}
+    0.22022 - 0.002769 = 0.217451
+\end{equation}
+
+\subsubsection{Opgave 1}
+
+\begin{itemize}
+    \item Værdi af cykel 4000 kr
+    \item ssh for den bliver stjålet 5 \%
+    \item man kan tegne en cykel så den bliver erstattet for hele dens værdi
+\end{itemize}
+
+\textbf{Del 1) Hvor meget er man villig til at betale for en sådan forsikring?}
+
+Spørg klassen - Intet rigtigt svar?
+
+\textbf{del 2) Udregn værdi af cykel (på et år)}
+
+Vi definerer X stokastiske variable:
+
+$X:= \textbf{Cykel værdi}$
+
+$P(X=0) = 0.05$ og $P(X=4000) = 0.95$
+
+
+Så ganger vi værdien på $X$ bagefter.
+
+\begin{equation}
+    \E(X) = 0.95 \cdot 4000 = 3800
+\end{equation}
+
+\textbf{del 3) Cykel forsikring!}
+
+\begin{equation}
+    Y:= \textbf{Værdi af cykel minus forsikring 1}
+\end{equation}
+
+\begin{align}
+    (Y\mid X=0) &= 0 - 400 + 4000 = 3600\\ (Y \mid X=4000) &= 4000 - 400 = 3600
+\end{align}
+
+\begin{equation}
+    \E(Y) = 0.95 \cdot 3600 + 0.05 \cdot 3600 = 3600
+\end{equation}
+
+\textbf{Del 4) Forsikring med selvrisiko på 1000 kr!}
+
+pris = 150 årligt, selvrisiko = 1000.
+
+$Z := \textbf{Værdi af cykel minus forsikring 2}$
+
+\begin{align}
+    (Z \mid X = 0) &= 0 - 150 - 1000 + 4000 = 2850 \\
+    (Z \mid X = 4000) &= 4000 - 150 = 3850
+\end{align}
+
+\begin{equation}
+    \E(Z) = 0.05\cdot 2850 + \cdot 0.95 \cdot 3850 = 3800
+\end{equation}
+
+\textbf{Del 5) Sammenlign middel værdier}
+
+Klassediskussion
+
+\textbf{Del 6) Nytte af af $X$, $Y$, $Z$}
+
+nyttefunktion:
+\begin{equation}
+    u(v) = 10 v - 0.001 v^2, \qquad v \in \{0, 1, \cdots 4000 \}
+\end{equation}
+
+Transformér de enkelte stokastiske variable først! X:
+
+\begin{align}
+    u(X \mid X = 0) &= 0  \\
+    u(X \mid X = 1) &= 10\cdot 4000 - 0.001 \cdot 4000^2 = 24000
+\end{align}
+
+transformation af Y:
+\begin{align}
+    u(Y \mid Y = 3600) &= 10 \cdot 3600 - 0.001 \cdot 3600^2 = 23040\\
+\end{align}
+    
+Transformation af Z:
+\begin{align}
+    u(Z \mid Z = 3850) = 10 \cdot 3850 - 0.001 \cdot 3850^2 = 23677.5\\
+    u(Z \mid Z = 2850) = 10 \cdot 2850 - 0.001 \cdot 2850^2 = 20377.5  
+\end{align}
+
+\begin{equation}
+    \E(u(X)) = 0.95 \cdot 24000 + 0.05 \cdot 0 = 22800
+\end{equation}
+
+\begin{equation}
+    \E(u(Y)) = 0.95 \cdot 23040 +  0.05 \cdot 23040 = 23040
+\end{equation}
+
+\begin{equation}
+    \E(u(Z)) = 0.95 \cdot 23677.5 + 0.05 \cdot  20377.5  = 23512.5
+\end{equation}
+
+\textbf{Del 7) Vis generelt udtryk for den forventede værdi af $u(W)$}
+
+\begin{equation}
+    u(v) = 10 v - 0.001 v^2, \qquad v \in \{0, 1, \cdots 4000 \}
+\end{equation}
+
+lad $W$ være koncentreret på mængden $T$:
+\begin{equation}
+    \E(u(W)) = \sum_{w \in T} (10\cdot w - 0.001 w^2)p(w)
+\end{equation}
+
+\begin{equation}
+    \E(u(W)) = \sum_{w \in T} (10\cdot w)p(w) - \sum_{w \in T} (0.001 w^2)p(w)
+\end{equation}
+
+
+\begin{equation}
+    \E(u(W)) = 10\cdot\sum_{w \in T} ( w)p(w) - 0.001\cdot \sum_{w \in T} ( w^2)p(w)
+\end{equation}
+
+\begin{equation}
+    \E(u(W)) = 10\E(W) - 0.001\cdot \E(W^2)
+\end{equation}
+
+Vi ved at:
+\begin{equation}
+    \Var(X) = \E(X^2) - (\E(X))^2 \implies \Var(X) + (\E(X))^2 = \E(X^2)
+\end{equation}
+
+Vi bruger dette:
+
+\begin{equation}
+    \E(u(W)) = 10\cdot\E(W) - 0.001\cdot (\E(W))^2 + \Var(W)
+\end{equation}
+
+Som var det ønskede udtryk
+
+\textbf{Del 8) Udregn variansen af $X$, $Y$, $Z$}
+
+Vi bruger formlen for den varians:
+
+\begin{equation}
+    \sum_{x \in T}(x - \E(X))^2p(x)
+\end{equation}
+
+Varians af X
+\begin{equation}
+    0.95 \cdot (3800 - 4000)^2 + 0.05 \cdot (0 - 4000)^2 = 760000
+\end{equation}
+
+Varians af Y: Den er $\Var(Y)=0$. Vi får altid udbetalt det samme! \textbf{Definition 3.7.13}
+
+Varians af Z
+\begin{equation}
+    0.95 \cdot (3850 -3800)^2 + 0.05 \cdot (2850 - 3800)^2 = 47500 
+\end{equation}

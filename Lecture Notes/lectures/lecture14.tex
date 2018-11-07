@@ -1,0 +1,285 @@
+\horizline
+
+\subsection{Øvelse 14}
+
+\textbf{01/11/2018, opgaver: 44.2.1, 44.2.2, 44.2.3}
+
+\subsubsection{Opgave 44.2.1}
+
+\begin{itemize}
+    \item $U, V \sim N(0,1)$
+    \item $U \independent V$
+    \item derudover er følgende variable defineret:
+    \begin{align}
+        X &= \alpha_1 + \beta_1 U \\
+        Y &= \alpha_2 + \beta_2 U + \delta_2  V
+    \end{align}
+\end{itemize}
+
+\textbf{Del 1) Udregn $P(0.1 < U <0.5)$}
+
+Kig github! Gjort i python, så det er let tilgængeligt for alle online.
+
+\begin{equation}
+    P(0.1 < U <0.5) = 1 - F_U(0.1) - (1- F_U(0.5)) = - F_U(0.1) + F_U(0.5) = 0.15163
+\end{equation}
+
+\textbf{Del 2) Udregn $E(X), E(Y)$ samt $V(X), V(Y)$}
+
+\begin{equation}
+    \E(X) = \E(\alpha_1 + \beta_1 U) = \E(\alpha_1) + \beta_1 \E(U) = \alpha_1 
+\end{equation}
+
+\begin{equation}
+    \E(Y) = \E(\alpha_2 + \beta_2 U + \delta_2 V) = \alpha_2
+\end{equation}
+
+Igen fordi at $\E(U) = \E(V) = 0$ eftersom vi har standard normalt fordelte stokastiske variable $U, V$
+
+Variansen kan nu findes:
+
+Man husker at standard normalt fordelte stokastiske variable har egenskaben: $\sigma^2 = \sigma = 1$.
+
+\begin{equation}
+    \Var(X) = \Var(\alpha_1 + \beta_1 U) = \beta_1^2 \Var(U) = \beta_1^2 
+\end{equation}
+
+\begin{equation}
+    \Var(Y) = \Var(\alpha_2 + \beta_2 U + \delta_2 V) = \Var(\beta_2 U + \delta_2 V)
+\end{equation}
+
+Vi husker at når $V \independent U \implies \Var( V + U) = \Var(V) + \Var(U)$
+
+\begin{align}
+    \Var(\beta_2 U + \delta_2 V) &= \Var(\beta_2 U) + \Var(\delta_2 V) \\
+    &= \beta_2^2\Var(U) + \delta^2\Var(V)  \\ 
+    &= \beta_2^2 + \delta_2^2
+\end{align}
+
+\textbf{Del 3) Udregn $\E(X \cdot Y)$ og $\Cov(X,Y)$}
+
+\begin{align}
+    \E(X \cdot Y) &= \E\lsp (\alpha_1 + \beta_1 U) (\alpha_2 + \beta_2 U + \delta_2  V) \rsp  \\
+    &= \alpha_1 \alpha_2 + \beta_1 \beta_2 \E(U^2) \\
+    &= \alpha_1 \alpha_2 + \beta_1 \beta_2
+\end{align}
+
+Dette er klart da  $\E(V) = \E(U) = 0 \land V \independent U \implies \E(V \cdot U) = 0$
+
+Covariansen findes:
+
+\begin{equation}
+    \Cov(X,Y) = \E(X\cdot Y) \E(X)\E(Y) = (\alpha_1 \alpha_2 + \beta_1 \beta_2) - (\alpha_1\alpha_2) = \beta_1\beta_2
+\end{equation}
+
+\textbf{Del 4) Hvad skal $\alpha_1, \beta_1$ sættes til for at $\E(X) = 10 , \Var(X) = 4$}
+
+Vi har tidligere fundet: $\E(X) = \alpha_1$, $\Var(X) = \beta_1^2$.
+
+Vi kan derfor hurtigt konkluderer at: $\alpha_1 = 10 \implies \E(X) = 10$ og at $\beta_1^2 = 2 \implies \Var(X) = 4$
+
+\textbf{Del 5)}
+
+Find $\alpha_1, \alpha_2 + \beta_1\beta_2, \delta_2$ for at $\Cov(X, Y) = 4$
+
+Vi kan hurtigt konkludere at: $\Cov(X,Y) = \beta_1 \beta_2$, betyder at vi kan sige $\beta_1 = \beta_2 = 2 \implies \Cov(X,Y) = 4$. De resterende parametre kan sættes tilfældigt.
+
+\subsubsection{Opgave 44.2.2}
+
+\begin{itemize}
+    \item $Y_1$ Er timeløn i periode 1
+    \item $Y_2$ Er timeløn i periode 2
+    \item $Y_1 \sim N(\mu, \sigma^2)$
+    \item $Y_2 \sim \alpha + \beta Y_1 + U$
+    \item $U \sim N(0,v^2)$
+    \item $Y \independent U$
+\end{itemize}
+
+\textbf{Del 1) lad $\mu = 350$ og $\sigma^2  = 12365$}
+
+\begin{itemize}
+    \item \textbf{Del A)} Udregn Ssh for timelønnen i periode 1 er højst 275
+    \item \textbf{Del B)} Udregn Ssh for timelønnen i periode 1 er mindst 425
+\end{itemize}
+
+Kig i Github!
+
+\begin{equation}
+    P(Y_1 < 275) = F_{Y_1}(275) =0.25 
+\end{equation}
+
+\begin{equation}
+    P(Y_1 > 425) = 1 - F_{Y_1}(425) 
+\end{equation}
+
+\textbf{Del 2) Udregn middelværdi og varians af $Y_2$}
+
+\begin{equation}
+    \E(Y_2) = \E(\alpha + \beta Y_1 + U) = \E(\alpha) + \beta \E(Y_1) + \E(U)
+\end{equation}
+
+Vi husker $\E(U) = 0$ ($U$ var fordelt omkring 0). Derudover husker vi at $\E(Y_1) = \mu$
+
+\begin{equation}
+    \E(Y_2) = \alpha + \beta \mu
+\end{equation}
+
+Vi finder variansen.
+
+\begin{align}
+    \Var(Y_2) &= \Var(\alpha + \beta Y_1 + U) \\
+    &= \Var(\beta Y_1 + U) \\
+    &= \beta^2 \Var(Y_1) + \Var(U) \\
+    &= \beta^2 \sigma^2 + v^2
+\end{align}
+
+Hvor vi har udnyttet at man kan splitte variansen op til en sum af to uafhængige stokastisk variable.
+
+\textbf{Del 3) er $Y_1 \independent Y_2$}
+
+Nej! Dette kan ses uden yderligere udregninger, da $Y_2$ er en transformation af $Y_1$. 
+
+Note: Dette afhænger af den Strukturalle kausale model er \textit{faithful}, hvilket vi kan se i dette tilfælde den er. (Læs mere i Jonas Peters bog om causality hvis man er interesseret)
+
+\textbf{Del 4) Angiv den betingede middelværdi og varians af $Y_2$ betinget på $Y_1= y_1$}
+
+\begin{equation}
+    p_{Y_2\mid Y_1 = y_1}(y_2) = \alpha + \beta y_1 + U
+\end{equation}
+
+Vi kan hermed sige at:
+
+\begin{equation}
+    \E(Y_2 \mid Y_1 = y_1) = \E(\alpha + \beta y_1 + U) = \alpha + \beta y_1
+\end{equation}
+
+Inden variansen findes, da overvej: $\Var(\beta y_1) = 0$ . Da $y_1 $ er en realisation of derfor ikke har noget stokastisk element.  
+
+Variansen er:
+
+\begin{equation}
+    \Var(Y_2 \mid Y_1 = y_1) = \Var(\alpha + \beta y_1 + U) = \Var(U) = v^2
+\end{equation}
+
+\textbf{Del 5)}
+
+Antagelser
+\begin{itemize}
+    \item $\mu =350$
+    \item $\sigma^2 = 12365$
+    \item $\alpha = 350(1- \beta)$
+    \item $v^2 =  12365(1 - \beta^2)$
+    \item (ikke i opgaven - men nødvendigt) $\lvert \beta \rvert < 1$
+\end{itemize}
+
+\textbf{Angiv de marginale fordelinger af $Y_1$ og $Y_2$}
+
+Man ser hurtigt at:
+
+\begin{equation}
+    Y_1 := N(350, 12365)    
+\end{equation}
+
+Den marginale fordeling for $Y_2$:
+
+\begin{align}
+    Y_2 &:= \alpha + \beta Y_1 + U \\
+        &= 350(1-\beta) + \beta Y_1 + U \\
+        &= 350(1-\beta) + \beta N(350, 12365) + N(0, 12365(1 -\beta^2)) \\
+\end{align}
+
+Vi kan se at $\E(350(1-\beta) + \beta N(350, 12365) + N(0, 12365(1 -\beta^2))) = 350$. Fra $\beta 350 + (1-\beta)350 = 350$
+
+For variansen ser vi følgende: Husk $k^2 \Var(X) = \Var(kX)$. Det vil sige: $\beta N(350, 12365) = N(350, \beta^2 12365)$. Variansen for 2 ukorrelerede stokastiske variable: $\Var(X) + \Var(Y) = \Var(X + Y)$. Hvilker betyder at variansen i dette tilfælde er:
+
+\begin{equation}
+    \Var(N(350, \beta^2)) + \Var(N(0, 12365(1-\beta^2)) =12365( \beta^2 + (1 -\beta^2) = 12365
+\end{equation}
+
+\textbf{Antag nu $\beta > 0$. Vis at$\E(Y_2 \mid Y_1 = 275) <\E(Y_2)$}
+
+Vi kan se at $\E(Y_2) = 350$. læs ovenfra:
+
+Vi kan se at:
+
+\begin{equation}
+    \E(Y_2 \mid Y_1 = 275) = \E(350(1 - \beta) + \beta275 + N(0,12365(1-\beta^2))
+\end{equation}
+
+Hvilket betyder:
+
+\begin{equation}
+    \E(Y_2 \mid Y_1 = 275) = 350(1-\beta) + \beta 275 < 350
+\end{equation}
+
+\textbf{Del C)}
+
+Lad nu \textbf{$\beta = 0.90$}
+ 
+ NOGET GÅR GALT
+ 
+\begin{itemize}
+    \item $P(Y_1 \leq 275, Y_2 \leq 275) \approx 0.193$
+    \item $P(Y_1 \leq 275, Y_2 \leq 425) \approx 0.250$
+\end{itemize}
+
+Vi ved at $P(A , B) = P( A \mid B) P(B) $
+
+Så vi kan sige:
+
+\begin{equation}
+    P(Y_2 \leq 275 \mid Y_1 \leq 275) =  \frac{P(Y_1 \leq 275, Y_2 \leq 275) }{P(Y_1\leq 275)} = \frac{0.193}{0.25} = 0.772
+\end{equation}
+
+\subsubsection{Opgave 44.2.3}
+
+\begin{itemize}
+    \item $(X,Y)$ er en todimensionel stokastiske vektor
+    \item $f_{X,Y} = 6 \exp(-2x-3y) \quad x,y \in [0,\infty)$
+    \item $A = \{(x,y) : 0 \leq x + y< 1, x>0, y >0\}$
+\end{itemize}
+
+\textbf{Del 1) Hvorfor er $X \independent Y$}
+
+Lavet i en tidligere ugeseddel. Kan splittes op i to tæthedsfunktioner:
+
+\begin{equation}
+    f_X(x) = 2 \exp(-2x), \quad f_Y (y) = 3 \exp(-3y)
+\end{equation}
+
+Disse kan ganges sammen til $f_{X,Y}$
+
+\textbf{Del 2) Udregn $P((X,Y)\in A)$}
+
+Først tegn $A$: Kig github!
+
+Note: $\int e^{bx}dx = \frac{e^{bx}}{b}$ 
+
+Vi ser$ x+y = 1 \implies y-1 = x$. Og $y = x- 1$
+
+\begin{align}
+    P((X,Y) \in A) &= \int_0^1\int_0^{1-y} 6\exp(-2x-3y) dx dy\\
+    &= \int_0^1 \int_0^{1-y} 6\exp(-2x)\exp(-3y) dx dy \\
+    &=6 \int_0^{1}\exp(-3y)\int_0^{1-y}\exp(-2x) dx dy \\
+    &\cdots \\
+    &= [- \exp(-2x)]_{0}^{1} - 2\exp(-3)[\exp(x)]_{0}^{1} \\
+    &= [1-\exp(-2)] - 2 \exp(-3)[\exp(1)-1] \\
+    &\approx 0.6935
+\end{align}
+
+\textbf{Find tætheden for $(X,Y)$ givet $(X,Y) \in A$}
+
+\begin{align}
+    p(x,y \mid (X,Y) \in A) &= \frac{p(x,y, (X,Y) \in A)}{P((X,Y) \in A)} \\
+    &= \frac{p(x,y) \1_A(x,y)}{0.6935} \\
+    &= 6\exp(-2x -3y) / 0.6935 \qquad 0< x+ y <1
+\end{align}
+
+Kig Thomas rettevejledning for integrale show!
+
+\textbf{Del 4) Er $X\independent Y \mid A$}
+
+Nej! $A$ er ikke en produkt mængde!
+
+\textbf{Del 5) Find $\E(X \mid (X,Y) \in A$ og ligeledes for $Y$}
+

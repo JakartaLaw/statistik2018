@@ -1,0 +1,407 @@
+\horizline
+
+\subsection{Øvelse 10}
+
+\textbf{12/10/2018, Opgaver: 5.1, 5.5, 5.13, 5.15,  U41.3 og U41.4}
+
+\subsubsection{Opgave 5.1}
+
+\begin{itemize}
+    \item $X \sim exponential(\lambda)$
+    \item pdf: $\lambda e^{-\lambda x}$
+\end{itemize}
+
+\textbf{Find $P(X>x)$, for alle $x>0$}
+
+Vi ved at fordelingsfunktion $F(x)$ svarer til $P(X<x)$ hvilket betyder at $P(X>x) = 1 - F(x)$.
+
+\textit{Kommentar: vi bruger lille $x$ i fordelingsfunktionen. hvorfor? fordi det er en funktion der tager et tal (en realisation) af $X$}
+
+Vi kan se på wikipedia at exponential fordelingens fordelingsfunktionen CDF er:
+
+\begin{equation}
+    F(x) =  1 - e^{\lambda x}
+\end{equation}
+
+Så vi har at:
+
+\begin{equation}
+    P(X>x) = 1 - (1 - e^{\lambda x}) = e^{\lambda x}
+\end{equation}
+
+\textbf{SSH $P(1 < X < 2)$ ,hvor $\lambda = 1$}
+
+brug (hvor lambda er 1):
+\begin{equation}
+    F(x) =  1 - e^{1 x}
+\end{equation}
+
+\begin{equation}
+    P(1 < X < 2) = F(2) - F(1) = (1 - e^2) - ( 1- e^1) = 0.2325
+\end{equation}
+
+\subsubsection{Opgave 5.5}
+
+Lav i klassen!
+
+\begin{itemize}
+    \item Laplace-fordelingen
+    \item defineret på hele $\R$
+    \item funktionsforskrift:
+    \begin{equation}
+        f(x) = \frac{1}{2}e^{-\lvert x \rvert}, \qquad x \in \R
+    \end{equation}
+\end{itemize}
+
+\textbf{Find fordelingsfunktionen $F$}
+
+Fordelingsfunktionen er: $F(k) = \int_{-\infty}^{k} f(x) dx $
+
+Vi ser, vi må skære integralet op i to dele på grund af normerings operatoren på $x$.
+
+Først $x < 0$
+\begin{equation}
+    F(a) = \int_{-\infty}^a \frac{1}{2}e^ {x} = \lsp \frac{1}{2} e^{x} + k \rsp_{-\infty}^{a} = \lp \frac{1}{2} e^{a} + k \rp - \lp \frac{1}{2} e^{-\infty} + k\rp = \frac{1}{2} e^{a}
+\end{equation}
+
+Nu $x\geq 0$
+\begin{equation}
+    F(a) = \int_{-\infty}^0 \frac{1}{2}e^ {x} +  \int_{0}^a \frac{1}{2} e^{-x} = \frac{1}{2} + \lsp \frac{1}{-1} \frac{1}{2} e^{- x}  \rsp_{0}^{a}  = \frac{1}{2} + \lsp -\frac{1}{2} e^{- x}  \rsp_{0}^{a} 
+\end{equation}
+
+\begin{equation}
+    F(a) = \frac{1}{2} +  \lp - \frac{1}{2} e^{-a} \rp - \lp - \frac{1}{2} e^{0} \rp = \frac{1}{2} + \frac{1}{2} - \frac{1}{2} e^{-a} = 1 - \frac{1}{2} e^{-a} 
+\end{equation}
+
+Vi kan opskrive fordelingsfunktionen!
+
+\begin{equation}
+    F(x) =
+    \begin{cases}
+    &\frac{1}{2} e^{x}, \qquad x<0 \\
+   &1 - \frac{1}{2} e^{-x}, \qquad  x\geq 0 \\
+    \end{cases}
+\end{equation}
+
+\textbf{Del 2) Find middelværdi}
+
+Vi behøver ikke at vise middelværdi og varians eksisterer!
+
+\begin{equation}
+    \E(X) = \int_{-\infty}^{\infty} x p(x) dx
+\end{equation}
+
+Vi splitter intergralet op i intervallerne $(-\infty,0)$ og $[0, \infty)$:
+
+
+(man har her brugt reglen for partiel integration - kig Thomas note/formelsamling) $f(x) = exp(x), g(x) = x$:
+
+for integralet i intervallet $(-\infty,0)$:
+
+\begin{equation}
+    \int \frac{1}{2} x e^{x} dx = \frac{1}{2}  (x - 1) e^{x}
+\end{equation}
+
+for integralet i intervallet $[0, \infty)$
+
+\begin{equation}
+   \int \frac{1}{2} x e^{-x} dx=  - \frac{1}{2}  (x + 1) e^{-x} 
+\end{equation}
+
+vi ved at:
+
+\begin{equation}
+    \int_{-\infty}^{\infty}  x \frac{1}{2} e^{- \lvert x \rvert} dx = \int_{-\infty}^{0} \frac{1}{2} x e^{x} dx + \int_{0}^{\infty} \frac{1}{2} x e^{-x} dx
+\end{equation}
+
+Vi sætter integralernes grænser ind i stamfunktioner udledt ovenfor:
+
+
+\begin{align}
+    \int_{-\infty}^{0} \frac{1}{2} x e^{x} dx = \lp \frac{1}{2}  (0 - 1) e^{0} \rp - \lp \frac{1}{2}  (- \infty - 1) e^{- \infty} \rp = -\frac{1}{2} - 0 = -\frac{1}{2} 
+\end{align}
+
+\begin{equation}
+    \int_{0}^{\infty} \frac{1}{2} x e^{-x} dx = 
+    \lp - \frac{1}{2}  (\infty + 1) e^{-\infty} \rp - \lp  - \frac{1}{2}  (0 + 1) e^{0}\rp = 0 + \frac{1}{2} = \frac{1}{2}
+\end{equation}
+
+Så vi har at:
+
+\begin{equation}
+    \E(X) = - \frac{1}{2} + \frac{1}{2} = 0
+\end{equation}
+
+\textbf{Find variansen $\Var(X) $}
+
+VI ved at $\E(X) = 0$ det betyder at $Var(X) = \E(X^2)$. \textit{Husk på formlen for varians.}
+
+
+\begin{equation}
+    \Var(X) = \E(X^2) - \E(X)^2 = \E(X^2) =  \int_{-\infty}^{\infty} x^2 p(x) dx
+\end{equation}
+
+vi deler igen integralet op. og bruger reglerne for partiel integration. \textit{Vi ender med at få integralet fra før som et del element}.
+
+I intervallet $(-\infty, 0)$:
+
+\begin{equation}
+    \frac{1}{2}\int_{-\infty}^{0}  x^2 e^x dx =  \lsp \lp \frac{1}{2}x^2 - x + 1\rp e^{x} \rsp_{-\infty}^{0} = 1 - 0 = 1
+\end{equation}
+
+I intervallet $[0, \infty)$:
+
+\begin{equation}
+    \frac{1}{2} \int_{0}^{\infty}  x^2 e^{-x} dx = \lsp - \lp \frac{1}{2} x^2 + x + 1\rp e^{-x}\rsp_{0}^{\infty} = 0 - (-1) = 1
+\end{equation}
+
+Vi har at:
+
+\begin{equation}
+    \Var(X) = \frac{1}{2}\int_{-\infty}^{0}  x^2 e^x dx +  \frac{1}{2} \int_{0}^{\infty}  x^2 e^{-x} dx =  1 + 1 = 2
+\end{equation}
+
+\subsubsection{Opgave 5.13}
+
+LAV I KLASSEN
+
+\begin{itemize}
+    \item $X$ er en kontinuær stokastisk variabel i intervallet $(a, b)$
+    \item $X$ har en kontinuer sandsynlighedstæthed $p$ på $(a,b)$
+\end{itemize}
+
+Vi bruger sætning $5.4.1$
+
+\begin{equation}
+    q(y) = 
+    \begin{cases}
+        p(t^{-1}(y)) \lvert \frac{d}{dy} t^{-1}(y) \rvert , \qquad &y \in (v,h) \\
+        0, \qquad &y \notin (v,h)
+    \end{cases}
+\end{equation}
+
+hvor $v = \inf t(I), h = \sup t(I)$ og $I$ er intervallet $(a,b)$
+
+Til de kommende opgaver kan der siges generalt at: $x = t^{-1} (y) $
+
+Og der skippes ofte $(y)$ fra notation, således at: $\frac{d}{dy}t^{-1}(y)$ bliver til  $\frac{d}{dy}t^{-1}$
+
+\textbf{Del 1) Find tætheden for $exp(X)$}
+
+vi har vores transformation givet som $t = exp(\cdot)$ som implicerer at $t^{-1} = ln(\cdot)$.
+
+Vi finder den afledte af vores inverse transformation
+
+\begin{equation}
+    \frac{d}{dy} t^{-1} (y) = \frac{d}{dy} ln (y) = \frac{1}{y}
+\end{equation}
+
+Vi opskriver:
+
+\begin{equation}
+    q(y) = 
+    \begin{cases}
+    p( ln(y) ) \cdot \lvert \frac{1}{y} \rvert, \qquad &y \in (e^{a}, e^{b})\\
+    0, \qquad &\ellers
+    \end{cases}
+\end{equation}
+
+Man ser at faktisk $y \in \R_{+} \forall y \in Y$, hvilket betyder, man ikke ville behøve at lave normeringstegnet
+
+\textbf{Antag resten af opgaven at $a>0$}
+
+\textbf{Del 2) Find tætheden for $\sqrt X$}
+
+Vi finder transformationens inverse $t^{-1} = y^2$. og herfra den afledte: $\frac{d}{dy} t^{-1} = 2 y$. 
+
+\begin{equation}
+    q(y) = 
+    \begin{cases}
+        p(y^2) \cdot 2y ,&y \in (\sqrt{a}, \sqrt{b}) \\
+        0, &\ellers
+    \end{cases}
+\end{equation}
+
+Vi bemærker at y ikke kan antage værdier under 0, grundet $a>0$.
+
+\textbf{Del 3) Find tætheden for $\frac{1}{X}$}
+
+Vi finder transformationens inverse $t^{-1} = \frac{1}{y} $
+
+den inverse transformations afledte:
+$\frac{d}{dy}t^{-1} =-\frac{1}{y^2}$. \textit{Det huskes at man tager den absolutte værdi $\implies$ man fjerner minuset} 
+
+\begin{equation}
+    q(y) = 
+    \begin{cases}
+    p \lp \frac{1}{y} \rp \frac{1}{y^{2}} &y \in \lp \frac{1}{a}, \frac{1}{b}  \rp \\
+    0, &\ellers
+    \end{cases}
+\end{equation}
+
+\textbf{Del 4) Find tætheden for $X^2$}
+
+Vi finder den inverse transformation: $t^{-1} = \sqrt{y}$
+
+Den afledte af den inverse transformation:
+$\frac{d}{dy} t^{-1} = \frac{1}{2} y^{-1/2}$
+
+\begin{equation}
+    q(y) = 
+    \begin{cases}
+    p(\sqrt{y})\frac{1}{2} y^{-1/2}, &(a^2, b^2) \\
+    0, &\ellers
+    \end{cases}
+\end{equation}
+
+\subsubsection{Opgave 5.15}
+
+\begin{itemize}
+    \item $X \sim N(\mu, \sigma^2)$
+    \item $Y = \exp(X) $
+\end{itemize}
+
+\textbf{Del 1) Find sandsynlighedstætheden for $Y$}
+
+tæthedsfunktionen for normal fordlingen:
+\begin{equation}
+    p(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} exp \lp - \frac{(x-\mu)^{2}}{2\sigma^2} \rp
+\end{equation}
+
+Vi finder den inverse transformation: $x = t^{-1}(y) = ln(y)$
+
+Den inverse transformations afledte mht y: $\frac{d}{dy} t^{-1}(y) = \frac{1}{y}$
+
+læg mærke til $\ln(y)$ ind i udtrykket
+
+\begin{equation}
+    q(y) =
+    \begin{cases}
+         \frac{1}{\sqrt{2 \pi \sigma^2}} exp \lp - \frac{(\ln (y)-\mu)^{2}}{2\sigma^2} \rp  \cdot \frac{1}{y}, &y \in (0, \infty) \\
+        0, & \ellers
+    \end{cases}
+\end{equation}
+
+\textbf{Del 2) Vis at $Y = \beta X$ er scala invariant}
+
+Vi finder den inverse transformation $x = t^{-1} (\beta y) = ln(\beta y)$. Vi husker at: $ln(\beta y) = ln(\beta) + \ln(y) $
+
+
+Den inverse transformations afledte mht y: 
+
+\begin{equation}
+    \frac{d}{dy} t^{-1} (\beta y) = \frac{d}{dy} ln(y) + ln(\beta) = \frac{1}{y}
+\end{equation}
+
+Vi indsætter de fundne værdier
+
+\begin{equation}
+    q(y) =
+    \begin{cases}
+         \frac{1}{\sqrt{2 \pi \sigma^2}} exp \lp - \frac{(\ln (\beta) + \ln(y)-\mu)^{2}}{2\sigma^2} \rp  \cdot \frac{1}{y}, &y \in (0, \infty) \\
+        0, & \ellers
+    \end{cases}
+\end{equation}
+
+Vi ser den transformerede fordeling stadig er logaritmisk normalfordelt!
+
+\textbf{Del 3}
+
+Vi husker en detalje: $\int_{-\infty}^{\infty} p(x) dx = 1$. Dette betyder, at hvis vi kan skabe det ovenstående integrale, og få det resterende ud foran integralet, så har vi fundet resultatet!
+
+Husk $q(y)$ er 0 når ikke $y\in(0, \infty)$
+\begin{equation}
+    \int_{-\infty}^{\infty} q(y) dy = \int_{0}^{\infty} q(y) dy  
+\end{equation}
+
+
+\begin{equation}
+    \E(Y) = \int_{0}^{\infty} y q(y) dy  
+\end{equation}
+
+\begin{equation}
+    \E(Y) = \int_{0}^{\infty} y \frac{1}{\sqrt{2 \pi \sigma^2}} exp \lp - \frac{(\ln (y)-\mu)^{2}}{2\sigma^2} \rp  \cdot \frac{1}{y}
+\end{equation}
+
+Vi ser at $y$ går ud med $\frac{1}{y}$ Vi indsætter $\mu = 0, \sigma = 1$ som angivet i opgaveteksten.
+
+\begin{equation}
+    \E(Y) = \int_{0}^{\infty}  \frac{1}{\sqrt{2 \pi}} exp \lp - \frac{(\ln (y))^{2}}{2} \rp
+\end{equation}
+
+Det bagerste udtryk manipuleres:
+
+\begin{equation}
+    exp \lp -\frac{ln(y)^2}{2}\rp =    exp \lp -\frac{ \ln(y) \ln(y) }{2}\rp = exp \lp -\frac{1}{2} \rp exp \lp \ln(y) \ln(y) \rp 
+\end{equation}
+
+Går i stå her!
+
+\subsubsection{Opgave U41.3}
+
+\begin{itemize}
+    \item $X$ er ligefordelt på $(0,1)$.
+\end{itemize}
+
+\textbf{Del 1) $S = \1_{(0,0.25)}$ Find $P(S=1)$}
+
+\begin{equation}
+    P(X \in (0, 0.25)) = F(0.25) = \frac{1}{4}
+\end{equation}
+
+\textbf{Del 2) $S=  \1_{(0, p)}$. Find $P(S=1)$}
+
+\begin{equation}
+    P(X \in (0, p)) = F(p) = p
+\end{equation}
+
+\textbf{Del 3) Beskriv hvordan du kan simulere en trækning fra en stokastisk variabel $Y$}
+
+$P(Y = 1) = \frac{1}{9}$ og $P(Y=2) = \frac{8}{9}$
+
+Vi ved at fordelingsfunktionen $F: \R \mapsto [0,1]$. Det betyder at den inverse $F^{-1}: [0,1] \mapsto \R$. Overvej dette.
+
+Vi kan altså sample fra intervallet $[0,1]$ og mappe det til en real værdi gennem den inverse fordelingsfunktion:
+
+Vi har implicit givet fordelingsfunktionen ovenfor:
+
+\begin{equation}
+    F(y) = 
+    \begin{cases}
+        0, &y < 1 \\
+        \frac{1}{9}, & 1 \leq y < 2 \\
+        1, &2 \leq y
+    \end{cases}
+\end{equation}
+
+\textit{Tegn fordelingsfunktionen og den inverse fordelingsfunktion}
+
+Det betyder at vi kunne sample således:
+
+$Y = 1$ når $x \in \lp 0, \frac{1}{9} \rp$.
+
+$Y =2$ når $x \in \lp \frac{1}{9}, 1 \rp $
+
+\subsubsection{Opgave U41.4}
+
+\begin{itemize}
+    \item $X \sim N(\mu, \sigma^2)$
+\end{itemize}
+
+\textbf{Del 1) Hvad er fordelingen af $Y = (X -\mu) / \sigma$}
+
+Denne er let, da dette bare er en tilbage skalering af normalfordelingen! Dvs. en standard normalfordeling:
+
+\begin{equation}
+    Y \sim N(0,1)
+\end{equation}
+
+\textbf{Del 2) Hvad er fordelingen af $Z = (X -\mu)^{2} / \sigma^2 $}
+
+Vi ser dette er:
+
+\begin{equation}
+     Z = \frac{(X -\mu)^2}{\sigma^2} = \lp \frac{X - \mu }{\sigma} \rp^2
+\end{equation}
+
+Dette svarer altså til den kvadrerede standard normalfordeling: $\chi^2$-fordelingen.

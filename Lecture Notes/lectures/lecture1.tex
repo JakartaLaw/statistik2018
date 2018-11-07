@@ -1,0 +1,271 @@
+\horizline
+
+\subsection{Øvelse 1}
+
+\textbf{10/09/2018, opgaver: 1.1, 1.4, 1.17, 1.24 (og 1.13 hvis der er tid)}
+
+\subsubsection{Opgave 1.1}
+
+\begin{itemize}
+    \item en fair mønt
+    \item 3 kast
+\end{itemize}
+
+Udfaldsrummet $E$ har $2^3$ udfald:
+
+$E=\{(0,0,0),(0,0,1),(0,1,0),(0,1,1),(1,0,0),(1,0,1),((1,1,0),(1,1,1)\}$
+
+\textbf{SSH for 1 mønt=krone:}
+
+\begin{equation}
+    p((1,1,1)) = \frac{\text{Gunstige udfald}}{\text{mulige udfald}} = \frac{1}{8}
+\end{equation}
+
+\textbf{SSH for mindst 1 mønt=krone}. \newline
+
+brug den komplementere sandsynlighed: $p((0,0,0)) = \frac{1}{8}$. Kald denne hændelse $B$.
+
+\begin{equation}
+    P(E\setminus B) = 1 - \frac{1}{8} = \frac{7}{8}
+\end{equation}
+
+\textbf{SSH for præcis et kast viser mønt=krone}
+
+Vi definere 3 hændelser
+
+\begin{itemize}
+    \item $A = \{ \text{Det første kast bliver krone}\}$, 
+    \item $B = \{\text{Det andet kast bliver krone}\}$, 
+    \item $C = \{\text{Det tredje kast blive krone}\}$
+\end{itemize}
+
+Undersøg om dette er korrekt:
+\begin{equation}
+    P(A \cup B \cup C) = P(A) + P(B) + P(C)  = 3\times \frac{1}{8} = \frac{3}{8}
+\end{equation}
+
+\textbf{spørgsmål: hvorfor kan vi ignorere fællesmængden: denoted} $A \cup B \cup C$? => Den er disjunkt. Kig i opgave 1.13 for at se hvordan man skulle have inkluderet fællesmængderne
+
+\subsubsection{Opgave 1.4}
+
+\begin{itemize}
+    \item 3 slag med terninger  $\{1, 2, 3, 4, 5, 6 \}$
+    \item Ssh summen er 10
+\end{itemize}
+
+1) Vi ser at summen kan antage alle hele tal mellem 3 og 18. 
+
+2) Vi kan se det ikke er en ligefordeling af summer: dvs. summen 3 er ikke så hyppig som summen 10. 
+
+3) Det samlede antal udfald er $6^3$
+
+4) Via computer fandt jeg det gunstige antal udfald: 
+\begin{equation}
+    \frac{\text{antal gunstige udfald}}{\text{antal mulige udfald}}=\frac{27}{6^3}=\frac{27}{216}
+\end{equation}
+
+
+\subsubsection{Opgave 1.17}
+
+\begin{itemize}
+    \item 1 sort terning
+    \item 1 hvid terning
+\end{itemize}
+
+\textbf{del 1) Hvad er den betingede ssh. for at summen er 12 givet summen er mindst 11}
+
+Brug reglen for betingede sandsynligheder
+
+\begin{equation}
+    P(A\mid B) = \frac{P (A \cap B)}{P(B)}
+\end{equation}
+
+Lad $A$ være sandsynligheden for summen er 12.
+
+Lad $B$ være sandsynligheden for summen er mindst 11.
+
+\begin{equation}
+    P(A) = p((6,6)) = \frac{1}{36}
+\end{equation}
+
+\begin{equation}
+    P(B) = P(\{(6,6),(5,6),(6,5)\}) = \frac{3}{36}
+\end{equation}
+
+ vi ser at $A\subset B \Rightarrow P(A \cap B) = P(A)$ 
+
+\begin{equation}
+    P(A\mid B) = \frac{P (A )}{P(B)} = \frac{\frac{1}{36}}{\frac{3}{36}} = \frac{1}{3}
+\end{equation}
+
+\textbf{Del 2) Hvad er den betingede SSH for at de to terninger viser det samme, givet summen er 7}:
+
+$A$ er hændelsen for begge er terninger viser det samme.
+
+$B$ er hændelsen summer af terningerne er 7.
+
+$A = \{(1,1),(2,2),(3,3),(4,4),(5,5),(6,6)$
+
+$B = \{(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)\}$
+
+Vi ser at $P(A\cap B) = \emptyset$
+
+Man husker $P(\emptyset)=0$ Givet fra definitioner af sandsynlighedsmål.
+
+\begin{equation}
+    P(A \mid B) = 0
+\end{equation}
+
+\textbf{Del 3) Ssh for den hvide terning viser 3, givet den sorte viser 5}
+
+$A$: er hændelsen at den hvide terning er 3.
+
+$B$: er hændelsen den sorte terning er 5.
+
+Hændelserne er uafhængige!
+
+\begin{equation}
+    A = \{ (3,1), (3,2), (3,3), (3,4), (3,5), (3,6) \}
+\end{equation}
+
+\begin{equation}
+    B = \{ (1,5), (2,5), \cdots , (6,5) \}
+\end{equation}
+
+Vi ser: $P(A \cup B) = P\{(3, 5)\} = \frac{1}{6^2}$.
+
+Vi ser: $P(B) = \frac{1}{6}$
+\begin{equation}
+    P(A \mid B) = \frac{P(A \cap B)}{P(B)} = \frac{\frac{1}{36}}{\frac{1}{6}} = \frac{1}{6}
+\end{equation}
+
+\textbf{Del 4) Ssh. for den mindste terning viser 2, givet den terning med det højeste andel højest viser 5}
+
+$A$: hændelsen at den mindste terning viser 2.
+
+$B$: hændelsen at den terning med det højeste antal øjne viser 5.
+
+$A = \{(2,2),(2,3),\cdots, (2,6), (3,2), (4,2), \cdots, (6,2)$
+
+$B = \bigcup_{i,j \in \{1,2,3,4,5\}} (i,j) =  E \setminus \{(1,6),(2,6),\cdots,(5,6),(1,6),(2,6) \cdots (5,6),(6,6) \} $
+
+Vi kan finde $A\cap B$:
+
+\begin{equation}
+    A \cap B = (2,2), (2,3),(2,4),(2,5),(3,2),(4,2),(5,2)
+\end{equation}
+
+\begin{equation}
+    P(A \cap B) = \frac{7}{6^2}= \frac{7}{36}
+\end{equation}
+
+\begin{align}
+    P(B) &= P(E) - P(\{(1,6),(2,6),\cdots,(5,6),(1,6),(2,6) \cdots (5,6),(6,6) \}) \\ &= 1 - \frac{11}{36} = \frac{25}{36}
+\end{align}
+
+\begin{equation}
+    P(A \mid B) = \frac{\frac{7}{36}}{\frac{25}{36}} = \frac{7}{25}
+\end{equation}
+
+\subsubsection{Opgave 1.24}
+
+\begin{itemize}
+    \item 1 hvid terning
+    \item 1 sort terning
+    \begin{itemize}
+        \item A = \{den hvide terning viser 4\}
+        \item B = \{den sorte terning viser 1\}
+        \item C = \{terningen med det højeste antal øjne viser 4 \}
+        \item D = \{summen af øjene er 5 \}
+        \item F = \{summen af øjnene er 7 \}
+    \end{itemize}
+\end{itemize}
+
+hvilke par er indbyrdes uafhængige:
+
+Husk uafhængighed er: $P(A \cap B) = P(A)P(B)$
+
+\begin{align}
+    P(A) &= \frac{1}{6} = \frac{6}{36}\\
+    P(B) &= \frac{1}{6} = \frac{6}{36} \\
+    P(C) &= P(\{(1,4),(2,4),(3,4),(4,4), (4,1),(4,2),(4,3)\})= \frac{7}{36} \\
+    P(D) &= P(\{(1,4),(2,3),(3,2),(4,1)=\frac{4}{36} \\
+    P(F) &= \{(1,6),(6,1) \} = \frac{1}{12}= \frac{3}{36}
+\end{align}
+
+Elementer i hver fællesmængde:
+
+\begin{figure}[ht]
+    \centering
+        \begin{tabular}{rrrrrl}
+        \toprule
+         A &  B &  C &  D &  F & set \\
+        \midrule
+         6 &  1 &  4 &  1 &  1 &   A \\
+         1 &  6 &  1 &  1 &  1 &   B \\
+         4 &  1 &  7 &  2 &  2 &   C \\
+         1 &  1 &  2 &  4 &  0 &   D \\
+         1 &  1 &  2 &  0 &  6 &   F \\
+        \bottomrule
+        \end{tabular}
+    \caption{opg. 1.24 - elementer i hver fællesmængde}
+    \label{tab:1.24}
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \centering
+        \begin{tabular}{rrrrrl}
+        \toprule
+             A &      B &      C &      D &      F & set \\
+        \midrule
+         0.167 &  0.028 &  0.111 &  0.028 &  0.028 &   A \\
+         0.028 &  0.167 &  0.028 &  0.028 &  0.028 &   B \\
+         0.111 &  0.028 &  0.194 &  0.056 &  0.056 &   C \\
+         0.028 &  0.028 &  0.056 &  0.111 &  0.000 &   D \\
+         0.028 &  0.028 &  0.056 &  0.000 &  0.167 &   F \\
+        \bottomrule
+        \end{tabular}
+    \caption{opg 1.24 - Sandsynlighed for fællesmængde}
+    \label{tab:1.24-probs}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+        \begin{tabular}{rrrrrl}
+        \toprule
+        A &      B &      C &      D &      F & set \\
+        \midrule
+        0.028 &  0.028 &  0.032 &  0.019 &  0.028 &   A \\
+        0.028 &  0.028 &  0.032 &  0.019 &  0.028 &   B \\
+        0.032 &  0.032 &  0.038 &  0.022 &  0.032 &   C \\
+        0.019 &  0.019 &  0.022 &  0.012 &  0.019 &   D \\
+        0.028 &  0.028 &  0.032 &  0.019 &  0.028 &   F \\
+        \bottomrule
+        \end{tabular}
+    \caption{opg. 1.24 - Sandsynligheden for $P(A)\cdot P(B)$}
+    \label{tab:1.24_3}
+\end{figure}
+
+
+De uafhængige par er: $(A,B), (A,F), (B,F)$
+
+\subsubsection{Opgave 1.13}
+
+\begin{align}
+    P(A\cup B \cup C) &= P(A) + P(B\cup C) - P(A \cap (B \cup C) \\
+    &= P(A) + P(B) + P(C) - P(B\cup C ) - P(A \cap (B \cup C) 
+\end{align}
+
+Hvis vi ser nærmere på den sidste del  \textbf{Lav tegning af mængder! A, B, C har en intersektion}.
+
+\begin{equation}
+    P(A \cap (B \cup C) = P(A \cup B) + P(A \cup C) - P(A \cup B \cup C)
+\end{equation}
+
+Man husker at der er minus foran denne mængde, sådan at:
+
+\begin{align}
+    P(A\cup B \cup C) &= \\ &P(A) + P(B) + P(C) - P(B\cup C ) \\ &- (P(A \cup B) + P(A \cup C) - P(A \cup B \cup C))
+\end{align}

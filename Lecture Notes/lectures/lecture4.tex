@@ -1,0 +1,192 @@
+\subsection{Øvelse 4}
+
+\textbf{21/9/2018, Øvelser: B.4  og 2.4, 2.5, og 2.9 fra Sørensen (2015)}
+
+\subsubsection{Opgave B.4}
+
+\textbf{Lav i klassen}
+
+\begin{itemize}
+    \item 1 mønt
+    \item 1 terning
+    \item $X$ er stokastisk variabel med summen af antal øjne på terning + (0/1) (1 hvis krone).
+\end{itemize}
+
+\begin{equation}
+    T := \text{Ternings øjne}, \qquad M := \text{Mønt}
+\end{equation}
+
+\begin{equation}
+    X := T + M
+\end{equation}
+
+\textbf{Del 4 - Find $P(X>3)$}
+
+Definer hændelser:
+
+$A = \{ X>3 \} $
+
+$A^{C} = \{ X \leq 3 \}$
+
+udfaldsrummet for den simultane fordeling af T of M $\{0, 1\} \times \{1, 2, 3, 4, 5, 6 \}$
+
+
+\begin{align}
+    &P(A^{C}) = \\ &P(\{(M=0, T=1), (M=0, T=2), (M=0, T=3), \\ &(M=1, T=1), (M=1, T=2)\})
+\end{align}
+
+Dette var kun komplementær hændelsen
+\begin{equation}
+    P(A^{C}) = \frac{5}{12}
+\end{equation}
+
+
+\begin{equation}
+    P(A) = \frac{7}{12}
+\end{equation}
+
+\textbf{Del 5 - SSh for ulige nummer}
+
+Definér hændelsen.
+
+$A = \{X \in \textbf{Ulige numre}\}$
+
+Disse er alle indbyrdes disjunkte hændelser
+$A = \{X = 1 \}  \cup \{ X= 3 \} \cup \{X = 5 \} \cup \{X= 7 \}$
+
+\begin{align}
+    P(A) = P(\{X = 1 \}) + P(\{ X= 3 \}) + P(\{X = 5 \}) + P(\{X= 7 \})
+\end{align}
+
+\begin{equation}
+    P(A) = \frac{1}{12} + \frac{2}{12} + \frac{2}{12} + \frac{1}{12} = \frac{1}{2}
+\end{equation}
+    
+\subsubsection{Opgave 2.4}
+
+L\begin{itemize}
+    \item $X$ er en stokastisk variabel som kan antage værdierne $\{1, 2, 3\}$
+    \item $P(X =1) = P(X=2) = P(X=3) =  \frac{1}{3}$
+    \item En stokastisk variabel $Y=1/X$
+\end{itemize}
+
+\textbf{Tegn fordelingsfunktionen for $X$ og $Y$}
+
+Kig Github!
+
+\subsubsection{Opgave 2.5}
+
+Lav første del i klassen
+
+\begin{itemize}
+    \item $X_1$, $X_2$ er stokastiske variable.
+    \item begge har udfaldsrummet $\{0, 1\}$
+    \item $X_1$ marginale fordeling:
+    \begin{itemize}
+        \item $P(X_1=0)=0.4$
+        \item $P(X_1=1)=0.6$
+    \end{itemize}
+    \item $X_2$ marginale fordeling
+    \begin{itemize}
+        \item $P(X_2=0)=0.3$
+        \item $P(X_2=1)=0.7$
+    \end{itemize}
+    \item Vi har en stokastisk vektor $X = (X_1, X_2)$
+\end{itemize}
+
+\textbf{Del 1) Undersøg uafhængighed når den simultane fordeling af $X$ er:}
+
+\begin{table}[ht]
+\centering
+\caption{Simultan fordeling af $X$}
+\begin{tabular}{|l|l|l|}
+\hline
+          & $X_1=0$ & $X_1 = 1$ \\ \hline
+$X_2 = 0$ & 0.12    & 0.18      \\ \hline
+$X_2 = 1$ & 0.28    & 0.42      \\ \hline
+\end{tabular}
+\end{table}
+
+Se \textbf{definition 2.4.1}: Skriv den op på tavlen!
+
+Vi tester for uafhængighed:
+
+\begin{align}
+    P(X_1 = 0)P(X_2 = 0) &= 0.4 \cdot 0.3 = 0.12 \\
+    P(X_1 = 0)P(X_2 = 1) &= 0.4 \cdot 0.7 = 0.28 \\
+    P(X_1 = 1)P(X_2 = 0) &= 0.6 \cdot 0.3 = 0.18 \\
+    P(X_1 = 1)P(X_2 = 1) &= 0.6 \cdot 0.7 = 0.42
+\end{align}
+
+Vi ser at $X_1$ er uafhængig af $X_2$.
+
+\textbf{Del 2) Undersøg uafhængighed når den simultane fordeling af $X$ er:}
+
+\begin{table}[ht]
+\centering
+\caption{Simultan fordeling af $X$}
+\begin{tabular}{|l|l|l|}
+\hline
+          & $X_1=0$ & $X_1 = 1$ \\ \hline
+$X_2 = 0$ & 0.15    & 0.15      \\ \hline
+$X_2 = 1$ & 0.25    & 0.45      \\ \hline
+\end{tabular}
+\end{table}
+
+Til klassen: Er \textit{dette overhovedet muligt - givet ovenstående resultat?} 
+
+\textbf{Del 3) gør rede for at begge simulatane fordelinger er i overensstemmelse med de angivne marginale fordelinger}
+
+\begin{align}
+    P(X_1 = 0) &= P((0,0)) + P((0,1)) = 0.4 \\ 
+    P(X_1 = 1) &= P((1,0))+P((1,1)) = 0.6 \\
+    P(X_2 = 0) &= P((0,0)) + P((1,0)) = 0.3 \\
+    P(X_2 = 1) &= P((0,1)) + P((1,1)) = 0.7
+\end{align}
+
+\subsubsection{Opgave 2.9}
+
+Note brug min() og maks() som funktioner istedet for bogens notation.
+
+\begin{itemize}
+    \item 2 terninger, $T_1, T_2$
+    \item $T_1, T_2$ er ligefordelt på $\{1, 2, 3, 4, 5, 6\}$
+    \item $Y = min(T_1, T_2)$
+    \item $Z = max(T_1, T_2)$
+\end{itemize}
+
+\textbf{Hvad er den simultane fordeling?}
+
+$Y$ er vandret, $Z$ lodret: Vi ved at det må være en øvre trekantsmatrice.
+
+Til diagonalen: Vi ved at der er kun måde at min og maks kan være ens $min(T_1,T_2) = max(T_1, T_2) \implies T_1 = T_2$.
+
+Til den øvre trekant: $Y = 1, Z_2 \implies T_1 = 1, T_2 = 2 \lor T_1=2, T_2 = 1$. Dette kan gøres for alle elementer af den øvre trekant
+
+\begin{table}[ht]
+\centering
+\caption{Simultan fordeling}
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+      & $Y = 1$ & $Y=2$ & $Y=3$ & $Y=4$ & $Y=5$ & $Y=6$ \\ \hline
+$Z=1$ & 1/36    & 2/36  & 2/36  & 2/36  & 2/36  & 2/36  \\ \hline
+$Z=2$ & 0       & 1/36  & 2/36  & 2/36  & 2/36  & 2/36  \\ \hline
+$Z=3$ & 0       & 0     & 1/36  & 2/36  & 2/36  & 2/36  \\ \hline
+$Z=4$ & 0       & 0     & 0     & 1/36  & 2/36  & 2/36  \\ \hline
+$Z=5$ & 0       & 0     & 0     & 0     & 1/36  & 2/36  \\ \hline
+$Z=6$ & 0       & 0     & 0     & 0     & 0     & 1/36  \\ \hline
+\end{tabular}
+\end{table}
+
+
+\textbf{Er $Y, Z$ uafhængige}
+
+Husk:
+
+\begin{equation}
+    P(Y = A, Z = B) =P(Y=A)P(Z=B) \quad \forall A, B \in \{1, 2, 3, 4, 5, 6 \}
+\end{equation}
+
+Vi skal bare have et modeksempel.
+Eftersom: $P(Y=1, Z=2)=0$ kan vi konkluderer ikke uafhægighed. \textit{Overvej dette !}
+

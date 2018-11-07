@@ -1,0 +1,105 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+
+%usepackages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage[parfill]{parskip} % lineskip when new paragraph
+
+
+%new commands
+\newcommand{\eps}{\mathcal{E}}
+\newcommand{\indic}{\mathbbm{1}}
+\newcommand{\horizline}{ \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}} }
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+\newcommand{\E}{\text{E}}
+\newcommand{\Var}{\text{Var}}
+
+\newcommand{\Cov}{\text{Cov}}
+\newcommand{\Corr}{\text{Corr}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\1}{\mathbbm{1}}
+\newcommand{\Y}{\mathbb{Y}}
+
+\newcommand{\for}{\text{for }}
+
+\newcommand{\ra}{\rightarrow}
+\newcommand{\la}{\leftarrow}
+\newcommand{\lra}{\Leftrightarrow}
+
+\newcommand{\lp}{\left(}
+\newcommand{\rp}{\right)}
+\newcommand{\lsp}{\left[}
+\newcommand{\rsp}{\right]}
+\newcommand{\lcp}{\left\{ }
+\newcommand{\rcp}{\right\} }
+
+\newcommand{\indefint}{\int_{-\infty}^{\infty}}
+
+\newcommand{\ellers}{\text{ellers}}
+
+
+
+%info
+\title{Lecture Notes}
+\author{Jeppe Johansen}
+\makeindex
+\begin{document}
+
+
+\tableofcontents
+
+\input{lectures/disclaimer.tex}
+
+\maketitle
+
+\section{Topics}
+
+% Sørens Concepts
+
+\iffalse
+\input{readings_soerensen/concept1.tex}
+\input{readings_soerensen/concept2.tex}
+\input{readings_soerensen/concepts3.tex}
+\input{readings_soerensen/concepts4.tex}
+\input{readings_soerensen/concepts5.tex}
+\input{readings_soerensen/concepts6.tex}
+\input{readings_soerensen/concepts8.tex}
+
+\fi
+
+% Heino Nielsen Concepts
+\input{readings_nielsen/concepts2.tex}
+
+\section{Lectures}
+
+
+\iffalse
+\input{lectures/lecture1.tex}
+\input{lectures/lecture2.tex}
+\input{lectures/lecture3.tex}
+\input{lectures/lecture4.tex}
+\input{lectures/lecture5.tex}
+\input{lectures/lecture6.tex}
+\input{lectures/lecture7.tex}
+\input{lectures/lecture8.tex}
+\input{lectures/lecture9.tex}
+\input{lectures/lecture10.tex}
+\input{lectures/lecture11.tex}
+\input{lectures/lecture12.tex}
+\input{lectures/lecture13.tex}
+\input{lectures/lecture14.tex}
+\input{lectures/lecture15.tex}
+\input{lectures/lecture16.tex}
+\fi
+
+\input{lectures/lecture17.tex}
+
+
+\end{document}

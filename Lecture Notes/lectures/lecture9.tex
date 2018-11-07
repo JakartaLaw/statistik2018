@@ -1,0 +1,262 @@
+\horizline
+
+\subsection{Øvelse 9}
+
+\textbf{Opgaver: 5.2, 5.3, 5.7, U41.1, U41.2 }
+
+\subsubsection{Opgave 5.2}
+
+\begin{itemize}
+    \item X er en kontinuær stok var
+    \item $p(x) = \alpha x^{- (\alpha + 1)}$ for $x>1,\alpha > 0 $
+\end{itemize}
+
+\textbf{Find fordelingsfunktionen for X}
+
+Vi ved at $p(x) = F'(x)$ Hvis vi skulle finde sandsynligheden for et udfald ville vi bruge tætheden $p(x)$ lad os sige vi ville finde ssh for at $X$ er i intevallet $a$ til $b$: da
+
+\begin{equation}
+    \int_{a}^{b}p(x) dx
+\end{equation}
+
+Fordelingsfunktionen er kendetegnen ved for intervallet $(-\infty, \infty)$:
+
+\begin{equation}
+    \int_{-\infty}^{x} p(x) dx
+\end{equation}
+
+Vi har dog intervallet $(1, \infty)$
+
+Vi opskriver integralet:
+
+\begin{equation}
+    \int_{1}^{x} \alpha x^{-(\alpha + 1)}    
+\end{equation}
+
+\begin{equation}
+   \left[\frac{\alpha}{-\alpha + 1 - 1}  x^{-\alpha + 1 - 1} \right]_{1}^{x} = [-x^{-\alpha}]_{1}^{x}=  - x^{-\alpha}  +1
+\end{equation}
+
+\subsubsection{Opgave 5.3}
+
+LAV I KLASSEN
+
+fordelingsfunktionen fotr $X$ er givet ved:
+\[   
+F(x)= 
+     \begin{cases}
+       0\qquad \for x \leq 0\\
+       x/3 \qquad \for 0 < x \leq 1 \\
+       (2x -1)/3 \qquad \for 1 < x \leq2\\
+       1 \qquad \for x> 2 
+     \end{cases}
+\] 
+
+\textbf{Find de følgende sandsynligheder}
+
+\begin{equation}
+    P(0.5 < X < 1) = F(1) - F(0.5) = \frac{1 - 0.5}{3}=  \frac{1}{6}
+\end{equation}
+
+Vi kan ignorere punktsandsynligheden da denne er 0 (i forhold til $\leq$ udtryk i oplæg).
+
+\begin{equation}
+    P(1 \leq X <  1.5) = F(1.5) - F(1) = \frac{3 - 1 }{3} - \frac{1}{3} = \frac{1}{3}
+\end{equation}
+
+\begin{equation}
+    P(2/3 < X < 4/3) = F(4/3) - F(2/3) = \frac{2(4/3) - 1}{3} - \frac{2/3}{3} 
+\end{equation}
+
+\begin{equation}
+   = \frac{8/3 - \frac{3}{3} - 2/3}{3} = \frac{3/3}{3} = \frac{1}{3}
+\end{equation}
+
+\textbf{Redegør for kontinuitet}
+
+Vi viser kontinuæritet via et lille $\delta>0$
+
+Først se om: $F(0 + \delta) \ra 0$ og $ F(0 - \delta )\ra 0$ for $\delta \ra 0$. Man ser at for $x/3$ går mod 0, hvis $x$ er tæt på 0. (Trivielt at se 0 går mod 0 for lille $x$).
+
+Undersøg i en omegn af punktet $x=1$: $F(x \pm \delta) \ra \frac{1}{3}$ for $\delta \ra 0$. Det er klart da: $x/3 \ra \frac{1}{3}, \for x = 1 - \delta$ og $(2x - 1)/3 \ra \frac{1}{3}, \for x = 1 + \delta$
+
+Undersøg i en omegn af punktet $x=2$: 
+$F(x \pm \delta) \ra 1$ for $\delta \ra 0$. man ser at $(2(2-\delta)  - 3)/3 \ra 1$ for $\delta \ra 0$. (trivilt at 1 går mod 1)
+
+Kontinuitet er vist. Vi noterer at fordelingsfunktionen overholder at $F: \R \mapsto [0,1]$ og at $F(x) \leq F(x + h), \quad h>0$. Altså den er defineret på hele den reelle akse, samt at den er monotont voksende!
+
+\textbf{Find tæthedsfunktionen for $X$}
+
+Vi differentiere de enkelte udtryk og får:
+
+\begin{equation}
+p(x) =
+    \begin{cases}
+        0 \qquad x \leq 0\\
+        \frac{1}{3} \qquad 0 < x \leq 1 \\
+        \frac{2}{3} \qquad 1 < x \leq 2 \\
+        0 \qquad x > 2
+    \end{cases}
+\end{equation}
+
+\subsubsection{Opgave 5.7}
+
+LAV I KLASSEN!
+
+\begin{itemize}
+    \item 5.1.5 i bogen:
+    \begin{equation}
+    p(x) = \beta x^{\beta -1}
+\end{equation}
+    \item $x \in [0,1]$
+\end{itemize}
+
+
+
+\textbf{Vis at 5.1.5 (i bogen) har middelværdi $\beta / (\beta +1 )$}
+
+Vi behøver ikke at teste om middelværdien eksisterer!
+
+Definition på middelværdi!
+\begin{equation}
+    E(X) = \int_{-\infty}^{\infty} x p(x) dx < \infty
+\end{equation}
+
+\begin{align}
+    E(X) = \indefint x \beta x^{\beta -1}  = \indefint \beta x^\beta
+\end{align}
+
+Vi ved at $ x$ er koncentrerer på intervallet 0 til 1: $x \in (0, 1)$
+
+\begin{align}
+    E(X) = \indefint x \beta x^{\beta -1}  = \indefint \beta x^\beta
+\end{align}
+
+
+Vi har her et uendeligt integrale, men $x$ er koncentreret på en mindre mængde. Vi bruger at $P(\emptyset)=0$ og at vi må splitte integralerne op (indskudssætningen):
+
+\begin{equation}
+    \int_a^c f(x) dx = \int_a^b f(x) dx + \int_b^c f(x)dx,\qquad  \text{(Indskudssætningen)}
+\end{equation}
+
+Vi ser at integralerne i intervallet $(-\infty, 0[$ og $]1, \infty)$ er lig $0$.
+
+\begin{equation}
+    E(X) \int_{0}^{1} \beta x^\beta = \left[ \frac{\beta}{\beta + 1} x^{\beta + 1}  \right]_{0}^{1} = \frac{\beta}{\beta + 1}
+\end{equation}
+
+
+\textbf{Vi finder variansen}
+
+\begin{equation}
+    \Var(X) = \E(X^2) - \E(X)^2
+\end{equation}
+
+\begin{equation}
+    E(X^2) =\indefint x^2 \beta x^{\beta -1}  = \indefint \beta x^{\beta + 1}
+\end{equation}
+
+Analogt med før
+
+\begin{equation}
+    \E(X^2) = \left[ \frac{\beta}{\beta + 2} x^{\beta + 2}  \right]_{0}^{1} = \frac{\beta}{\beta + 2}
+\end{equation}
+
+Variansen findex:
+
+\begin{equation}
+    \Var(X) = \frac{\beta}{\beta + 2} - \left( \frac{\beta}{\beta + 1} \right)^2
+\end{equation}
+
+kan evt. forkortes
+
+\subsubsection{Opgave U41.1}
+
+\begin{itemize}
+    \item $X, Y \sim Uni(0,1)$
+    \item den uniforme fordeling er kontinuær
+\end{itemize}
+
+\begin{equation}
+    \E(X) = \E(Y) = \frac{1}{2}(a+b) = \frac{1}{2}(1 + 0) = \frac{1}{2}    
+\end{equation}
+
+Brug sætning 6.4.2 - man kan splitte forventinger op.
+
+
+\textbf{find $\E(6X + 32Y)$}
+
+\begin{equation}
+    \E(6X + 32Y) = \frac{6 + 32}{2} = 19
+\end{equation}
+
+\textbf{Find $\E(X^3)$ og $\E(X^3 + Y^3)$}
+
+\begin{equation}
+    \E(X^3) = \int_0^1 x^3 p(x) = \left[ \frac{1}{4} x^4\right]_0^1 = \frac{1}{4}
+\end{equation}
+
+Vi har derfor selvfølgelig $\E(X^3 + Y^3) = 2 \cdot \frac{1}{4} = \frac{1}{2}$
+
+\textbf{Find $\Var(X) = \E(X^2) - [\E(X)]^2$}
+
+Vi ved at $\E(X)^2 = \lp\frac{1}{2}\rp^2 = \frac{1}{4}$
+
+\begin{equation}
+    \E(X^2) = \int_{0}^{1} x^2 p(X) = \lsp \frac{1}{3} x^3\rsp_0^1 = \frac{1}{3} 
+\end{equation}
+
+Varians:
+
+\begin{equation}
+    \Var(X) = \frac{1}{3} - \frac{1}{4} = \frac{1}{12}
+\end{equation}
+
+\textbf{Find tæthed for $Z = X - \frac{1}{2}$}
+
+\begin{equation}
+    p(z) = 1, \quad z \in[-0.5 , 0.5]
+\end{equation}
+
+\textbf{Find $\E(Z)$}
+
+Brug sætning 5.2.5. lineær transformation.
+\begin{equation}
+    \E(Z) = \E\lp X - \frac{1}{2}\rp =   \E(X) - \frac{1}{2} = 0
+\end{equation}
+
+\textbf{Find $F(Z)$}
+
+\begin{equation}
+    F(Z) = z - \frac{1}{2}, \qquad z\in[-0.5 , 0.5]
+\end{equation}
+
+\subsubsection{Opgave U41.2}
+
+\begin{itemize}
+    \item stokastisk variabel $X$
+    \item $p(x) = \lambda \exp (-\lambda x)$
+\end{itemize}
+
+\textbf{Del 1 - A) Opskriv fordelingsfunktionen for $X$ og vis at $Y=F(X)$ er ligefordelt på $[0,1]$}
+
+\begin{equation}
+    F(x) = 1 - \exp(- \lambda x)
+\end{equation}
+
+Vis at $Y=F(X)$ er ligefordelt på $[0,1]$
+
+\begin{equation}
+    P(Y \leq y) = P(F(X) \leq y) = P(X \leq F^{-1}(y)) = P(X \leq x) = F(X) = y
+\end{equation}
+
+\begin{equation}
+    x = F^{-1} (y) =  \ln \lp \frac{1}{1- \lambda } \rp / \lambda
+\end{equation}
+
+$t(X) = F(X) = y$ bruges i sidste led af ligningen!
+
+Vi ser at $P(Y \leq y) = y$ Hvor vi ved at $y$ er fordelingsfunktionen for en uniform fordeling! 
+
+\textbf{Del 2)}
+

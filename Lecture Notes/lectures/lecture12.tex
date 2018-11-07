@@ -1,0 +1,298 @@
+\horizline
+
+\subsection{Øvelse 12}
+
+\textbf{26/10/2018, opgaver: U43.2.1, U43.2.2, U43.2.3, U43.2.4, U43.2.5 fra bogen: 6.4, 6.21}
+
+\subsubsection{Opgave U43.2.1}
+
+\begin{itemize}
+    \item $A= \{x,y \mid x^2 + y^2 \leq 1$
+    \item $p(x,y) = \frac{1}{\pi}\1_{A} (x,y)$
+\end{itemize}
+
+\textbf{Del 1) Tegn $p(x,y)$}
+
+- Tegn på tavlen en tredimensionel enhedscirkel. Højden: $\frac{1}{\pi} \approx \frac{1}{3}$
+
+\textbf{Del 2) Find den marginale tæthed for $X$}
+
+For at finde den marginale tæthed skal man integrere $Y$ ud af udtrykket $p(x,y)$
+
+Først noteres at:
+
+\begin{equation}
+    X^2 + y^2 \leq 1 \lra y \leq \sqrt{1 - x^2} 
+\end{equation}
+
+\begin{align}
+    p_X (x) &= \int_{\R} \frac{1}{\pi} \1_A (x,y) dy \\
+    &=  2 \frac{1}{\pi} \int_0^{\sqrt{1 - x^2}} \1_A (x,y) dy \\
+    &= 2 \frac{1}{\pi} \lp\lp\sqrt{1- x^2}\rp - \lp0\rp\rp \\
+    &= \frac{2\sqrt{1 - x^2}}{\pi} 
+\end{align}
+
+
+2-tallet kommer fra at y både kunne have været positivt og negativt!!!
+
+\textbf{Del 2) Find den marginale tæthed}
+
+Kig på github!
+
+\subsubsection{Opgave U43.2.2}
+
+\begin{itemize}
+    \item $A = \lcp x,y \mid x\in[1,2], y\in[1,2] \rcp$
+    \item $p(x,y) = \1_A p(x,y)$
+\end{itemize}
+
+\textbf{Del 1) Tegn $p(x,y)$}
+
+Gør på tavlen. 3-dimensionel tegning.
+
+\textbf{Del 2) Find de marginale tætheder $p_Y, p_X$}
+
+\begin{equation}
+    p_X (x) = \int_{\R} \1_A(x,y) dy = \int_{1}^{2} \1_A(x,y) dy = \1_{[1,2]}(x) \int_{1}^{2} \1_A(y) dy = \1_{[1,2]}(x)
+\end{equation}
+
+Analogt for $p_Y(y)$ =
+
+\begin{equation}
+    p_Y(y) = \1_{[1,2]}(y)
+\end{equation}
+
+
+\textbf{Del 3) Definér $Z= X + Y$. Find $\E(Z), \Var(Z)$}
+
+Vi ser at $X \independent Y$
+
+Det implicerer at:
+
+\begin{equation}
+    \E(Z) = \E(X) + \E(Y) = \frac{3}{2} + \frac{3}{2} = 3     
+\end{equation}
+
+Hvor man har udnyttet at $\E(X) = \E(Y) = \frac{a + b}{2} = \frac{1 +2 }{2} = \frac{3}{2}$. Man husker at $\frac{a + b}{2}$ er middelværdien for den uniforme fordeling!
+
+Variansen findes:
+
+VI husker de er uafhængige hvilket gør vi kan sige - Fundet på wikipedia - generelt er wikipedia bedre til egenskaber end bogen - bogen er meget rodet opbygget:
+
+\begin{equation}
+    \Var(Z) = \Var(X) + \Var(Y) = \frac{1}{12} + \frac{1}{12} = \frac{1}{6}
+\end{equation}
+
+Vi finder variansen af $X$:
+\begin{equation}
+    \Var(X) = \frac{1}{12}(a-b)^2 =\frac{1}{12}
+\end{equation}
+
+\textbf{Find tætheden $q(z)$ for $Z$}
+
+Vi bruger Korollar 6.3.2
+\begin{align}
+    p(x, x - z) &= \1(1 \leq x \leq 2) \1(1 \leq z- x \leq 2) \\
+    &= \1(2 \leq z \leq 3) \1(1 \leq x \leq z-1) \\
+    &+ \1(3 \leq z \leq 4) \1(z-2 \leq x  \leq 2)
+\end{align}
+
+Kig github for illustration!
+
+Vi bruger dette:
+
+\begin{align}
+    q(z) &= \int_\R \1(2 \leq z \leq 3) \1(1 \leq x \leq z-1) +  \1(3 \leq z \leq 4) \1(z-2 \leq x  \leq 2) dx \\
+    &= \int_\R \1(2 \leq z \leq 3) \1(1 \leq x \leq z-1) dx + \int_{\R} \1(3 \leq z \leq 4) \1(z-2 \leq x  \leq 2) dx \\
+    &=  \1(2 \leq z \leq 3) \int_{1}^{z-1} \1 dx + \1(3 \leq z \leq 4) \int_{z-2}^{2} \1 dx 
+\end{align}
+
+Indsætter i stamfunktionen giver:
+
+\begin{equation}
+   q(z) = \1(2 \leq z \leq 3)(z-2) + \1(3 \leq z \leq 4)(4 - z) 
+\end{equation}
+
+\textbf{del 4) Benyt $q(z)$ til at udregne $\E(z)$}
+
+\begin{align}
+    \int_\R z q(z) dz &= \int_{\R}\1(2 \leq z \leq 3)(z^2-2z) + \1(3 \leq z \leq 4)(4z - z^2) dz \\
+    &= \int_2^3 (z^2-2z) dz + \int_3^4 (4z - z^2) dz \\
+    &=\lsp \frac{1}{3}z^3 - z^2\rsp_2^3 + \lsp \frac{1}{2}z^2 - \frac{1}{3}z^3\rsp_3^4 \\
+    &= 3
+\end{align}
+
+\textbf{Del 5) Udregn $\Cov(X, Z)$}
+
+\begin{align}
+    \Cov(X,Z) &= \Cov(X , X +Y) \\
+    &=\Cov(X,X) + \Cov(X,Y) \\
+    &= \Var(X) = \frac{1}{12}
+\end{align}
+
+Vi husker at $X, Y$ er uafhængige
+
+Vi husker at variansen af $X$ er fundet tidligere
+
+
+\subsubsection{Opgave U43.2.3}
+
+\begin{itemize}
+    \item $p_X(x) = \exp(-x)$
+    \item $p_Y(y) = \exp(-y)$
+    \item $X \independent Y$
+    \item X, Y er defineret på $\R_+$
+\end{itemize}
+
+\textbf{Del 1) Find tætheden $p(x,y)$}
+
+Grundet uafhængighed mellem $X,Y$ ved vi at: $p(x,y) = p_X(x)p_Y(y)$
+
+Vi bruger dette:
+
+\begin{equation}
+    p(x,y) = \exp(-x)\exp(-y)
+\end{equation}
+
+\textbf{Del 2) find tætheden for $Z = X + Y$}
+
+Vi gør som tidligere:
+
+\begin{align}
+     p(x, z-x) &= \1(0< x < z-x) \exp(-x)\exp(- (z-x))  \\ &=
+     \1(0< x < z-x)\exp(-x) \exp(x) \exp(-z) \\
+     &= \1(0< x < z-x)\exp(-z) 
+\end{align}
+   
+
+udtrykket $\cdot 1$ er kun for at understrege der altid står 1.
+
+\begin{equation}
+    q(z) = \int_{0}^{z}\exp(-z) dx = \exp(-z) \int_{0}^{z} \1 dx = z\exp(-z)
+\end{equation}
+
+\textbf{Del 3) Find tætheden for $Z= X - Y$}
+
+Vi bruger korollar 6.3.2 og indser at:
+$Z = X - Y \implies Y = X - Z$
+
+\begin{align}
+    p(x,x-z) = \1(0 < z < x) \exp(-x) \exp( - (x - z)) \\
+    &= \1(0 < z < x) \exp(-2x)\exp(-z)
+\end{align}
+
+Vi finder tætheden $q(z)$
+
+\begin{align}
+    q(z) &= \int_\R  \1(0 < z < x) \exp(-2x) \exp(-z) dx \\
+    &= \exp(-z) \int_{0}^{\infty} \exp(-2x) dx \\
+    &= \exp(-z)  \lsp-\frac{\exp(-2x)}{2}\rsp_{0}^{\infty} \\
+    &= \frac{1}{2} \exp(-z) 
+\end{align}
+
+VI husker at i anden nederste ligning skal kun $x$ indsættes i square brackets.
+
+\subsubsection{Opgave U43.2.4}
+
+\begin{itemize}
+    \item $X_1, X_2, X_3, X_4$ er identiske og uafhængige
+    \item $\E(X_i) = 5, \Var(X_i) =9$
+    \item $Y = X_1 + 2X_2 - X_4$
+\end{itemize}
+
+\begin{equation}
+    \E(Y) = 5 + 2\cdot5 - 5 = 10
+\end{equation}
+
+Man husker de stokastiske variable er uafhængige
+
+\begin{equation}
+    \Var(Y) = \Var(X_1 + 2X_2 - X_4) = \Var(X_1) + 2^2 \Var(X_2) + \Var(X_4) = 6 \cdot 9 = 54
+\end{equation}
+
+\subsubsection{Opgave U43.2.5}
+
+Drop denne opgave! Tidspres gør det umuligt at nå!
+
+\subsubsection{Opgave 6.4}
+
+\begin{itemize}
+    \item Man har $p(x,y)$ givet ved:
+    \begin{equation}
+    p(x,y) = \begin{cases}
+        3xy^{-2}, &x \in (0,1), y \in (1,3) \\
+        0 &\text{ellers}
+    \end{cases}
+    \end{equation}
+\end{itemize}
+
+Find de marginale fordelinger for $X, Y$ og vis uafhængighed!
+
+Lad $A = \lcp x,y \mid x\in(0,1), y\in(1,3)\rcp$
+
+\begin{align}
+    p_X(x) &= \int_\R \1_A(x,y) 3xy^{-2} dy \\
+    &= \1_{[0,1]}(x) x\int_{1}^{3} 3y^{-2} dy \\
+    &= \1_{[0,1]}(x) x\lsp 3 \cdot \frac{1}{-1} y^{-1} \rsp_{1}^{3} \\
+    &= \1_{[0,1]}(x) x\lsp \frac{-3}{y} \rsp_1^3 \\
+    &= \1_{[0,1]}(x) x\lp -1 + 3 \rp\\ 
+    &=  \1_{[0,1]}(x) x\cdot 2 \\
+    &= 2x, \quad x\in(0,1)
+\end{align}
+
+
+Det samme gøres for y
+
+\begin{align}
+    p_Y(y) &= \int_\R \1_A (x,y) 3xy^{-2}dy \\
+    &= \1_{[1, 3]}(y) y^{-2} \cdot 3\int_{0}^{1} x dx \\
+    &= \1_{[1, 3]}(y)y^{-2} \cdot 3 \lp \frac{1}{2} \rp \\
+    &= \frac{3}{2}y^{-2}, \qquad y\in(1,3)
+\end{align}
+
+Vi tester for uafhængighed:
+
+\begin{align}
+    p_X(x) \cdot p_Y(y) &= \frac{3}{2}y^{-2}2x \\
+    &= 3 y^{-2}x \\
+    &= p(x,y)
+\end{align}
+
+
+Hvilket viser uafhængighed.
+ 
+\subsubsection{Opgave 6.21}
+
+\begin{itemize}
+    \item $X \sim Uni(-1, 1)$
+    \item $Y=X^2$
+\end{itemize}
+
+Vis at $\Corr(X, Y) = 0$
+
+\begin{equation}
+    \Corr = \frac{\Cov(X,Y)}{\sqrt{\Var(X)\Var(Y)}}        
+\end{equation}
+
+Vi finder Covariansen:
+
+\begin{equation}
+    \Cov(X,Y) = \E(X - \E(X))\E(Y - \E(Y)) = \E(X Y) - \E(X)\E(Y)
+\end{equation}
+
+Vi ser hurtigt at  $\E(X) = \E(Y) = 0$.
+(evt - tegn for at overbevise klasse).
+
+\begin{equation}
+    \E(X \cdot Y) = \int_{-1}^{-1} x \cdot x^2 dx = \lp \frac{1}{4} \rp - \lp \frac{1}{4} \rp = 0
+\end{equation}
+
+Herfra ser vi let at:
+
+\begin{align}
+    \Cov(X,Y) = \E(X Y) - \E(X)\E(Y) = 0 - 0 = 0
+\end{align}
+
+De er ikke uafhængige! Kan vises formelt, men bedre med intuition ved at tegne!
+
+Vis github!

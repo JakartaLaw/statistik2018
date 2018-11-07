@@ -1,0 +1,360 @@
+\subsection{Øvelse 5}
+
+\textbf{24/09/2018 - C.1, C.2, C.3 \&  3.20, 3.24, 3.27 (optional 3.2) sørensen}
+
+\subsubsection{Opgave C.1}
+
+\begin{itemize}
+    \item Basketball player
+    \item 10 skud
+    \item ssh for at ramme 0.5
+\end{itemize}
+
+Binomial fordeling
+
+\textbf{Hvad er SSh for at ramme 8 skud med ssh 0.5}
+
+\begin{equation}
+    p(x) = \begin{pmatrix}
+    10 \\ 8 \end{pmatrix} 0.5^8 (1-0.5)^{10-8} = 0.04394
+\end{equation}
+
+\textbf{Hvad er SSh for at ramme med ssh 0.6}
+
+\begin{equation}
+    p(x) = \begin{pmatrix}
+    10 \\ 8 \end{pmatrix} 0.6^8 (1-0.6)^{10-8} = 0.1209
+\end{equation}
+
+\textbf{Ssh på 0.5 - hvad er varians of middelværdi}
+
+\begin{equation}
+    \E(X) = n\cdot p = 0.5 \cdot 10 = 5
+\end{equation}
+
+fra wikipedia
+
+\begin{equation}
+    \Var(X) = n \cdot p \cdot (1 - p) = 2.5
+\end{equation}
+
+\subsubsection{Opgave C.2}
+
+\begin{itemize}
+    \item $X$ er stokastisk variabel
+    \item diskret pdf $f(x) = \frac{x}{8}$
+    \item $x\in \{1, 2, 5 \}$
+\end{itemize}
+
+\textbf{Hvad er E(X)}
+
+\begin{equation}
+    \E(X) = \sum_{i=1}^n p_i \cdot x_i = 1\cdot \frac{1}{8} + 2 \cdot \frac{2}{8} + 5 \cdot \frac{5}{8} = \frac{1 + 4 + 25}{8} = 3.75
+\end{equation}
+
+\textbf{Hvad er Var(X)}
+
+\begin{equation}
+    \Var(X) = E(X^2) - (E(X))^2
+\end{equation}
+
+\begin{equation}
+    E(X^2) = 1^2 \cdot \frac{1}{8} + 2^2 \cdot \frac{2}{8} + 5^2 \cdot \frac{5}{8} = \frac{1 + 8  + 125}{8} = 16.75
+\end{equation}
+
+\begin{equation}
+    \Var(X) = 16.75 - 3.75^2 = 16.75 - 14.0625 = 2.6875
+\end{equation}
+
+\textbf{Hvad er $E(2X + 3)$}
+
+Vi bruger:
+
+\begin{equation}
+    \E(a + bX) = a + b \E(X)
+\end{equation}
+
+Husk $\E(X) = 3.75$
+
+\begin{equation}
+    2\cdot 3.75 + 3 = 7.5 + 3 = 10.5
+\end{equation}
+
+\subsubsection{Opgave C.3}
+
+\begin{itemize}
+    \item Efterspørgsel for software er $X$
+    \item købspris 10
+    \item salgspris 35
+    \item Ved årets ende er softwaren intet værd
+    \item køber 4 kopier af software
+\end{itemize}
+
+\textbf{Find $\E(X)$}
+
+\begin{equation}
+    \E(X) = 0.1 \cdot 0 + 0.3 \cdot 1 + 0.3 \cdot 2 + 0.2 \cdot 3 + 0.1\cdot4 = 0.3 + 0.6  + 0.6 + 0.4 = 1.9
+\end{equation}
+
+\textbf{Find $\Var(X)$}
+
+\begin{equation}
+    \Var(X) = E(X^2) - (E(X))^2
+\end{equation}
+
+\begin{equation}
+    \E(X^2) = 0.1 \cdot 0 + 0.3 \cdot 1 + 0.3 \cdot 4 + 0.2 \cdot 9 + 0.1\cdot 16 = 0.3 + 1.2  + 1.8 + 1.6 = 4.9
+\end{equation}
+
+\begin{equation}
+    \Var(X) = 4.9 - 1.9^2 = 4.9 - 3.61 = 1.29
+\end{equation}
+
+\textbf{Efterspørgselsfunktion $Y$, samt $\E(Y)$ og $\Var(Y)$}
+
+man køber 4 stykker software $4\times 10$. og sælger $x$ af dem som er en realisation af $X$.
+
+\begin{equation}
+    Y := 35X - 40
+\end{equation}
+
+husk 
+\begin{equation}
+    \E(a + bX) = a + b \E(X)
+\end{equation}
+
+\begin{equation}
+    \E(Y) = \E(35X - 40) = 35\cdot \E(X) - 40 = 3.5 \cdot 1.9 - 40 = 26.5 
+\end{equation}
+
+Normalt ville vi sige:
+
+\begin{equation}
+    \Var(X) = E(X^2) - (E(X))^2
+\end{equation}
+
+Vi gør noget smartere her (kig bog s. 93):
+
+\begin{equation}
+    \Var(aX + b) = b^2 \Var(X)
+\end{equation}
+
+\begin{equation}
+    \Var(Y) = \Var(35X - 40) = 35^2 \cdot \Var(X) = 35^2\cdot 1.29 = 1580.25
+\end{equation}
+
+\subsubsection{Opgave 3.20}
+
+\begin{itemize}
+    \item en stokastisk variabel $X$ er ligefordelt på $\{1, 2, 3, 4, 5, 6\}$ (en terning)
+    \item stokastisk variabel $Y:= R + H$, hvor er og $R, H$ er terninger
+    \item $Z$ er stokastisk variabel som er for uniform på $\{1, 2, 3\cdots, n$.
+\end{itemize}
+
+\textbf{Find middelværdi og varians for $X$}
+
+Man siger at $X:= unif\{a,b\} = unif\{1, 6\}$
+
+Middelværdi 
+\begin{equation}
+    \E(X) = \sum_{i=1}^6\frac{1}{6} i = 3.5
+\end{equation}
+
+Fra wikipedia om diskrete uniform fordeling \begin{verbatim}
+    https://en.wikipedia.org/wiki/Discrete_uniform_distribution
+Varians
+\end{verbatim}
+Generelt er der gode informationer om distributioner på wiki!
+
+\begin{equation}
+    \Var(X) = \frac{(b-a+1)^2-1}{12}
+\end{equation}
+
+\begin{equation}
+    \Var(X) = \frac{(6 - 1 + 1)^2-1}{12} = \frac{35}{12} = 2.92
+\end{equation}
+
+\textbf{For Y}
+
+$R, H := unif\{1,6\}$. $Y=R+H$
+
+Vi ved at $R \independent H$
+
+brug Sætning 3.7.7 (s. 91) - (uafhængighed er ikke nødvendig)
+
+\begin{equation}
+   \E(Y) = \E(R+H)=\E(R) + \E(H) = 3.5 + 3.5 = 7 
+\end{equation}
+
+Grundet uafhængighed kan vi nu bruge sætning 3.8.8 (s. 101)
+
+\begin{equation}
+    \Var(X_1 + X_2 + \cdots X_n) = \Var(X_1) + \Var(X_2) \cdots \Var(X_n)
+\end{equation}
+
+\begin{equation}
+    \Var(Y) = \Var(R) + \Var(H) = 2.92 + 2.92 = 5.84
+\end{equation}
+
+\textbf{Middelværdi og varians for $Z$}
+
+Vi kan definere den stokastiske variabel $Z := unif(1,n)$
+\begin{equation}
+    \E(Z) = \sum_{i=1}^n \frac{1}{n}i = \frac{1}{n}\sum_{i=1}^n i
+\end{equation}
+
+summen er $\frac{n(n+1)}{2}$. Vis gaus beviset: vi har $n/2$ gange (1 + n). 1 + 50 = 51, 2 + 49 = 51 osv det kan vi gøre 25 gange.
+
+\begin{equation}
+    \E(Z) = \frac{1}{n} \frac{n(n+1)}{2} = \frac{n+1}{2}
+\end{equation}
+
+Nu skal variansen udregnes!
+
+\begin{equation}
+    \Var(Z) = \E(Z^2) - (E(Z))^2
+\end{equation}
+
+I bogen har vi opgivet at:
+\begin{equation}
+    \sum_{i=1}^n i^2 = \frac{1}{6} n (2n+1)(n+1)
+\end{equation}
+
+Vi ved derfor at:
+
+\begin{equation}
+    E(Z^2) = \sum_{i=1}^n \frac{1}{n} i^2 = \frac{1}{n} \sum_{i=1}^n i^2 = \frac{1}{n}\frac{1}{6} n (2n+1)(n+1) = \frac{1}{6} (2n+1)(n+1)
+\end{equation}
+
+(Andel af udtrykket er $E(Z)^2$)
+
+\begin{equation}
+    \Var(Z) = \frac{1}{6} (2n+1)(n+1) - \frac{n+1}{2}\frac{n+1}{2}
+\end{equation}
+
+Vi ser udtrykket kan forkortes:
+
+\begin{equation}
+    \Var(Z) = \left(\frac{1}{6} (2n+1) - \frac{n+1}{2^2 }\right)(n+1)
+\end{equation}
+
+\subsubsection{Opgave 3.24}
+
+\begin{itemize}
+    \item en stokastisk variabel $X$
+    \item $\E(X) = 5$
+    \item $\Var(X) = 2$
+\end{itemize}
+
+\textbf{Find $\E(7 + 8X + X^2)$}
+
+\begin{equation}
+    \E(7 + 8X + X^2) = \E(7) + \E(8X) + \E(X^2)
+\end{equation}
+
+Først ved vi at $\E(7) = 7$.
+
+Dernæst
+
+\begin{equation}
+    \E(8X) = 8 \cdot \E(X) = 8\cdot5 = 40
+\end{equation}
+
+Til sidst
+
+\begin{equation}
+    \Var(X) = \E(X^2) - \E(X)^2 
+\end{equation}
+
+Vi kender variansen og $\E(X)$:
+
+\begin{equation}
+    2 = \E(X^2) - 5^2 \implies \E(X^2) = 2 + 5^2 = 27
+\end{equation}
+
+\begin{equation}
+    \E(7 + 8X + X^2) = 7 + 40 + 27 = 74
+\end{equation}
+
+\subsubsection{Opgave 3.27}
+\begin{itemize}
+    \item 3 stokastiske variable
+    \item $X_1$, $X_2$, $X_3$
+    \item identiske og uafhængige
+\end{itemize}
+
+Vis at
+
+\begin{equation}
+    \Corr(X_1 + X_2, X_2 + X_3 ) = \frac{1}{2}
+\end{equation}
+
+\begin{equation}
+    \Corr(X,Y) = \frac{\Cov(X,Y)}{\sqrt{\Var(X)\Var(Y)}}
+\end{equation}
+
+\begin{equation}
+    \Cov(X,Y) = (X - \E(X))(Y- \E(Y))
+\end{equation}
+
+Indsæt vores stokastiske variable $X_1 + X_2$ og $X_2 + X_3$. 
+
+\begin{align}
+    &\Cov(X_1 + X_2,X_2 + X_3) = \\ &(X_1 + X_2 - \E(X_1) + \E(X_2))(X_2 + X_3 - \E(X_2) + \E(X_3)) = \\
+    &([X_1 - \E(X_1)]+[X_2 - \E(X_2)])([X_2 - \E(X_2)] + [X_3 - \E(X_3)]) = \\
+    &\Cov(X_1, X_2) + \Cov(X_1, X_3) + \Cov(X_2, X_3) + \Var(X_2) 
+\end{align}
+
+Vi ved at uafhængighed implicerer ar covariancen er lig 0. Det betyder:
+
+\begin{equation}
+    \Cov(X_1 + X_2,X_2 + X_3) = \Var(X_2) = \sigma^2
+\end{equation}
+
+Brug \textbf{sætning 3.8.8} (s. 101). Man kan splitte variansen op af ukorrelerede stokastiske variabler til en sum
+
+\begin{align}
+    &\Var(X_1 + X_2)\Var(X_2 + X_3) = \\
+    &(\Var(X_1) + \Var(X_2))(\Var(X_2) + \Var(X_3)) = \\
+\end{align}
+
+Vi ved variansen er ens for alle stokastiske variable sådan at: $Var(X_1) = \Var(X_2) = \Var(X_3) = \sigma^2$
+
+\begin{equation}
+    2\sigma^2 \cdot 2\sigma^2
+\end{equation}
+
+\begin{equation}
+    \sqrt{2\sigma^2 \cdot 2\sigma^2} = 2\sigma^2
+\end{equation}
+
+Vi har herved fundet det ønskede resultat!
+
+\begin{equation}
+    \Corr(X_1 + X_2, X_2 + X_3) = \frac{\sigma^2}{2\sigma^2} =\frac{1}{2}
+\end{equation}
+
+\subsubsection{Opgave 3.2}
+
+\begin{itemize}
+    \item 5 Cola-smagere
+    \item 2 Cola-mærker $\{C, P\}$
+    \item med sandsynlighed $p$ gætter de rigtigt
+    \item 4 ud af 5 gætte på cola $P$. 1 gættede $C$
+\end{itemize}
+
+\textbf{Hvad er den betingede ssh for at det var cola C der blev serveret}
+
+Definér to stokastiske variable:
+
+$S := \{\textbf{Hvilke cola der blev serveret}\}$
+
+$C:= \{\textbf{hvilken cola der blev serveret}\}$
+
+$P(D) =  \frac{1}{2}$
+
+$P(S\mid D) \sim Bin(5,p)$
+
+\begin{equation}
+    P(S = 4\mid D=C)\begin{pmatrix} 5 \\ 4\end{pmatrix} p (1-p)^4
+\end{equation}

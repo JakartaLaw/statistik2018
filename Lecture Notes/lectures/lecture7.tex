@@ -1,0 +1,268 @@
+\horizline
+
+\subsection{Øvelse 7}
+
+\textbf{Opgaver: 3.4, 3.13, 3.14, 4.5, 4.6, (4.14)}
+
+\subsubsection{Opgave 3.4}
+
+\begin{itemize}
+    \item 5 terninger kastes
+\end{itemize}
+
+\textbf{SSH for 3 seksere}
+
+Man kan bruge både binomial fordelingen og Polynomialfordelingen.
+
+Vi bruger binomialfordelingen $X:=Binom(n = 5, p = 1/6)$
+
+
+\begin{equation}
+    p = \frac{1}{6}
+\end{equation}
+
+VI har antalsparameter $n=5$, og antal succeser $x=3$
+\begin{equation}
+    P(X = 3) = \begin{pmatrix}
+    5 \\ 3 \end{pmatrix} \left(\frac{1}{6}\right)^3\left(1 - \frac{1}{6} \right)^{5-3} = 0.0321
+\end{equation}
+
+\textbf{SSH for mindst 3 seksere}
+
+\begin{equation}
+    P(X \geq 3) =  \sum_{i=3}^n \begin{pmatrix}
+    5 \\ i \end{pmatrix} \left(\frac{1}{6}\right)^i\left(1 - \frac{1}{6} \right)^{5-i} = 0.03549
+\end{equation}
+
+\textbf{SSh for præcis 3 ens}
+
+
+Brug hvad vi har udregnet tidligere. SSH for præcis 3 seksere, kan vi gange med 6 for at finde det for alle!
+\begin{equation}
+    P(Z=3) = 6 \cdot 0.0321 = 0.1929
+\end{equation}
+
+
+\textbf{SSH for mindst 3 ens}
+
+
+Brug hvad vi regnede ud tidligere for mindst 3 seksere
+\begin{equation}
+    P(Z=3) = 6 \cdot 0.03549 = 0.2129
+\end{equation}
+
+\subsubsection{Opgave 3.13}
+
+\begin{itemize}
+    \item $X, Y  \sim Uni(0, N)$
+    \item $X \independent Y$
+\end{itemize}
+
+\textbf{Find $P(X>Y)$}
+
+Find middelværdien for $X, Y$. 
+
+Vi ser: $P(X>Y \mid Y = 0) = P(X>0)$, $P(X>Y \mid Y = 1) = P(X>1)$. Vi ved at $Y, X$ er ligefordelt sådan at alle ting er lige sandsynlige. Dette implicerer $P(Y=y) = \frac{1}{N + 1}, \forall y \in Y$.
+
+Vi kender CDF af den diskrete uniforme fordeling:
+
+\begin{equation}
+    P(Y\geq k) = \frac{k- a + 1}{n}
+\end{equation}
+
+Sæt det hele sammen:
+
+\begin{equation}
+    P(X \geq Y) = \frac{1}{N + 1} \sum_{i=0}^N \frac{i - 0 + 1}{N + 1} = \frac{1}{N + 1} \frac{1}{N + 1}\sum_{i=0}^N i + 1
+\end{equation}
+
+Husk at summen fra 1 til N kan skrives som = $(n+1)n / 2$. I vores tilfælde $(n + 1 + 1)(n+1)/2$ ,grundet vi har $i+1$ i vores sum.
+
+\begin{equation}
+    P(X\geq Y) = \frac{1}{(N + 1)^2 } \frac{(N+1)(N+1+1)}{2} = \frac{(N+2)}{2(N+1) }
+\end{equation}
+
+\textbf{Find $P(X=Y)$}
+
+Der er $N+1$ udfald.
+
+\begin{equation}
+    P(X = Y, Y=y) = \frac{1}{(1 + N)^2}
+\end{equation}
+
+Dette er klart tænk på terninger ssh for 1 dobbelt sekser $1/6^2$.
+
+Vi har $1+N$ måder at dette kan ske på:
+\begin{equation}
+    P(X=Y) (N+1)\frac{1}{(N+ 1)^2}= \frac{1}{N+1}
+\end{equation}
+
+\textbf{Find $P(Z)$ hvor $Z \sim max(X,Y)$}
+
+Vi ser at: 
+$P(Z = 0) =  P(X = 0, Y = 0)$
+
+Og at:
+$P(Z=1) = P(X = 1, Y = 1) + P(Y = 1, X= 0) + P(X = 0, Y = 1)$.
+
+Vi prøver at generaliserer observationen: 
+
+
+\textbf{Find $P(V)$ hvor $V \sim min(X,Y)$}
+
+DROP AT LAVE
+
+\textbf{Find $P(W)$ hvor $W \sim
+\lvert X - Y \rvert$}
+
+DROP AT LAVE
+\subsubsection{Opgave 3.14}
+
+LAV I KLASSEN
+
+\begin{itemize}
+    \item $(X_1, X_2)$ er en stokastisk vektor
+    \item SE OPLÆG for den simultane fordeling
+\end{itemize}
+
+\textbf{SSH $X_1$ er et lige tal}
+
+Vi husker relationen mellem marginale, betingede og simultane fordelinger!
+
+\begin{equation}
+    P(X_1 = k) = \sum_{i=1}^n P(X_1 = k, X_2 = x_i) 
+\end{equation}
+
+Vi ser at $X_1$ skal være et lige tal:
+
+\begin{equation}
+    P(X_1 \in \textbf{Lige tal}) = P(X_1 = 0) + P(X_1 = 2) + P(X_1 = 6) = 1 - P(X_{1}=-1)
+\end{equation}
+
+
+\begin{align}
+   P(X_{1}=-1) = &P(X_1 = -1, X_2= 3)\\ + &P(X_1 = -1, X_2 = 1) \\ +&P(X_1 = -1, X_2 = -2)
+\end{align}
+
+\begin{equation}
+       P(X_{1}=-1) = 0 + \frac{2}{9} + \frac{1}{9} = \frac{3}{9} 
+\end{equation}
+
+Vi finder den sandsynlighed vi ønskede fra start:
+
+\begin{equation}
+    P(X_1 \in \textbf{Lige tal}) = 1 - P(X_{1}=-1) = 1 - \frac{3}{9} = \frac{6}{9}
+\end{equation}
+
+
+\textbf{SSH, $X_{1}X_{2}$ er et ulige tal}
+
+Kravet er at produktet af de to stokastiske variable skal være et ulige tal. Dette vil implicere at $X_1 \in \{\textbf{ulige tal}\}, X_2 \in \{\textbf{ulige tal}\}$. 
+
+\begin{align}
+    P(X_1X_2 \in \{\textbf{Ulige tal}\}) &= P(X_1 = -1, X_2 = 3) \\
+    &+ P(X_1 = -1, X_2 = 1) \\
+    &= \frac{2}{9} 
+\end{align}
+
+\textbf{SSH for $X_2>0$ og $X_1 \geq 0$}
+
+\begin{align}
+    P(X_2>0, X_1\geq 0) &= 
+    P(X_2 = 3, X_1 = 2) \\
+    &+ P(X_2 = 3, X_1 = 6) \\
+    &+ P(X_2 = 1, X_1 = 2) \\
+    &+ P(X_2 = 1, X_1 = 6) \\
+    &= \frac{1}{9} + \frac{1}{9} + \frac{1}{9} + \frac{4}{27} = \frac{13}{27}
+\end{align}
+
+\subsubsection{Opgave 4.5}
+
+\textit{Lav i klassen}
+
+\begin{itemize}
+    \item shh for sikring defekt 0.03
+    \item køber pakke med 100 sikringer
+\end{itemize}
+
+\textbf{SSH for at i en pakke med 100 sikringer maks 2 er er defekte
+}
+
+Brug sætning 4.1.2
+
+VI lader altså vores antal parameter gå mod uendelig. Vi bruger nu en poisson fordeling!
+
+Vi ser at $n\cdot p = \lambda = 100 \cdot 0.03 = 3$
+
+Vi definerer vores stokastiske variabel $X \sim Poisson(\lambda = 3)$
+
+\begin{equation}
+    P(X \leq 2) = \sum_{i=0}^2 \frac{\lambda^i}{i!}e^{-\lambda} = \sum_{i=0}^2 \frac{3^i}{i!}e^{-3} \approx 0.42
+\end{equation}
+
+\subsubsection{Opgave 4.6}
+
+\begin{itemize}
+    \item En terning kastes indtil den første sekser opnås
+\end{itemize}
+
+\textbf{Hvad er ssh for at en sekser opnås inden 6 kast.}
+
+%Dette må kunne gøres med en distribution
+\begin{equation}
+    P(X<6) = 1 - P(X\geq 5) = 1 - (1-1/6)^{5+1} = 0.665 
+\end{equation}
+
+5 + 1 fordi 0 skal tælles med
+
+\textbf{Hvad er den største værdi af $i \in \N$ hvor $P(X>i) \geq \frac{1}{2}$ }
+
+\begin{equation}
+    P(X > 0) = ( 1 - 1/6)^1 =  0.8333
+\end{equation}
+
+\begin{equation}
+    P(X > 1) = ( 1 - 1/6)^2 = 0.6944
+\end{equation}
+
+\begin{equation}
+    P(X > 2) = ( 1 - 1/6)^3 = 0.5787
+\end{equation}
+
+\begin{equation}
+     P(X > 3) = ( 1 - 1/6)^3 = 0.4822
+\end{equation}
+
+VI ser at $i=2$ er det største!!
+
+\subsubsection{Optional (4.14)}
+
+\begin{itemize}
+    \item En stokastisk variabel $X$
+    \item $X \sim Poisson(\lambda) $
+\end{itemize}
+
+\textbf{Hvad er $E \left( 2^X \right)$}
+
+$Z = 2^X$. VI har så at
+\begin{equation}
+    p(z) = \frac{\lambda^{2^x}}{2^x!}e^{-\lambda}
+\end{equation}
+
+\begin{equation}
+    \E(Z) = \sum_{i=0}^\infty 2^{i} \frac{\lambda^{2^i}}{2^i!}e^{-\lambda}
+\end{equation}
+
+Vi kan trække en fra i nævneren da den bliver ganget på!
+
+\begin{equation}
+    = \sum_{i=0}^\infty \frac{\lambda^{2^i}}{(2^i - 1)!}e^{-\lambda}
+\end{equation}
+
+Man trækker et lambda fra tælleren ud foran sumtegnet!
+
+\begin{equation}
+    = \lambda \sum_{i=0}^\infty \frac{\lambda^{2^i - 1}}{(2^i - 1)!}e^{-\lambda}
+\end{equation}
+\textbf{Hvad er $E \left((1+X)^{-1} \right)$}
+

@@ -1,0 +1,419 @@
+\horizline
+
+\subsection{Øvelse 13}
+
+\textbf{28/10/2018, opgaver: 44.1.1, 44.1.2, 44.1.3 44.1.4}
+
+\subsubsection{Opgave 44.1.1}
+
+\begin{itemize}
+    \item to terninger (stokastiske variable) $X_1, X_2$ 
+    \item $(X_1, X_2) \in \lcp 1, 2, 3, 4, 5, 6\rcp^2 = \{x_{1,i}\} \times \{x_{2,j}\}, \quad i,j \in \lcp 1, 2, 3, 4, 5, 6\rcp$
+    \item $Z = X_1 + X_2$
+\end{itemize}
+
+Den vigtige regel:
+
+\begin{equation}
+    p_x(x) =  \int_{y} p_{x, y}(x,y) dy= \int_{y} p_{x\mid y}(x \mid y)p_y(y) dy 
+\end{equation}
+
+\textbf{Find $P(X_1 = i \mid Z \geq 4)$}
+
+Vi noterer først vi ikke har kontinuerte stokastiske variable!
+
+Man får en god idé
+
+\begin{equation}
+    P(X_1 = i \mid Z \geq 4) = \frac{P(X_1 = i , Z \geq 4)}{P(Z\geq 4)}
+\end{equation}
+
+(skits summen af to terninger på tavlen) 
+
+Vi indser hurtigt at $P(Z \geq 4) = \frac{33}{36}$
+
+Vi indser også at:
+
+\begin{equation}
+    P(X_1 = i \mid Z \geq 4) = \frac{P(X_1 = i , X_1 + X_2 \geq 4)}{33/36}  = \frac{P(X_1 = i ,  X_2 \geq 4 - i)}{33/36}
+\end{equation}
+
+Vi indser at $i$ er en konstant og vi nu har uafhængighed i den simultane sandsynlighed således at:
+
+\begin{equation}
+    P(X_1 = i)P(X_2 \geq 4 -i )
+\end{equation}
+
+Husk at $P(X_1 = i) = \frac{1}{6}$
+
+Vi kan opskrive det hele i et samlet udtryk:
+
+\begin{equation}
+        P(X_1 = i)P(X_2 \geq 4 -i ) = \frac{1}{6}P(X_2 \geq 4 -i )
+\end{equation}
+
+\begin{equation}
+    P(X_1 = i)P(X_2 \geq 4 -i ) = \frac{1}{6}\cdot \frac{4 - 1 + i}{6} \quad i<4
+\end{equation}
+    
+over i siger man bare $1/6 \times 1/6$
+    
+\begin{equation}
+    P(X_1 = i)P(X_2 \geq 4 -i ) = \frac{3+ i}{36} \quad i <4
+\end{equation}
+
+Vi husker at dele med $33/36$ 
+
+
+\begin{equation}
+    P(X_1 = i \mid Z \geq 4)=
+        \begin{cases}
+            4/33 &i=1 \\
+            5/33 &i=2 \\
+            6/33 &i\geq3
+        \end{cases}
+\end{equation}
+
+\textbf{Find $\E(X_1 = i  \mid Z \geq 4)$}
+
+vi ved at $P(X_1 =i )= \frac{1}{36}$. VI kan derfor sige:
+
+\begin{equation}
+    \sum_{i=1}^6 i \cdot \min\lp \frac{3+i}{33}, \frac{6}{33} \rp = \frac{4\cdot 1 + 5 \cdot 2 + (3 + 4 + 5 +6)\cdot 6}{33}
+\end{equation}
+
+\subsubsection{Opgave 44.1.2}
+
+\begin{itemize}
+    \item $Z \in \{1, 2\}$ angiver kommune
+    \item $V \in \{0, 1\}$ angiver om man er velhavende
+    \item $P(V=1 \mid Z=1) = 0.8 = 1- P(V=0 \mid Z = 0)$
+    \item $P(V=1 \mid Z=2) = 0.1$
+\end{itemize}
+
+\textbf{Udregn $\E(V \mid Z=1)$ og $\E(V \mid Z =2$}
+
+Udtrykkene er udtryk for sandsynligheden for at være velhavende betinget på hvilken kommune man kommer fra.
+
+\begin{equation}
+    \E(V \mid Z=1) =  0 \cdot P(V=0 \mid Z = 0) + 1 \cdot (V=1 \mid Z=1) = 0.2 \cdot 0 + 0.8 \cdot 1 = 0.8
+\end{equation}
+
+For kommune 2:
+
+\begin{equation}
+    \E(V \mid Z = 2) = 1 \cdot P(V=1 \mid Z=2) +  0\cdot  P(V=0 \mid Z=2) = 0.1 
+\end{equation}
+
+\textbf{Vis udtrykket:}
+
+\begin{equation}
+    \E(V \mid Z=z) = f(z) = 0.8 \cdot \1(z=1) + 0.2 \cdot \1(Z=2)
+\end{equation}
+
+Man ser at hvis $z=1 \implies E(V \mid Z=1) = 0.8$
+
+og omvendt: $z=2 \implies E(V \mid Z=2) = 0.1$
+
+\textbf{Hvad udtrykker $\E(V \mid Z=z)$}
+
+Det betyder at vores forventning er afhængig af realization af $z$.
+
+\textbf{Del 4) }
+
+Man definerer nu den stokastiske variabel \textit{Den betingede middelværdi af V givet Z}.
+
+\begin{equation}
+    \E(V \mid Z) = f(z)
+\end{equation}
+
+Vis at:
+
+\begin{equation}
+    \E(f(z)) = \E(\E(V \mid Z)) = 0.8 P(Z=1) + 0.1 P(Z=2)
+\end{equation}
+
+Det følger næsten naturligt:
+
+\begin{equation}
+    \E(f(z)) = \E(0.8 \cdot \1(z=1) + 0.1 \cdot \1(z=2))
+\end{equation}
+
+Herfra følger det da $V\in \{0,1\}$
+
+\begin{equation}
+    \E(f(z)) = 0.8 \cdot P(Z=1) + 0.1 \cdot P(Z=2)
+\end{equation}
+
+\subsubsection{Opgave 44.1.3}
+
+
+\begin{itemize}
+    \item $X$ er ligefordelt på $A = [0,10]$
+\end{itemize}
+
+\textbf{Del 1) Opskriv tætheden $p(x)$ for $X$ og vis $P(X) > 5 = \frac{1}{2}$}
+
+Tegn tæthedsfunktionen.
+
+Man ved at $F(x) \rightarrow 1$ for $x\rightarrow \infty$. nærmere bestemt ved man at $F(10) = 1$.
+Man ved at $\int \1_{A}(x)$ vil være $x$, så man skal gange en konstant på for at få $F(10) = 1$. Hel konkret $10\cdot c = 1 \implies c = 1/10$
+
+\begin{equation}
+    p(x) = \frac{1}{10}\1_{A}(x)
+\end{equation}
+
+\begin{equation}
+    P(X > 5) = \int_{0}^{5} \frac{1}{10}\1_{A}(x) = \frac{1}{10}\int \1_{A}(x) = \frac{1}{10} [x]_{0}^{5}= \frac{1}{10}(5 - 0) = 0.5
+\end{equation}
+
+\textbf{Del 2) Find $\E(X)$}
+
+\begin{equation}
+    \E(x) = \int_{-\infty}^{\infty} p(x)x
+\end{equation}
+
+Vi ved at indikator funktionen kun er defineret i intervallet $[0,10]$. så vi kan skrive:
+
+\begin{align}
+    \E(X) &= \int_{0}^{10} \frac{1}{10} x \cdot \1_{A}(x)  \\
+    &= \frac{1}{0} \int_{0}^{10} x \\
+    &= \frac{1}{10}\lsp\frac{1}{2}x^2\rsp_0^{10} \\
+    &= \frac{1}{10}\cdot\frac{1}{2}\cdot10^2 = 5
+\end{align}
+
+\textbf{Vis at tætheden for $X\mid X>5$  kan skrive som:}
+
+Skitser det givne på en tegning!
+
+\begin{equation}
+    q(x) = \frac{2}{10}\1(5 < x < 10)
+\end{equation}
+
+Man indser hurtigt at: $X \in [0, 5] \cap X \in (5,10] = \emptyset$. Vi kan altså herfra konkludere at $X \mid X>5$ kun er defineret på intervallet $(5, 10]$. 
+
+$X \mid X>5$ er stadig uniformt fordelt, og vi kan derfor sige at: $q(x) = c \cdot \1(5 < x \leq 10)$. Igen ved vi også at $Q(10) = 1$. Vi kan hurtige udlede at $c=\frac{1}{5}$. hvormed det ønskede resultat er vist.
+
+\textbf{Del 4) Er $\E(X \mid X>5) = 7.5?$}
+
+Først se på tegningen. Herfra burde det fremgår tydeligt. Mere formelt:
+
+\begin{align}
+    \E(X \mid X>5) &= \int_{-\infty}^{\infty}x \cdot \frac{1}{5}\1(5 < x <10) \\
+    &= \frac{1}{5}\int_{5}^{10} x \cdot \1(5 < x <10) \\
+    &= \frac{1}{5}\lsp \frac{1}{2}x^2 \rsp_{5}^{10} \\
+    &= \frac{1}{5}\frac{1}{2}(10^2 - 5^2) \\
+    &= \frac{1}{5}\frac{1}{2} \cdot 75 \\
+    &= 7.5
+\end{align}
+
+
+\subsubsection{Opgave 44.1.4}
+
+\begin{itemize}
+    \item $X$ angiver ratingen fra 0 til 1
+    \item $Y$ angiver værdipapirets værdi i 1000 \$
+    \item $X, Y$ er ligefordelt på mængden $B$
+    \item $B = \{(x,y) \in \R^2 \mid 0 < x < 1, 0.5 + 2x \leq y \leq 2.5 + 2x \}$
+\end{itemize}
+
+Lad os starte med at tegne $B$. Kig github!
+
+
+\textbf{Find tæthedsfunktionen $f_{X, Y}(x,y)$ for den simultane fordeling for $(X,Y)$}
+
+Vi hurtigt indser at de marginale fordelinge må blive 1. Den hurtigste måde at konstanten $c$ på (tænk simultan fordeling $f(x,y) = c \1_{B} (x, y)$). er at finde arealet af $B$.
+
+\begin{equation}
+    \frac{1}{c}= h \cdot l = 1 \cdot 2 = 2 \implies c = \frac{1}{2}
+\end{equation}
+
+tæthedsfunktionen er:
+
+\begin{equation}
+    f_{x,y}(x,y) = \frac{1}{2}\1_{B}(x,y)
+\end{equation}
+
+\textbf{Del 2) Find $P(Y>2)$}
+
+Tegn på tegningen hvad det egentlig medfører. Altså på mængden $B$.
+
+Først og fremmest ved vi at vi må integrere $X$ ud af tætheden.
+
+\begin{equation}
+    p_y(y) = \int_{\R} \frac{1}{2}\1_{B}(x,y) dx
+\end{equation}
+
+Vi lavet et trick og skærer mængden $B$ ud i to mængder $M_1$, $M_2$.
+
+\begin{equation}
+    M_1 = \{x, y \mid 0 < x <1, 0.5 + 2x < y < 2.5\}
+\end{equation}
+
+\begin{equation}
+    M_2 = \{x,y \mid 0 < x < 1, 2.5 < y < 2.5 + 2x\} 
+\end{equation}
+
+\begin{equation}
+    p_Y (y) = \frac{1}{2}\int_\R \1_{M_1} (x,y) dx + \frac{1}{2}\int_\R \1_{M_2} (x,y) dx 
+\end{equation}
+
+Vi håndterer først $M_1$:
+
+Vi ser at vi skal differentiere $x$ ud. Mængden er er altså defineret i $y$-intervallet [0.5, 2.5]. Vi isolerer $x$ som en funktion af $y$:
+
+NOTE: Tegn diagrammet på tavlen og forklar intuitionen!
+
+\begin{equation}
+    y = 0.5 + 2x \implies \frac{1}{2}(y - 0.5) = x
+\end{equation}
+
+Hvor vi husker at: $y \in [0.5, 2.5]$
+
+Vi kan nu finde at arealet for $M_1:$
+
+\begin{equation}
+    \int_{0}^{\frac{1}{2}(y-0.5)} 1 dx = [x]_{0}^{\frac{1}{2}(y-0.5)} = \frac{1}{2}y - 0.25
+\end{equation}
+
+Analogt for $M_2$:
+
+(KIG PÅ TAVLESKITSE)
+\begin{equation}
+    y = 2.5 + 2x \implies \frac{1}{2}(y - 2.5) 
+\end{equation}
+
+\begin{equation}
+    \int^{1}_{\frac{1}{2}(y - 2.5)} 1 dx = [x]_{\frac{1}{2}(y - 2.5)}^{1} = 1 - \lp \frac{1}{2} y - 1.25\rp = 2.25 - \frac{1}{2}y 
+\end{equation}
+
+hvor vi husker at $y \in (2.5 , 4.5]$
+
+Vi opskriver $p_Y (y)$. Man husker at gange konstanten $\frac{1}{2}$ på.
+
+\begin{equation}
+    p_Y(y) = 
+    \begin{cases}
+        \frac{1}{2}\lp 2.25 - \frac{1}{2}y \rp &,y \in (2.5 , 4.5] \\
+        \frac{1}{2}\lp \frac{1}{2}y - 0.25 \rp & ,y\in [0.5, 2.5]
+    \end{cases}
+\end{equation}
+
+Vi kan opskrive $P(Y>2) = 1- P(Y\leq2) = 1- \int_{0.5}^{2} \frac{1}{2}\lp\frac{1}{2}y - 0.25\rp dy$
+
+\begin{align}
+   1- \int_{0.5}^{2} \frac{1}{2}\lp\frac{1}{2}y - 0.25\rp dy &= 1 - \frac{1}{4}\int_{0.5}^{2} y - 0.5 dy \\  
+   &= 1 - \frac{1}{4} \lsp \frac{1}{2}y^2 - 0.5y \rsp \\
+   &= 1 - \frac{1}{4}\lp \lp\frac{1}{2}2^2 - \frac{1}{2} \cdot 2 \rp - \lp \frac{1}{2}0.5^2 - 0.5 \cdot 0.5\rp \rp \\
+   &= 1 - \frac{1}{4}( 2 - 1) + \frac{1}{4}\lp \frac{1}{8} - \frac{1}{4} \rp \\
+   &= 1 - \frac{1}{4} - \frac{1}{4}\frac{1}{8} \\
+   &= 0.71875
+\end{align}
+
+\textbf{Del 4) Angiv den betingede fordeling af $X$ givet $Y=1$}
+
+Vi skal finde $p_{X \mid Y=1}(x)$
+
+Vi kan altså bruge vores regel:
+
+\begin{equation}
+    p_{X \mid Y} (x) p_{Y}(y) = p(x , y) \implies p_{X \mid Y} = \frac{p(x,y)}{p_Y(y)}
+\end{equation}
+
+Vi ved at $Y=1$. Vi bruger dette:
+
+\begin{equation}
+    p_{Y}(1) = \frac{1}{2}\lp \frac{1}{2}(1) - 0.25\rp = \frac{1}{4} - \frac{1}{8} = \frac{1}{8}
+\end{equation}
+
+Vi indsætter $Y=1$ i den øverste del af brøken. Vi ved vi er i den nederste mængde $M_1$. Dette implicerer:
+
+\begin{equation}
+    0.5 + 2x < y \land y = 1 \implies  0.5 +2x < 1 \implies x < \frac{1}{4}
+\end{equation}
+
+Vi kan herfra konkludere at:
+
+\begin{equation}
+    p_{X\mid Y=1}(x) = \frac{1}{2}\frac{\1_{[0, 0.25]}(x)}{1/8} = 4\cdot \1_{[0, 0.25]}(x)
+\end{equation}
+
+\textbf{Del 5) udregn forventede rating når $Y=1$ og når $Y=2$}
+
+Vi kender formlen for forventningen af en ligefordeling: $\E(x) = \frac{a + b}{2}$
+
+Vi har svaret for $E(X \mid Y=1) = \frac{0 + 0.25}{2} = \frac{1}{8}$
+
+Vi skal nu analogt finde den betingede tæthed når $Y=2$
+
+\begin{equation}
+    p_Y(2) =  \frac{1}{2}\lp \frac{1}{2}(2) - 0.25\rp = \frac{1}{2} - \frac{1}{8} = \frac{3}{8} 
+\end{equation}
+
+Vi ser igen på mængden $M_2:$
+
+\begin{equation}
+    0.5 + 2x < y \land y=2 \implies 0.5 + 2x < 2 \implies x < \frac{3}{4}
+\end{equation}
+
+Vi kan herfor konkluderer at den betingede fordeling for $X \mid Y=2$ må være:
+
+\begin{equation}
+    p_{X \mid Y=2} (x) = \frac{1}{2}\frac{\1_{\lsp0,\frac{3}{4}\rsp}(x)}{\frac{3}{8}} = \frac{4}{3} \cdot \1_{\lsp0,\frac{3}{4}\rsp} 
+\end{equation}
+
+Vi finder forventningen som må være:
+
+\begin{equation}
+    \E(X\mid Y=2) = \frac{1}{2}\frac{3}{4}=\frac{3}{8}
+\end{equation}
+
+\textbf{Del 6) Find variansen $\Var(X \mid Y = 1$ og $\Var(X\mid Y=2)$}
+
+I stedet for at bruge hintet kigger vi på distributionen og bruger regnereglen for ligefordelinger:
+
+\begin{equation}
+    Var(X) = \frac{1}{12}(a - b)^2
+\end{equation}
+
+\begin{equation}
+    \Var( X \mid Y =1) = \frac{1}{12}\lp 0 - \frac{1}{4} \rp^2 = \frac{1}{16}\frac{1}{12} = \frac{1}{192}
+\end{equation}
+
+\begin{equation}
+    \Var(X \mid Y = 2) = \frac{1}{12} \lp 0 - \frac{3}{4} \rp^2 = \frac{1}{12}\frac{9}{16} = \frac{9}{192}
+\end{equation}
+
+\textbf{Hvornår er den betingede varians størst - dvs. variansen af ratingen betinget på prisen}
+
+Kig på tegningen: Det rigtige svar må være $Y=2500$.
+
+Man overvejer følgende:
+
+\begin{equation}
+    Var(X) = \frac{1}{12}(a - b)^2
+\end{equation}
+
+I intervallet $y \in [0.5, 2.5]$ ved vi at:
+
+\begin{equation}
+    Var(X \mid Y= y) = \frac{1}{12}(0 - a)^2
+\end{equation}
+
+Hvor at er øvre grænse:
+
+\begin{equation}
+    0.5 + 2x < y \implies x = \frac{1}{2}(y - 0.5)
+\end{equation}
+
+er monotont stigende med højere i $y$ i intervallet $[0.5, 2.5)$.
+
+Vi kan derfor sige at:
+
+I intervallet $[0.5, 2.5)$ finder vi den højeste varians ved $Y=2.5$. 
+
+Analogt kan man den højeste varians i i intervallet $[2.5 , 4.5]$ til at være $Y=2.5$ 
+
+Illustrer på tavle!
+
+

@@ -1,0 +1,361 @@
+\horizline
+
+\subsection{Øvelse 15}
+
+\textbf{5/11/2018, opgaver: U45.1, U45.2, U45.3, U45.4}
+
+\subsubsection{Opgave U45.1}
+
+\begin{itemize}
+    \item $X \sim N(\mu, \sigma^2)$
+\end{itemize}
+
+\textbf{Vis at $Y=\frac{1}{\sqrt{\sigma^2}}(X -\mu)$ er standard normal fordelt $N(0,1)$}
+
+Vi kan starte med at opskrive den parametriske form op for tætheden af en normalfordeling med $mu$ og $sigma^2$ som henholdsvis middelværdi og varians
+
+\begin{equation}
+    p(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \lp-\frac{(x- \mu)^2}{2\sigma^2} \rp 
+\end{equation}
+
+Vi husker et par regneregler:
+
+Vi ved at $\E(X) = \mu$.
+
+Det vil sige at:
+
+\begin{equation}
+    \E[Y] = \E \lsp \frac{1}{\sqrt{\sigma^2}}(X -\mu) \rsp = \frac{1}{\sqrt{\sigma^2}} \E \lsp (X -\mu)  \rsp
+\end{equation}
+
+Som sagt: $\E(X) = \mu$.
+
+\begin{equation}
+    \frac{1}{\sqrt{\sigma^2}} \E \lsp (X -\mu)  \rsp =\frac{1}{\sqrt{\sigma^2}}( \E[X] - \E[\mu]) =\frac{1}{\sqrt{\sigma^2}}  \lp \mu - \mu \rp = 0 = \E[Y] 
+\end{equation}
+
+Vi finder variansen. Man husker at $\Var(aX) = a^2 \Var(X) $
+
+Vi ved at $\Var(X) = \sigma^2$
+
+\begin{equation}
+    \Var(Y) = \Var\lp \frac{1}{\sqrt{\sigma^2}}X\rp
+\end{equation}
+
+Vi ignorerer $\mu$ da dette er en konstant
+\begin{equation}
+    \Var\lp \frac{1}{\sqrt{\sigma^2}}X\rp = \frac{1}{\sigma^2}\Var(X) = \frac{1}{\sigma^2}\sigma^2 = 1 = \Var(Y)
+\end{equation}
+
+Og vi har nu vidst at $Y\sim N(0,1)$
+
+\textbf{Del 2) $(X,Y)$ er en 2-dimensionel stokastisk vektor med middelværdi $mu$ og covarians matrice = $\Omega$}
+
+\textbf{Vis at $Z = \frac{1}{\sqrt{\sigma_X^2}}(X - \mu_X)$ er standard normalfordelt}
+
+\begin{equation}
+    \mu = \lp
+    \begin{array}{cc}
+         \mu_X  \\
+         \mu_Y 
+    \end{array} \rp \qquad
+    \Omega = \lp
+    \begin{array}{cc}
+    \sigma^2_Y & \sigma_{XY} \\
+    \sigma_{XY} & \sigma^2_X
+    \end{array}
+    \rp
+\end{equation}
+
+Samme argument som før!
+
+\textbf{Lad $(X,Y)$ være som i spørgsmål 2, men med $\mu = (0,0)^T$. Vis at $Z = Y-\beta X$ er normaltfordelt med $N(0,\sigma^2)$}
+
+Hvor $\sigma^2$ er 
+
+\begin{equation}
+    \sigma^2 = \sigma^2_Y - \beta \sigma_{XY}
+\end{equation} 
+
+og $\beta$ er:
+
+\begin{equation}
+    \beta = \sigma_{X,Y} / \sigma^2_X
+\end{equation}
+
+Vi husker at summen af to normalfordelte stokastiske variable er normalfordelt. Dvs: $Y - \beta X$ nødvendigvis må være normalfordelt!
+
+Vi finder middelværdien først:
+
+\begin{equation}
+    \E[Z] = \E[Y - \beta X] = \E[Y] - \beta \E[X] = 0 - \beta\cdot 0 = 0
+\end{equation}
+
+Nu finder vi variansen:
+
+\begin{equation}
+    \Var(Z) = \Var(Y - \beta Z)
+\end{equation}
+
+Vi husker der er covarians mellem $X$ og $Y$.
+
+Det vil sige:
+
+\begin{align}
+    \Var(Z) 
+    &= \Var(Y - \beta x) \\
+    &= \Var(Y) + \beta^2 \Var(X)  + 2\Cov(Y, - \beta X) \\
+    &= \Var(Y) + \beta^2 \Var(X)  - 2\beta \Cov(Y, X) \\
+    &= \sigma^2_Y + \beta^2 \sigma^2_X - 2\beta \sigma_{X,Y} \\
+    &= \sigma^2_Y + (\sigma_{X,Y} / \sigma^2_X)^2 \sigma^2_X - 2(\sigma_{X,Y} / \sigma^2_X) \sigma_{X,Y}\\
+    &= \sigma^2_Y + \frac{\sigma_{X,Y}^2}{\sigma^2_X} - 2\frac{\sigma_{X,Y}^2}{\sigma^2_X} \\
+    &= \sigma^2_Y - \frac{\sigma_{X,Y}^2}{\sigma^2_X}
+\end{align}
+
+Hvilket var det vi ønskede at vise:
+
+\begin{equation}
+    Z \sim N(0, \sigma^2) = N \lp 0,\sigma^2_Y - \frac{\sigma_{X,Y}^2}{\sigma^2_X} \rp
+\end{equation}
+
+\textbf{Del 4)}
+
+Vis at:
+
+\begin{equation}
+    \E((Y - \beta X)X) = 0
+\end{equation}
+
+Hvilket betyder at $Z$ og $X$ er uafhængige!
+
+\begin{align}
+    \E((Y - \beta X)X) &=
+    \E(YX - \beta X^2) \\
+    &= \E(YX) - \beta\E(X^2) \\
+\end{align}
+
+Her ser man at $\E(X) = \E(Y) =0 \implies \E(XY) = \sigma_{XY}$ og at $\E(X) = 0 \implies \E(X^2) = \sigma^2_X$
+
+\begin{align}
+    \E(YX) - \beta\E(X^2) &= \sigma_XY - \beta \sigma_X^2 \\
+    &= \sigma_{XY} - (\sigma_{X,Y} / \sigma^2_X)\sigma_X^2 \\
+    &= 0
+\end{align}
+
+For at afgøre om de er uafhængige definerer vi først fejlleddet $\epsilon$:
+
+\begin{equation}
+    \epsilon = Y - \beta X
+\end{equation}
+
+\begin{align}
+    \Cov(\epsilon, X) = \E(\epsilon X ) - \E(\epsilon) \E(X) = \E(\epsilon X ) = 0
+\end{align}
+
+Det betyder at $\epsilon$ er ukorreleret med $X$. Og da både $X$ og $\epsilon$ er normalfordelte kan vi konkludere de er uafhængige!
+
+\subsubsection{Opgave U45.2}
+
+Laves i klassen!
+
+\begin{itemize}
+    \item stokastisk vektor $(X,Y)$
+    \item distribueret med $N(m, \Omega)$
+\end{itemize}
+
+\begin{equation}
+    m = \lp 
+    \begin{array}{cc}
+         1  \\
+         0 
+    \end{array} \rp
+    \qquad \Omega = \lp
+    \begin{array}{cc}
+         1 & \rho  \\
+         \rho & 1
+    \end{array} \rp
+\end{equation}
+
+\textbf{Del 1) Hvad er $\E(X)$ og $\Var(X)$}
+
+Vi kan direkte aflæse svarene $\E(X) = 1$ og $\Var(X) = 1$.
+
+\textbf{Del 2) Hvordan er $Y$ fordelt:}
+
+Aflæses i $m$ og $\Omega$   
+
+\begin{equation}
+    Y \sim N(0,1)
+\end{equation}
+
+\textbf{Del 3) Hvad er $\Cov(X,Y)$}
+
+Dette kan aflæses i kovarians-matricen off-diagonal elementer: $\sigma_{X Y} =  \rho$
+
+\textbf{Del 4) Hvad er $\E(Y \mid X = x)$}
+
+Fra Rahbeks note (property G.3) finder vi formlen:
+
+\begin{equation}
+    \E(Y \mid X =x ) = \mu_{Y \mid X} = \mu_Y + \omega (x - \mu_X)
+\end{equation}
+
+Hvor $\omega = \sigma_{YX}/\sigma_X^2$
+
+Hvilket implicerer at:
+
+\begin{equation}
+    \E(Y \mid X =x ) = \mu_{Y \mid X} = \mu_Y + (\sigma_{YX}/\sigma_X^2)(x - \mu_X) 
+\end{equation}
+
+Vi finder de passende værdier i kovarians-matricen: $\mu_X = 1$, $\mu_Y = 0$, $\sigma_X^2=1$ og $\sigma_{XY} = \rho$
+
+\begin{equation}
+    \E(Y \mid X = x) = 0 + \lp  \frac{\rho}{1}\rp(x - 1) = \rho(x -1)
+\end{equation}
+
+\textbf{Del 5) Hvad er $\E(X \mid Y = y)$}
+
+Vi bruger samme formel som før, bare hvor: $\omega = \sigma_{YX}/\sigma_Y^2$
+
+\begin{equation}
+    \E(X \mid Y = y) = \mu_x + \omega(y - \mu_Y) = 1 + \rho y
+\end{equation}
+
+\textbf{Del 6) Hvad er $\Var(Y\mid X= x)$}
+
+Vi kigger igen i Rahbeks note (property G.3).
+
+Finder formlen:
+
+\begin{equation}
+    \Var(Y\mid X = x) = \sigma_Y^2 - \omega \sigma_{XY} = \sigma_Y^2 - \frac{\sigma_{XY}^2}{\sigma_X^2}
+\end{equation}
+
+Og vi har stadig $\omega = \sigma_{YX}/\sigma_Y^2$. Altså samme $\omega$ som i del 5.
+
+Vi har de passende værdier:
+$\sigma_X^2 = 1$, $\sigma_Y^2 =1$ og $\sigma_{XY} = \rho$
+
+\begin{equation}
+    \Var(Y\mid X = x) = \sigma_Y^2 - \frac{\sigma_{XY}^2}{\sigma_X^2} = 1 - \frac{\rho^2}{1} = 1 -\rho^2
+\end{equation}
+
+\textbf{Del 7) Hvad gælder for $(X,Y)$ hvis $\rho = 0.9$ og $\rho=0$}
+
+Hvis $\rho=0.9$ er $X,Y$ stærkt positivt korrelerede. Det vil sige en høj realisering af $Y$ implicerer en høj realisering $X$.
+
+Omvendt $\rho=0$ implicerer $X$ og $Y$ er ukorrelerede! Da de begge er normalt fordelte er de nødvendigvis også uafhængige!
+
+\subsubsection{Opgave U45.3}
+
+\begin{itemize}
+    \item $(X, Y)$ er stokastisk vektor med som er normalfordelt med $N(\mu, \Omega)$
+\end{itemize}
+
+\begin{equation}
+    \mu = \lp
+    \begin{array}{cc}
+         0  \\
+         2 
+    \end{array}\rp \qquad
+    \Omega = \lp
+    \begin{array}{cc}
+        1 & 0.5 \\
+        0.5 & 1
+    \end{array} \rp
+\end{equation}
+
+\textbf{Opskriv tætheden $p(x,y)$}
+
+Kig formlen på s.237 Sørensen (ligning 8.3.6)
+
+\begin{equation}
+    p(x,y) = \frac{1}{2\pi}\frac{1}{\sqrt{\det(\Omega)}}\exp\lp-\frac{1}{2}(x - \mu_X, y - \mu_Y)\Omega^{-1}
+    \lp
+    \begin{array}{cc}
+         x - \mu_X  \\
+         y - \mu_Y 
+    \end{array} 
+    \rp
+    \rp
+\end{equation}
+
+Hvis det ser uklart ud, da kan vi hurtigt lige definerer vektoren $K = (x - \mu_X, y - \mu_Y)$
+
+Hvilket forsimpler utrykket til (Gøres for klargøre at det er en vektor $K$ man "opløfter i 2"): 
+
+\begin{equation}
+    p(x,y) = \frac{1}{2\pi}\frac{1}{\sqrt{\det(\Omega)}}\exp\lp-\frac{1}{2}K \Omega^{-1} K^T    \rp
+\end{equation}
+
+Vi finder de to centrale ting:
+
+\begin{equation}
+    \det(\Omega) = 1^2 - 0.5^2 = 0.75
+\end{equation}
+
+
+Kig i Sørensen s.237
+\begin{equation}
+    \Omega^{-1} = \frac{1}{1 -\rho^2} \lp
+    \begin{array}{cc}
+        1 & -0.5  \\
+        -0.5 & 1
+    \end{array}    
+    \rp = 
+    \lp
+    \begin{array}{cc}
+         \frac{4}{3} & -\frac{2}{3} \\
+         -\frac{2}{3} & \frac{4}{3}
+    \end{array} \rp
+\end{equation}
+
+Og vi har fundet tætheden!
+
+\subsubsection{Opgave U45.4}
+
+\begin{itemize}
+    \item $Y$ er afkast på amerikansk aktie (Microsoft)
+    \item $X$ er et aktie-indeks (SP500)
+    \item $Y := \beta X + \epsilon$
+    \item $\epsilon \sim N(0,\sigma^2)$
+\end{itemize}
+
+\textbf{Del 1) Fortolkning af $\beta$}
+
+$\beta$ er relateret til kovariansen mellem $X$ og $Y$ og angiver altså samvariansen mellem en given aktie og hvordan hele markedet bevæger sig. En aktie med negativ $\beta$ vil altså kunne reducerer volatiliteten i en portfølje da den er modsat korreleret med de andre aktier.
+
+\begin{equation}
+    \beta = \frac{\sigma_{XY}}{\sigma^2_X}
+\end{equation}
+
+Står beskrevet i Rahbeks Note s. 10
+
+\textbf{Del 2) En anden model blev repræsenteret}
+
+\begin{equation}
+    Y := \epsilon_Y, \qquad X := \epsilon_X
+\end{equation}
+
+hvor $\epsilon_Y \sim N(0, \sigma_Y^2)$ og $\epsilon_X \sim N(0, \sigma_X^2)$
+
+\textbf{Forklar hvordan denne kan stemme overens med modellen præsenteret ovenfor}
+
+\begin{equation}
+    \E(Y) = 0
+\end{equation}
+
+Modellen ovenfor var implicit en betinget model for $Y$:
+
+\begin{align}
+    \E(Y \mid X) &= \E( \beta X + \epsilon \mid X) \\
+    &= \beta X
+\end{align}
+
+Da $\E(\epsilon \mid X) = 0$
+
+Altså så før så vi på en betinget model, men nu er det to marginale modeller, som er opstillet!
+
+Man bruger altså i den betingede model information om hvordan en aktie samvarierer med markedet
+

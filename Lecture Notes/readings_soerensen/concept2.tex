@@ -1,0 +1,84 @@
+\textbf{readings:} Sørensen 1.4-1.5
+
+\subsection{Betingede sandsynligheder og uafhængighed}
+
+\subsubsection{Den betingede sandsynlighed af $B$ giver $A$ skrevet $P(B\mid A)$, er defineret ved (definition 1.4.1}
+
+\begin{equation}
+    P(B\mid A) = \frac{P(A\cap B)}{P(A)}
+\end{equation}
+
+\subsubsection{Regneregler for betingede sandsynligheder}
+
+$A_1, A_2, \cdots A_n$ være n hændelser, hvor $P(A_1 \cap A_2 \cap \cdots A_{n-1}>0$. Da:
+\begin{align}
+    &P(A_1 \cap A_2 \cap \cdots A_n) = \\ &P(A_{1})P(A_2\mid A_1)P(A_3\mid A_1 \cap A_2) \cdots P(A_n \mid A_1 \cap \cdots \cap A_{n-1})
+\end{align}
+
+\textbf{Endnu en regneregel}
+
+Hvis $A_1, A_2, \cdots A_n$ er $n$ disjunkte hændelser, hvor at $E = \bigcup_{i=1}^n A_i$ samt $P(A_i)>0$, da gælder for en vilkærlig hændelse $B$:
+
+\begin{equation}
+    P(B) = \sum_{j=1}^n P(B\mid A_j)P(A_j)
+\end{equation}
+
+\subsubsection{Omvendingsformel - simpel bayes'}
+
+\begin{equation}
+    P(A\mid B) = P(B \mid A) \frac{P(A)}{P(B)}
+\end{equation}
+
+\subsubsection{Bayes' formel}
+
+$A_1, A_2, \cdots A_n$ er $n$ disjunkte hændelser, hvor at $E = \bigcup_{i=1}^n A_i$ samt $P(A_i)>0$. For en hændelse $B$ med $P(B)>0$, da gælder for en enhver hændelse $k$:
+
+\begin{equation}
+    P(A_k \mid B) = \frac{P(B\mid A_k) P(A_k)}{\sum_{j=1}^n P(B \mid A_j) P(A_j)}
+\end{equation}
+
+\subsection{Stokastisk Uafhængighed}
+
+\textbf{Uafhængighed} tænkes oftest som:
+
+\begin{equation}
+    P(A \mid B) = P(A)
+\end{equation}
+
+Altså at sandsynligheden for $A$ ikke er påvirket af udfaldet af $B$. 
+
+\subsubsection{Definition af uafhængighed}
+
+hændelse $A$ og $B$ er uafhængige siges at være stokastisk uafhængige når (definition 1.5.1) :
+
+\begin{equation}
+    P(A\cap B) = P(A) \cdot P(B)
+\end{equation}
+
+Dette udsagn kan let udvides til $n$ hændelser (se p.34 \textbf{definition 1.5.4})
+
+\subsubsection{Regler for indbyrdes uafhængighed}
+
+Tegn for uafhængighed $\independent$.
+\newline
+
+$A$, $B$ og $C$ er indbyrdes uafhængige hændelser. Følgende gælder:
+
+\begin{enumerate}
+    \item $A\setminus B \independent C$
+    \item $A \cap B \independent C$
+    \item $A \cup B \independent C$
+    \item $E\setminus A, B \independent C$
+\end{enumerate}
+
+\subsubsection{forenings mængdens uafhængighed}
+
+$A$, $B$, $C$ er hændelser. $A$ og $B$ er betinget afhængige givet $C$ hvis:
+
+\begin{equation}
+    P(A \cap B \mid C) = P(A\mid C) \cdot P(B\mid C)
+\end{equation}
+
+denne kan generaliseres (se p. 37 \textbf{definition 1.5.7})
+
+\horizline

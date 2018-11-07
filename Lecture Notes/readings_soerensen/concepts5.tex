@@ -1,0 +1,70 @@
+\begin{itemize}
+    \item Kontinuert fordeling af 1 dimension
+    \item middelværdi
+    \item varians
+    \item normalfordelingen
+    \item transformationer
+    \item $\chi^2$ fordeling
+\end{itemize}
+
+\subsection{Middelværdi}
+$X$ har en middelværdi hvis: 
+
+\begin{equation}
+    \int_{- \infty}^{\infty} \lvert x \rvert p(x) dx < \infty
+\end{equation}
+
+
+Middelværdien for $X$ er:
+
+\begin{equation}
+    \E(X) = \int_{- \infty}^{\infty} x p(x) dx < \infty
+\end{equation}
+
+\subsection{Varians}
+
+Variansen ekstisterer hvis:
+\begin{equation}
+    \int_{-\infty}^{\infty}x^2 p(x) dx < \infty    
+\end{equation}
+
+Variansen er:
+\begin{equation}
+    \Var(X) = \E([X - \E(X)]^2)
+\end{equation}
+
+\subsubsection{Normalfordelingen}
+
+Standard normalfordeling:
+
+\begin{equation}
+    \phi(x) = \frac{1}{\sqrt{2\pi}}e^{-x^2/2},\qquad x \in \R
+\end{equation}
+
+Fordelingsfunktionen (CDF)
+
+\begin{align}
+    \Phi(x) = \int_{-\infty}^{x} \phi(y)dy
+\end{align}
+
+Den generelle statndard normalfordeling:
+
+$Y = \mu + \sigma X$
+
+\begin{equation}
+    p(y) = \frac{1}{\sqrt{2\pi \sigma^2}}exp\left( - \frac{(y-\mu)^2}{2\sigma^2}\right)
+\end{equation}
+
+med middelværdi $\mu$ og varians $\sigma^2$
+
+\subsection{Transformationer}
+
+\begin{equation}
+    q(y) = 
+    \begin{cases}
+        p(t^{-1}(y)) \lvert \frac{d}{dy} t^{-1}(y) \rvert , \qquad &y \in (v,h) \\
+        0, \qquad &y \notin (v,h)
+    \end{cases}
+\end{equation}
+
+hvor $v = \inf t(I), h = \sup t(I)$ og $I$ er intervallet $(a,b)$

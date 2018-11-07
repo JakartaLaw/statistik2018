@@ -1,0 +1,314 @@
+\horizline
+
+\subsection{Øvelse 11}
+
+\textbf{22/10/2018, opgaver: U43.1.1, U43.1.2, U43.1.3 U43.1.4}
+
+\subsubsection{Opgave U43.1.1}
+
+\begin{itemize}
+    \item $X, Y$ er ligefordelt på $A$
+    \item $A = [0,1] \times [0,1]$
+    \item $p(x,y) = \1_A(x,y)$
+\end{itemize}
+
+Tegn 2-D sketch af definitionsmængden
+
+\textbf{Del 1) Udregn $P(X < 0.1, Y < 0.6)$}
+
+\begin{align}
+        P(X < 0.1, Y < 0.6) &= \int_0^{0.6} \int_0^{0.1} \1_A(x, y) dx dy \\
+        &= \int_{0}^{0.6} [x]_{0}^{0.1} \1_A(y) dy \\
+        &= [x]_{0}^{0.1} [y]_{0}^{0.6} \\
+        &=(0.1 - 0) \cdot (0.6 - 0) \\
+        &= 0.1 \cdot 0.6 = 0.06
+\end{align}
+
+\textbf{Del 2) Udregn $P(0.25< X < 0.75, 0.4 < Y < 0.6$}
+
+Analogt med før - opskrivningen er ikke nødvendig:
+
+\begin{equation}
+    P(0.25 < X < 0.75, 0.4 < Y < 0.6) = 0.5 \cdot 0.2 = 0.1
+\end{equation}
+
+\textbf{Del 3) Udregn $P(X < 0.1)$}
+
+Her bruges at man kan integrere irrelevante variable ud: \textbf{sætning 6.1.3}
+
+\begin{equation}
+    q(x) = \int_{\R} p(x,y) dy
+\end{equation}
+
+dvs:
+
+\begin{equation}
+    q(x) = \1_{[1,0]}(x)
+\end{equation}
+
+Vi finder nu det ønskede udtryk
+\begin{equation}
+    P(X < 0.1) = \int_{0}^{0.1} \1_{[0,1]}(x) = [x]_{0}^{0.1} = 0.1
+\end{equation}
+
+\textbf{Del 4) Find den marginale fordeling for $X$}
+
+Igen bruges sætning $6.1.3$
+
+\begin{equation}
+    q(x) = \int_{\R} p(x,y) dy
+\end{equation}
+
+dvs:
+
+\begin{equation}
+    q(x) = \1_{[0,1]}(x)
+\end{equation}
+
+Altså vi svarede indirekte på det problem før!
+
+$p_{x}(x) = \1_{[0,1]}(x)$ og lige så $p_y (y) = \1_{[0,1]}(y)$ Vi ser altså nu at $p(x,y) = p_x (x) \cdot p_y (y)$
+
+\subsubsection{Opgave U43.1.2}
+
+\begin{itemize}
+    \item $X,Y$ er uafhængige
+    \item $X, Y$ er ligfordelte på intervallet $[0,1]$
+    \item $Y* = 2Y$
+\end{itemize}
+
+\textbf{Find $E(Y*), V(Y*)$}
+
+
+
+Brug sætning \textbf{6.3.2} som viser at hvis $X \independent  Y \implies X \independent \phi(Y)$
+
+Vi har uafhængighed hvilket implicerer:
+
+\begin{equation}
+    p(x,y*) = p(x) p(y*)
+\end{equation}
+
+Nu integreres $X$ ud:
+
+\begin{equation}
+    p(y*) = p(y*) \int_{\R}p(x) dx = p(y*)
+\end{equation}
+
+Vi finder den forventede værdi:
+
+$2$ er den øvre grænse, $0$ er den nedre grænse for $Y$. 
+
+\begin{equation}
+    \E(Y*) = 2 \cdot \E(Y) = 2\cdot 0.5 = 1
+\end{equation}
+
+Variansen findes ved: $\Var(aX) = a^2 \Var(X)$.
+
+\begin{equation}
+    \Var(Y) = \frac{1}{12}(0 - 1)^2 = \frac{1}{12}
+\end{equation}
+
+\begin{equation}
+    \Var(Y*) = 2^2 \Var(Y) = 4 \cdot \frac{1}{12} = \frac{1}{3}
+\end{equation}
+
+\textbf{Del 2) Tætheden for $Y*$}
+
+Tætheden er:
+
+tætheden for en uniform (kontinuær) distribution er: $p(x) = \frac{1}{b - a}\1_{x \in [a, b]}(x)$
+
+Vi bruger dette:
+
+\begin{equation}
+    p(y*) = \frac{1}{2-0}\1_{x \in [0,2]}(y*)
+\end{equation}
+
+\textbf{Del 3) $Z = X + Y*$ Find tætheden for $Z$, $q(z)$}
+
+Vi bruger \textbf{korollar 6.3.2} (få en studerende til at læse op).
+
+\begin{equation}
+    q(z) = \int_{-\infty}^{\infty} p_{1}(x)p_{2}(z - x) dx
+\end{equation}
+
+\begin{equation}
+    p_x(x)p_{y*}(z - x) = \1_{[0,1] \times [0,2]}\frac{1}{2}(x)(z-x) = \frac{1}{2}(xz - x^2)
+\end{equation}
+
+Nu integreres denne:
+
+\begin{align}
+    q(z) &= \int_{\R} \frac{1}{2}(xz - x^2) dx \\
+    &= \frac{1}{2} \int_{\R} (xz - x^2) dx \\ 
+    &= \lsp \frac{1}{2}\frac{1}{2} x^2 z - \frac{1}{2}\frac{1}{3}x^3\rsp_{0} ^{1} = \frac{1}{4}z - \frac{1}{6} 
+\end{align}
+
+NOGET ER GALT
+
+\subsubsection{Opgave U43.1.3}
+
+\begin{itemize}
+    \item $X, Y \in [5,10] \times [3,7]$
+    \item $p(x,y) = \frac{1}{20}\1_{[5,10] \times [3,7]} (x,y)$
+\end{itemize}
+
+Skitser definition mængden.
+
+\textbf{Del 1) Forklar hvorfor $p(x,y)$ er en tæthedsfunktion}
+
+notér at $(10 - 5) \times (7 - 3) = 20$, således at den samlede areal under kurven er 1.
+
+\textbf{Find $P(6 \leq X \leq 10, 4 \leq Y \leq 6)$}
+
+\begin{align}
+    P(6 \leq X \leq 10, 4 \leq Y \leq 6) &= \int_{6}^{10}\int_{4}^{6} \frac{1}{20}\1_{[5,10] \times [3,7]} (x,y) dy dx \\
+    &= \frac{1}{20} \int_{6}^{10}\int_{4}^{6} \1_{[5,10] \times [3,7]} (x,y) dy dx \\
+    &= \frac{1}{20} \int_{6}^{10} \1_{[5,10]}(x) \lsp y \rsp_4^6 dx \\
+    &= \frac{1}{20} \int_{6}^{10} \1_{[5,10]}(x) (6 - 4) dx \\
+    &= \frac{2}{20}\int_{6}^{10} \1_{[5,10]}(x) dx \\
+    &= \frac{2}{20} \lsp x \rsp_{6}^{10} \\ 
+    &=  \frac{2}{20} (10-6) = \frac{8}{20}
+\end{align}
+
+\textbf{Del 3) Find de marginale fordelinger}
+
+\begin{equation}
+    p(x) = \frac{1}{20}\int_{3}^{7} \1_{[5,10] \times [3, 7]} (x,y) dy = \frac{4}{20} \1_{[5,10]} (x,y) 
+\end{equation}
+
+Omvendt for $Y$:
+
+\begin{equation}
+    p(y) = \frac{5}{20} \1_{[3,7]} (x,y)
+\end{equation}
+
+\textbf{Del 4) Find $\E(X)$}
+
+For en ligefordeling har man middelværdi ved (a og b er enderne):
+\begin{equation}
+    \E(X) = \frac{a + b}{2}
+\end{equation}
+
+Vi bruger dette
+
+\begin{equation}
+    \E(X) = \frac{5 + 10}{2} =7.5
+\end{equation}
+
+\subsubsection{Opgave U43.1.4 }
+
+\begin{itemize}
+    \item $X,Y  \in [0,\infty)$
+    \item $p(x,y) = 6 \exp(-2x -3y)$
+\end{itemize}
+
+Praktisk at vide:
+
+\begin{equation}
+    \int \exp(-b x) dx = -\frac{\exp(-b x)}{b}
+\end{equation}
+
+\textbf{Del 1 - a) find $P(X \leq 2, Y \leq 4)$}
+
+\begin{align}
+    P(X \leq 2, Y \leq 4) &= \int_0^2 \int_0^{4} 6 \exp(-2x -3y) dy dx \\
+    &= \int_0^2 \int_0^{4} 6 \exp(-2x)\exp(-3y) dy dx \\
+    &= 6 \int_0^2  \exp(-2x) \lp \int_0^{4}  \exp(-3y) dy \rp dx \\
+    &=   6 \int_0^2  \exp(-2x) \lp \lsp -\frac{\exp(-3y)}{3}\rsp_0^4 \rp dx 
+\end{align}
+
+
+Vi løser det indre problem:
+
+\begin{align}
+    \lsp -\frac{\exp(-3y)}{3}\rsp_0^4 &= \lp-\frac{\exp(-12)}{3}\rp - \lp -\frac{1}{3} \rp \\
+    &= \frac{1}{3} + \frac{\exp(-12)}{3} \\ 
+    &= \frac{1 - \exp(-12)}{3}
+\end{align}
+
+Vi indsætter dette!
+
+\begin{align}
+    6 \int_0^2  \exp(-2x) \lp \frac{1 - \exp(-12)}{3} \rp dx &= 6 \lp\frac{1 - \exp(-12)}{3} \rp \int_0^2  \exp(-2x) dx \\ 
+    &= 6 \lp \frac{1 - \exp(-12)}{3} \rp \lsp -\frac{\exp(-2x)}{2}\rsp_0^2
+\end{align}
+
+Vi udregner det inderste:
+
+\begin{align}
+    \lsp -\frac{\exp(-2x)}{2}\rsp_0^2 &= \lp - \frac{\exp(- 2\cdot2 )}{2}\rp - \lp -\frac{1}{2} \rp \\
+    &=  \frac{1}{2} - \frac{\exp(- 4 )}{2} \\ 
+    &= \frac{1 - \exp(-4)}{2}
+\end{align}
+
+Dette indsættes:
+
+\begin{align}
+    6 \lp \frac{1 - \exp(-12)}{3} \rp \lp \frac{1 - \exp(-4)}{2} \rp = \lp 1 - \exp(-12) \rp \lp 1 - \exp(-4) \rp
+\end{align}
+
+\textbf{Del 1 - b) find $P(X > 1, Y \leq 3)$}
+
+\textbf{Lav i klassen!} Efter samme opskrift som ovenfor:
+
+Resultat:
+
+\begin{equation}
+    P(X>1, Y\leq 3) = \exp(-2) \lp 1 - \exp(9) \rp
+\end{equation}
+
+\textbf{Find de marginale fordelinger $p_y(y), p_x(x)$}
+
+Man integrere den ene variabel ud: dvs, integrer $y$ ud, hvis man ønsker at finde $p_x (x)$, og vice versa.
+
+\begin{align}
+    p_y(y) = \int_{\R} p(x,y) dx &=  \int_{\R} 6 \exp(-2x -3y) dx \\
+    &= 6 \exp(-3y) \int_{\R} \exp(-2x) dx \\ &= 6 \exp(-3y) \cdot \frac{1}{2} \\
+    &= 3 \exp(-3y)
+\end{align}
+
+Hvor man har udnyttet at $\int_{\R} \exp(-2x) dx = \frac{1}{2}$
+
+\textbf{Lad klassen lave anden halvdel!}
+
+Resultatet er analogt for $Y$, bare hvor
+
+\begin{equation}
+    p_x (x) = \int_{\R} p(x,y) dy = \frac{1}{3} \cdot 6 \exp(-2x) = 2 \exp(-2x)
+\end{equation}
+
+\textbf{Del 3) Find fordelingsfunktionen for $X$}
+
+Jeg udskifter $x$ med $a$ for ikke at gøre notationen forvirrende!
+
+\begin{align}
+    F(a) \int_{0}^{a} p(x) dx &= \int_{0}^{a} 2 \exp(-2x) dx \\
+    &= 2 \lsp -\frac{-\exp(-2x)}{2}\rsp_{0}^{a} \\
+    &= 2 \lp 1 \rp - 2\lp- \frac{\exp(-2a)}{2} \rp \\
+    &= 1 - \exp(-2a)
+\end{align}
+
+Dette indsættes:
+
+\begin{equation}
+    F(x) =  1 - \exp(-2x)
+\end{equation}
+
+Medianen findes
+
+\begin{align}
+    0.5 = 1 - \exp(-2x)  
+    &\lra 0.5 = \exp(-2x) \\
+    &\lra ln(0.5) = -2x \\
+    &\lra -\frac{ln(0.5)}{2} = x
+\end{align}
+
+\textbf{Del 4) Vis uafhængighed}
+
+Vi ser at $p(x)p(y) = p(x,y)$ -  Dette er sætning \textbf{6.2.1}
+
+\begin{equation}
+    \lp 2 \exp(-2x) \rp \lp 3 \exp(-3y )\rp = 6 \exp(-2x - 3y)
+\end{equation}

@@ -1,0 +1,55 @@
+\subsection{Deskriptiv statistik}
+
+Vi har indsamlet noget data:
+
+\begin{equation}
+    y_1, y_2, \cdots ,y_n
+\end{equation}
+
+Man kan forestille sig en DGP (data generende proces) have forskellige karakteristika, hvormed den mapper til en respons variabel, som kan være:
+
+\begin{itemize}
+    \item binær
+    \item tælle
+    \item diskret
+    \item kontinuær
+\end{itemize}
+
+frekvens for $j$'te element i $\Y$ udregnes ved:
+
+\begin{equation}
+    f_{y = j} \sum_{i=0}^N \1(y_i = j)
+\end{equation}
+
+Den empiriske cumulative distribution
+
+\begin{equation}
+    F(y) = \sum_{i=1}^N \frac{\1(y_i \leq y)}{n}
+\end{equation}
+
+Empriske momenter:
+
+\begin{itemize}
+    \item mean (gennemsnit) = $\frac{1}{N}\sum_{i=1}^N y_ i$
+    \item Varians = $\frac{1}{N}\sum (y_i - \Bar{y})^2$
+    \item Skewness = $\frac{1}{N}\sum (y_i - \Bar{y})^3$
+    \item Kurtosis = $\frac{1}{N}\sum (y_i - \Bar{y})^4$
+\end{itemize}
+
+standard afvigelse:
+
+\begin{equation}
+    std(Y) = \sqrt{Var(Y)}
+\end{equation}
+
+Excess Kurtosis vil sige Kurtosis - 3. Da en standard normal fordeling har kurtosis  på  3.
+
+Man vil ofte standardisere data når man kigger på skewness og kurtosis.
+
+Standardisering af data er:
+
+\begin{equation}
+    y_{i, standardised} = \frac{y_i - \Bar{y}}{std(y)}
+\end{equation}
+
+hvor $std$ betyder standard deviation (standard afvigelse).

@@ -1,0 +1,74 @@
+\subsection{Fler dimensionelle kontinuerte fordelinger}
+
+Man har $p(x,y)$ og $A \in \R$
+\begin{equation}
+    P(X \in A) = P((X,Y) \in A \times \R)
+\end{equation}
+
+Hvilket kan skrives som:
+
+\begin{align}
+    q(x) = \int_{\R} p(x,y) dy
+\end{align}
+
+Altså man kan integrere irrelevante variable ud!
+
+\subsubsection{Uafhængighed}
+
+$X_1, X_2, \cdots X_n$ er uafhængige. Dette betyder:
+
+\begin{equation}
+    p(x_1, x_2, \ldots , x_n) = p(x_1) \cdot p(x_2) \cdot \ldots \cdot p(x_n)
+\end{equation}
+
+Sætning:
+
+\begin{quote}
+    \textit{Hvis vi ikke kan finde en produktmængde $T_1 \times T_2$, sæledes at $(X_1, X_2)$ er koncentreret på $T_1 \times T_2$, og således at $p(x_1, X_2) >0$ for alle $(x_1, x_2) \in T_1 \times T_2$ så kan $X_1, X_2$ ikke være uafhængige}
+\end{quote}
+
+\subsubsection{Transformation af kontinuerte variable}
+
+Kig \textbf{6.3.2}, \textbf{6.3.5}, \textbf{6.3.6}, \textbf{6.3.7} for eksempler på to dimensionelle transformationer. (X + Y), (X / Y) og lignende.
+
+\textbf{Sætning 6.3.10} viser sandsynlighedstætheden for $q(y_1, y_2) = q(t_{1}(x_1, x_2), t_2(x_1, x_2))$. Hvor transformationen er på formen $Y_1 = a X_1 + b X_2$ og $Y_2 = c X_1 + d X_2$
+
+Generelt:
+
+\textbf{sætning 6.3.11}
+
+\begin{equation}
+    Y = AX
+\end{equation}
+
+
+hvor at $\det(A) \neq 0$ og $A$ er en $n \times n$ matrice og Y er $n$-dimensionel. da er $Y$'s tæthed:
+
+\begin{equation}
+    q(y) = \frac{p(A^{-1}y)}{\lvert \det(A) \rvert}
+\end{equation}
+
+\subsubsection{Middelværdi, Varians og Kovarians}
+
+Resultater vist for diskrete stokastiske fordelinger er de samme som for kontinuerete (integraler i stedet for summer)
+
+\begin{equation}
+    E(X_1 + X_2 + \ldots X_n) = E(X_1) + E(X_2) \ldots + E(X_n)
+\end{equation}
+
+Hvis de er uafhængige, da:
+
+\begin{equation}
+    E(X_1 \cdot X_2 \cdot \ldots \cdot X_n) = E(X_1) \cdot E(X_2) \cdot \ldots \cdot E(X_n)    
+\end{equation}
+
+\subsubsection{Kontinuerte betingede fordelinger}
+
+Situation hvor man vil betinge på at $X=x$:
+
+\begin{equation}
+    q(y) = p(x,y) / p_1(x)
+\end{equation}
+
+hvor $p_1(x)$ bare er hvor y er integreret ud af $p(x,y)$.
+

@@ -1,0 +1,213 @@
+\horizline
+
+\subsection{Øvelse 16}
+
+\textbf{9/11/2018, opgaver: 45.5, 45.6, 45.7}
+
+\subsubsection{Opgave U45.5}
+
+Lav i klassen!
+
+\begin{itemize}
+    \item $(Y, X)$ er en 2-dimensionel stokastisk vektor
+    \item $(X,Y)$ er fordelt med $N(\mu, \Omega)$
+    \item Vi ved at:
+    \begin{equation}
+        \E(Y \mid X) = X\qquad \Var(Y \mid X) = 1
+    \end{equation}
+    \item derudover ved vi:
+    \begin{equation}
+        \E(X) = 0\qquad \Var(X) = 1
+    \end{equation}
+\end{itemize}
+
+Vi kan først konkludere at:
+
+husk at $\omega = \sigma_{YX}/\sigma_{X}^2$
+
+\begin{align}
+    \E(Y\mid X) &= \mu_Y + \omega(X - \mu_X) \\
+    &= \E(\mu_Y + \omega X) \\
+    &= \E(\mu_Y + (\sigma_{XY}/ \sigma^2_{X}) X) \\
+    &= \E(\mu_Y + \sigma_{XY} X) \\
+    &= \E(\mu_Y) + \sigma_{XY}\E(X)
+\end{align}
+
+Fra det kan vi konkludere at: $\E(\mu_Y) + \sigma_{XY}\E(X) = X \implies$ $\mu_Y = 0$ og $\sigma_{XY} = 1$.
+
+Vi udnytter dette:
+
+\begin{align}
+    \Var(Y \mid X) &= \sigma_Y^2 - \omega \sigma_{XY} \\
+    &= \sigma_Y^2 - \frac{\sigma_{YX}}{\sigma_X^2}\sigma_{XY} \\
+    &= \sigma_Y^2 - \frac{1^2}{1^2} \\
+    &= \sigma_Y^2 - 1 = 1
+\end{align}
+
+Hvorfra vi kan konkludere at $\sigma_Y^2 = 2$
+
+Vi kan herfra opskrive den funktionelle form:
+
+\begin{equation}
+    \mu = \lp 
+    \begin{array}{cc}
+         0 \\
+         0 
+    \end{array}\rp \qquad
+    \Omega = \lp
+    \begin{array}{cc}
+        2 & 1 \\
+        1 & 1
+    \end{array} \rp
+\end{equation}
+
+\subsubsection{Opgave U45.6}
+
+\begin{itemize}
+    \item $Z_1 \independent Z_2$
+    \item $Z_1, Z_2 \sim N(0,1)$
+    \item VI har følgende to stokastiske variable:
+    \begin{align}
+        Y &:= 2Z_1 +Z_2 \\
+        X &:= 3Z_1
+    \end{align}
+\end{itemize}
+
+\textbf{Del 1) Hvordan er $(Y, X)$ fordelt}
+
+Denne opgave følger eksemplet i Sørensen 8.3.3 meget tæt
+
+Husk $\E(Z_1) = \E(Z_2) = 0$ og $\Var(Z_1) = \Var(Z_2) = 1$
+
+Vi ser hurtigt:
+
+\begin{equation}
+    \E(Y) = \E(2Z_1 +Z_2) = 2\E(Z_1) + \E(Z_2) = 0 + 2\cdot0 = 0
+\end{equation}
+
+\begin{equation}
+    \E(X) = \E(3Z_1) = 3\E(Z_1) = 0
+\end{equation}
+
+Variansen af de to er:
+
+\begin{equation}
+    \Var(Y) = \Var(2Z_1 +Z_2) = 2^2 \Var(Z_1) + \Var(Z_2) = 4 + 1 = 5
+\end{equation}
+
+\begin{equation}
+    \Var(X) = \Var(3Z_1) = 3^2 \Var(Z_1) = 9
+\end{equation}
+
+Nu skal kovariansen findes mellem $X$ og $Y$:
+
+Kig formlen på s. 236 Sørensen. Her ser vi at:
+
+\begin{equation}
+    \Cov(X, Y) = ab
+\end{equation}
+
+hvor $a$ og $b$ er de konstanter der ganget på den stokastiske variabel som er går igen i udtrykket for henholdsvis $X$ og $Y$. Altså i vores tildælde $2$ for $Y$, og $3$ for $X$.
+
+\begin{equation}
+    \Cov(X,Y) = 2 \cdot 3 = 6
+\end{equation}
+
+Vi har med andre ord $(Y,X)$ er distribueret med $N(\mu, \Omega)$, hvor:
+
+\begin{equation}
+    \mu = \lp
+    \begin{array}{cc}
+         0\\
+         0 
+    \end{array}
+    \rp \qquad
+    \Omega = \lp
+    \begin{array}{cc}
+        5 & 6 \\
+        6 & 9
+    \end{array} \rp
+\end{equation}
+
+\textbf{Del 2) Find $\E(Y \mid Z_1)$}
+
+
+\begin{align}
+    \E(Y \mid Z_1) &= \E(2Z_1 +Z_2 \mid Z_1) \\
+    &= 2\E(Z_1 \mid Z_1) + \E(Z_2\mid Z_1) \\
+    &= 2Z_1
+\end{align}
+
+\textbf{Del 3) Find $\E(X \mid Z_2)$}
+
+\begin{align}
+    \E(X \mid Z_2) &= \E(3Z_1 \mid Z_2) \\
+    &= 0
+\end{align}
+
+\textbf{Del 4) Find $\E(Y \mid X)$}
+
+Husk $\omega = \sigma_{XY} / \sigma_X^2$
+
+\begin{align}
+    \E(Y \mid X) &= \mu_Y + \omega(X - \mu_X) \\
+    &= 0 + \frac{\sigma_{XY}}{\sigma_{X}^2}(X - 0) \\
+    &= \frac{6}{9}X = \frac{2}{3}X
+\end{align}
+
+\subsubsection{Opgave U45.7}
+
+\begin{itemize}
+    \item $X$ er diskret ligefordelt på $\{-1, 0, 1\}$
+    \item $Y$ er kontinuært ligefordelt på intervallet $(-1,1)$.
+\end{itemize}
+
+\textbf{Del 1) Find $\E(X)$, $\Var(X)$, $P(X>0)$}
+
+Find relevante formler på wiki
+
+\begin{equation}
+    \E(X) = (a + b)/2 = (-1 + 1)/2 = 0
+\end{equation}
+
+\begin{equation}
+    \Var(X) = \frac{(b - a + 1)^2 - 1}{12} = \frac{(1 - (-1) +1)^2 -1}{12} = \frac{8}{12} = \frac{3}{4}
+\end{equation}
+
+\begin{equation}
+    P(X > 0) = \frac{\text{\# Gunstige}}{\text{\# Mulige}} = \frac{1}{3} 
+\end{equation}
+
+\textbf{Del 2) Find $\E(X \mid X >0)$}
+
+\begin{equation}
+    \E( X \mid X > 0) = 1
+\end{equation}
+
+klart da $X \mid X > 0$ kun kan antage værdien 1.
+
+\textbf{Del 3) Find $\E(Y)$ og $\Var(Y)$ samt $P(Y>0)$}
+
+\begin{equation}
+    \E(Y) = (a + b)/2 = (-1 + 1)/2 = 0
+\end{equation}
+
+\begin{equation}
+    \Var(Y) = \frac{(b - a)^2}{12} = \frac{((1 - (-1) )^2}{12} = \frac{4}{12} = \frac{1}{3}
+\end{equation}
+
+\begin{equation}
+    P(Y > 0) = \int_{0}^{1} \frac{1}{2}\1_{(-1,1)}(x) dx = \frac{1}{2}\lp (1) - (0) \rp = \frac{1}{2} 
+\end{equation}
+
+\textbf{Del 4) Find $\E(Y \mid Y >0)$}
+
+husk $P(X,Y) = P(X \mid Y) P(Y)$ - hvor $X,Y$ er arbitrære navne for at illustrere matematikken.
+
+\begin{align}
+    \E(Y \mid Y>0) &= \int_{-\infty}^{\infty} y \frac{P(Y, Y>0)}{P(Y > 0)} dy\\&= \int_{-\infty}^{\infty} y 
+    \frac{\frac{1}{2}\1_{(-1 , 1)}(y) \1_{(0,1)}(y)}{\frac{1}{2}} dy \\
+    &= \int_0^1
+    y \1_{(0,1)}(y)\\
+    &= \lsp \frac{1}{2} y^2 \rsp_0^{1} = \frac{1}{2}
+\end{align}

@@ -1,0 +1,111 @@
+
+\textbf{readings:} Sørensen 1.2-1.3
+
+\subsection{Det endelige sandsynlighedsfelt}
+
+Et endelig sandsynlighedsfelt har følgende egenskaber:
+
+\begin{itemize}
+    \item En endelig mængde $E = \{e_1, e_2, \ldots, e_j\}$
+    \item En funktion $p$ fra $E$ ind i intervallet $[0,1]$
+    \item Summen af samtlige sandsynligheder skal være 1:
+    \begin{equation}
+    \sum_{j=1}^{k}p(e_j) = 1
+    \end{equation}
+\end{itemize}  
+
+\subsubsection{Hændelser}
+
+A  er en hændelse:
+\begin{equation}
+	A \subseteq E
+\end{equation}
+
+Sandsynligheden for A:
+
+\begin{equation}
+    P(A) = \sum_{x\in A} p(x)
+\end{equation}
+
+Sandsynligheden for to disjunkte mængder $A$, $B$:
+
+\begin{equation}
+    P(A \cup B) = P(A) + P(B), \qquad P(A) \cap P(B) = \emptyset
+\end{equation}
+
+\subsection{Ved konstant ssh funktion}
+
+\begin{equation}
+    \text{ssh. for hændelse} = \frac{\text{\# gunstige udfald}}{\text{\#  mulige udfald}}
+\end{equation}
+
+
+\subsubsection{Termer}
+
+\begin{itemize}
+    \item \textbf{Udfald} de enkelte elementer i $E$
+    \item \textbf{Hændelse} en delmængde
+    \item \textbf{Sandsynlighedsfunktionen} er $p(\cdot)$
+    \item \textbf{punktsandsynligheden} for $e_j$ er $p(e_j)$
+    \item \textbf{disjunkte} er to mængde som har den tomme mængde som fællesmængde
+    \item \textbf{Sandsynlighedsmål} er funktionen $P$ fra klassen af delmængder af E. (har ekstra krav, se p. 14 i \textbf{Sørensen})
+    \item \textbf{\#} antal elementer i et sæt
+\end{itemize}
+
+\subsection{Det generelle sandsynlighedsfelt}
+
+Hvis mængden er uendelig stor, (både tællelig og utællelig) kigger man på delintervaller af $E$.
+
+Under antagelse af ligefordeling:
+
+\begin{equation}
+    P(I) = c\lvert I \rvert
+\end{equation}
+
+$\lvert I \rvert$ betegner længden af linjestykket på den reelle akse.
+
+\subsubsection{Definition af sandsynlighedsfelt}
+
+\begin{itemize}
+    \item Et udfaldsrum $E$ 
+    \item En klasse $\eps$ af delmængder fra $E$
+    \item En funktion $P$ fra $\eps$ ind i $[0,1]$
+    \item $\eps$ skal indeholde både $E$ og $\emptyset$
+    \item $P$ skal opfylde
+    \begin{align}
+        &P(E) = 1 \\
+        &P(A \cup B) = P(A) + P(B), \quad A \cap B = \emptyset
+    \end{align}
+\end{itemize}
+
+$\eps$ er kun en klasse af pæne delmængder. Dette er ikke et problem på dette kursus (eller andre på økonomisk institut).
+
+\subsubsection{Indikator funktion}
+
+En indikator funktion kan tage en af de to værdier $\{0,1\}$.
+$\indic_{A}(x) = 1$ hvis $x\in A$, ellers $0$
+
+\subsubsection{Regneregler for sandsynlighedsmål $P$ (sætning 1.3.4)}
+
+\begin{enumerate}
+    \item regler hvis $B \subseteq A$: \begin{align}
+        &P(A \setminus B) = P(A) - P(B) \\
+        &P(B) \leq P(A)
+    \end{align}
+    \item regler for den komplementære hændelse til $B$. i.e. $E\setminus B$ \begin{align}
+        &P(E\setminus B) = 1 - P(B)
+    \end{align}
+    \item \begin{equation}
+        P(\emptyset) = 0
+    \end{equation}
+    \item \begin{equation}
+        P(A \cup B) = P(A) + P(B) - P(A\cap B)
+    \end{equation}
+    \item \begin{equation}\label{eq:r1:1}
+        P(A) + P(B) \leq P(A) + P(B)
+    \end{equation}
+\end{enumerate}
+
+\textbf{ligning \ref{eq:r1:1}} kan udvides til vilkårligt mange mængder. Det bliver en lighed hvis samtlige vilkårlige mængder er disjunkte.
+
+\horizline

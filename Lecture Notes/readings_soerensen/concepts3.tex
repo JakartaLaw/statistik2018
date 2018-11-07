@@ -1,0 +1,56 @@
+
+
+\horizline
+
+\subsection{Fordelinger på endelige mængder}
+
+
+\subsubsection{Centrale begreber}
+
+\textbf{Adskiller sig fra diskrete fordelinger, som ikke er på endelige mængder, men fx. alle de positive tal}
+
+\textbf{Binomialfordelingen} sandsynlighedsfunktion er givet ved
+\begin{equation}
+    p(x) =\begin{pmatrix}
+    n \\
+    x \end{pmatrix}p^x(1-p)^{n-x}
+\end{equation}
+
+\begin{equation}
+    \begin{pmatrix}
+    n \\ x \end{pmatrix} = \frac{n!}{x!((n-x)!}
+\end{equation}
+
+\textbf{Transformation af fordelinger}
+
+\textbf{Middelværdi}
+
+\begin{equation}
+    \E(X) =  \sum_{i=1}^k a_i p(a_i)
+\end{equation}
+
+\textbf{Varians}
+
+\begin{equation}
+    \Var (X) = \E([X - E(X)]^2)
+\end{equation}
+
+\begin{equation}
+    \Var (X) = \E(X^2) - (\E(X))^2
+\end{equation}
+
+\textbf{Kovarians}
+\begin{equation}
+    \Cov = \E((X - \E(X))(Y - \E(Y)))
+\end{equation}
+
+\begin{equation}
+    \Cov = \E(XY) - \E(X)\E(Y)
+\end{equation}
+
+\textbf{Korrelation}
+
+\begin{equation}
+    \Corr(X,Y) = \frac{\Cov(X,Y)}{\sqrt{\Var(X)\Var(Y)}}
+\end{equation}
+
