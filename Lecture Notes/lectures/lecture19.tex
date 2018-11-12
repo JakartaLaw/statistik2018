@@ -1,0 +1,190 @@
+\horizline
+
+\subsection{Øvelse 19}
+
+\textbf{19/11/2018, opgaver: 1, 2}
+
+\subsubsection{Opgave 1}
+
+Lav i klassen!
+
+\textbf{Del 1) Opskriv udfaldsrummet $\Y$}
+
+Vi ser hurtigt at en $Y_i$ må være defineret på de positive naturlige tal: $\N_+$ inkusiv 0.
+
+Vi ved parameter rummet $\Theta$ må have følgende restriktioner: i poisson fordelingen er middelværdi og varians begge $\lambda$. Da vi ved at variansen er positive må $\lambda$ være defineret på den reello postive akse: dvs $\Theta =\R_+ $
+
+\textbf{Del 2)}
+
+Kig side 62. eksempel
+
+sandsynlighedsfunktion
+
+\begin{equation}
+    l(\lambda \mid y_i) = f_{Y_i}(y_i \mid \lambda) = \frac{\exp(-\lambda) \lambda^{y_i}}{y_i !}, \qquad y_i \in \N
+\end{equation}
+
+Hvis man har mere information om branchen, ville man skulle betinge på det.
+
+\textbf{Del 3)}
+
+Man husker at uafhængighed har implikationen:
+
+\begin{equation}
+    f(x,y) = f(x) f(y)
+\end{equation}
+
+Vi opskriver den samlede sandsynlighedsfunktion!
+
+\begin{equation}
+    f_{Y_1, Y_2 \cdots Y_n} (y_1, y_2, \cdots, y_n \mid \lambda) = \prodn \frac{\exp(-\lambda)\lambda^{y_i}}{y_i !}
+\end{equation}
+
+
+\textbf{Del 4)}
+
+Igen kig side 62
+
+\begin{equation}
+    L(\lambda \mid y_1 ,y_2 \cdots y_{n})  =\prodn \frac{\exp(-\lambda)\lambda^{y_i}}{y_i !}
+\end{equation}
+
+
+Nu opskrives log-likelihood funktionen:
+
+\begin{equation}
+    \log L (\lambda \mid y_1 ,y_2 \cdots y_{n}) = log \sumn y_i \log(\lambda) - \lambda - \log(y_i !)
+\end{equation}
+
+Dette kan igen om skrives til
+
+
+\begin{equation}
+     = \log(\lambda) \sumn y_i - \lambda n - \sumn log(y_i !)
+\end{equation}
+
+Forskellen mellem $y_i$ og $Y_i$ er om vi overvejer problem som værende realisationer eller stokastiske variable. DVS. vores endelig estimat $\hat{\theta}$ er enten et tal ( realisation) eller en stokastisk variabel (stokastiske variable).
+
+\textbf{Del 5) Find første ordens betingelsen}
+
+\begin{equation}
+    \frac{\partial }{\partial \lambda} L (\lambda \mid y_1, y_2, \cdots, y_n) = \frac{1}{\lambda} \sumn y_i -n
+\end{equation}
+
+\textbf{Del 6) Løs of find $\hat{\lambda} $}
+
+Kig side 69.
+
+Vi ved (eller antager) at vi har et har at gøre med et konvekst optimerings problem. Vi finder maksimum ved at sætte:
+
+\begin{align}
+    \frac{1}{\hat{\lambda}} \sumn y_i -n &= 0 \\
+    \implies \quad \hat{\lambda} &= \frac{1}{n}\sumn y_i
+\end{align}
+
+\textbf{Del 7) Find 2. ordens betingelsen og argumenter for det er et maksimum}
+
+\begin{equation}\label{eq:opg1}
+    H (\lambda) = \frac{- \sumn y_i}{\lambda^2}
+\end{equation}
+
+som er negativt, hvilket betyder vi har vist at et hvert ekstremum må være et unikt ekstremum.
+
+\textbf{Del 8)}
+
+ Vi har i opgave teksten oplyst at $\sumn y_i = 63$
+
+Vi bruger \ref{eq:opg1} og indsætter summen af $y_i$:
+
+\begin{equation}
+    \hat{\lambda} = \frac{1}{n} \sumn y_i = \frac{1}{21} 63 = 3
+\end{equation}
+
+Vi har altså fundet estimatet!
+
+\textbf{Del 9) Hvad hvis summen var 0?}
+
+Så ville $\lambda = 0$, hvilket ikke ville være i overensstemelse med vores parameter rum $\Theta$, som kræver at $\lambda > 0$.
+
+\subsubsection{Opgave 2}
+
+\begin{itemize}
+    \item $Y_i \in \Y = \lcp y \in \R \mid y > 0\rcp$
+    \item $Y_i \sim Exponential(\theta)$
+    \item $f_{Y_i} (y \mid \theta) = \theta \exp (- \theta y)$
+\end{itemize}
+
+\textbf{Del 1) Hvad er Y}
+
+$Y_i$ er en stokastisk variabel hvor $y_i$ er en realisation. Table 3.1 på side 55, beskriver forskellen. Det betyder også om vi ender med et estimat (et tal). Eller en Estimator som er en stokastisk variabel.
+
+$y$ indgår i tæthedsfunktionen og relaterer til hvordan sandsynlighedsmassen er ved punktet $y$. Man kan ikke sige at det er sandsynligheden da punktsandsynligheden er 0 - dvs: $P(Y=y) = 0$.
+
+\textbf{Del 2)}
+
+Man kan se at $\theta$ ikke er på individ niveau. Altså vi antager at $\theta_i = \theta$. Og altså at alle stokastiske variable er identisk distribueret.
+
+Dette er vigtigt, da ellers ville man ikke kunne lave maksimerering. Vi antager nemlig at vi kan finde et parameter $\theta$. Hvis de ikke var identisk fordelt skulle vi finde et parameter for hvert enkelt stokastisk variabel.
+
+\textbf{Del 3) Opskrive sample likelihood funktionen}
+
+Vi opskriver likelihood contribution:
+
+\begin{equation}
+    l(\theta \mid y_i) = f_{Y_i} = (y_i \mid \theta) = \theta \exp (-\theta y_i)
+\end{equation}
+
+Vi kan nu opskrive sample likelihood funktionen:
+
+\begin{equation}
+    L(\theta \mid y_1,  \cdots , y_n ) = \prodn l(\theta \mid y_i) = \prodn \theta \exp (-\theta y_i)
+\end{equation}
+
+Vi opskriver nu log-likelihood funktionen:
+
+\begin{equation}
+    \log L (\theta \mid y_1, \cdots, y_n) = \sumn \log(\theta) - \theta y_i = n \log(\theta) - \theta \sumn y_i
+\end{equation}
+
+OPSKRIV OGSÅ MED $Y_i$ altså så vi modellerer med stokastiske variable i stedet for realisationer.
+
+Dette vil have implikationen at vi fik en estimator til sidst i stedet for et estimat.
+
+\textbf{Del 4) HVorfor er uafhængighed en vigtig antagelse}.
+
+Uden uafhængighed kunne man ikke skrive den simultane tæthed op som produktet af marginale tætheder. Dette er kun muligt under antagelse af uafhængighed. Derfor meget vigtigt!
+
+\textbf{Del 5) Find maximum likelihood estimatoren}
+
+Spørgsmål til klassen: `` Skal vi nu bruge store $Y$ eller lille $y$''
+
+Svar: store $Y$
+
+\begin{equation}
+    S(\theta) = \frac{\partial}{\partial \theta} = n \frac{1}{\theta} - \sumn Y_i
+\end{equation}
+
+Vi finder nu estimatoren:
+
+\begin{equation}
+    n \frac{1}{\hat{\theta}} - \sumn Y_i = 0 \implies \frac{n}{\sumn Y_i}  =  \hat{\theta}
+\end{equation}
+
+\textbf{Del 6) Find maximum likelihood estimatet}
+
+Vi ved at $\sumn y_i = 252$. $n=120$
+
+Nu finder vi et estimat $\implies$ vi går fra lille $y$ til store $Y$.
+
+\begin{equation}
+    \hat{\theta} = \frac{120}{252} = 0,476190
+\end{equation}
+
+\textbf{Del 7) Forskellen på estimat og estimator}
+
+Estimatet er et tal! Estimator er en stokastiske variabel
+
+Hvis man læser om et estimat på $\theta = 0.2$ så snakkes der om et estimat.
+
+En estimator kan have lille varians.
+
