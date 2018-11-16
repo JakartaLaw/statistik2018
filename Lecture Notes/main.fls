@@ -163,6 +163,8 @@ INPUT lectures/lecture17.tex
 INPUT lectures/lecture17.tex
 INPUT lectures/lecture19.tex
 INPUT lectures/lecture19.tex
+INPUT lectures/lecture20.tex
+INPUT lectures/lecture20.tex
 INPUT main.aux
 INPUT /Users/Jeppe/Library/texlive/2015/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb

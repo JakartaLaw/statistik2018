@@ -135,3 +135,7 @@
 \contentsline {subsection}{\numberline {3.18}\IeC {\O }velse 19}{117}
 \contentsline {subsubsection}{\numberline {3.18.1}Opgave 1}{117}
 \contentsline {subsubsection}{\numberline {3.18.2}Opgave 2}{119}
+\contentsline {subsection}{\numberline {3.19}\IeC {\O }velse 19}{121}
+\contentsline {subsubsection}{\numberline {3.19.1}Opgave 1}{121}
+\contentsline {subsubsection}{\numberline {3.19.2}Opgave 2}{121}
+\contentsline {subsubsection}{\numberline {3.19.3}Opgave 3}{121}

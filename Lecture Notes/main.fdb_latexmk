@@ -1,10 +1,10 @@
 # Fdb version 3
-["makeindex main.idx"] 1541512039 "main.idx" "main.ind" "main" 1542057347
-  "main.idx" 1542057346 0 d41d8cd98f00b204e9800998ecf8427e ""
+["makeindex main.idx"] 1541512039 "main.idx" "main.ind" "main" 1542057641
+  "main.idx" 1542057629 0 d41d8cd98f00b204e9800998ecf8427e ""
   (generated)
   "main.ind"
   "main.ilg"
-["pdflatex"] 1542057346 "main.tex" "main.pdf" "main" 1542057347
+["pdflatex"] 1542057629 "main.tex" "main.pdf" "main" 1542057641
   "/Users/Jeppe/Library/texlive/2015/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk" 1541512038 8424 d333838bb7b104f22dc48946a82de72b ""
   "/usr/local/texlive/2015/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -88,6 +88,7 @@
   "lectures/lecture17.tex" 1541515216 1576 7c4a034a5b79987dc8dc3d48414b8827 ""
   "lectures/lecture19.tex" 1542038336 5988 abdbccfd759add03d3718898838792c8 ""
   "lectures/lecture2.tex" 1541508172 6676 7ef33811b9877e1697f0d82a62299607 ""
+  "lectures/lecture20.tex" 1542057617 153 912cd4f275e09c1237eb4175a6efa8da ""
   "lectures/lecture3.tex" 1541508172 6212 19c7c76ba13d83a7deadf189854fce3e ""
   "lectures/lecture4.tex" 1541508172 5125 e8e86d4c5c6426400aa7463c48921adb ""
   "lectures/lecture5.tex" 1541508172 8351 c13ef54e7b62d51d82a907871e5e53d4 ""
@@ -95,10 +96,10 @@
   "lectures/lecture7.tex" 1541508172 6475 f291e5e2f58215372fb35e68dab334c0 ""
   "lectures/lecture8.tex" 1541508172 4511 3308fc91ede1fc1754ceacd7ac5c1a83 ""
   "lectures/lecture9.tex" 1541508172 6832 3278c9d054e566875a32707edb1a228d ""
-  "main.aux" 1542057347 13250 416c30e7a7e5a8e3a89d411378e91fa4 ""
+  "main.aux" 1542057630 13587 37f4e96514f2dadca629daefca29af22 ""
   "main.ind" 1541512039 0 d41d8cd98f00b204e9800998ecf8427e "makeindex main.idx"
-  "main.tex" 1542057337 2390 d2e99843be90f6cba68bc01595905921 ""
-  "main.toc" 1542057347 9784 b49868b22b7feb4302e6cd4f310975de ""
+  "main.tex" 1542057624 2421 d37f0a3ca762bd4a976debd471e3eba7 ""
+  "main.toc" 1542057630 10049 bcfab4e3ddfdd8907fdb2982143aac38 ""
   "readings_nielsen/concepts2.tex" 1541508172 1327 3a5844aa8baa87ed54dc00f2a07ce3db ""
   "readings_nielsen/concepts3.tex" 1542021504 511 a241dc9702eda255b97c48fdb331660b ""
   "readings_soerensen/concept1.tex" 1541508172 3282 2f1bf9e01eb3c135cb5094ca0a8127e9 ""
@@ -109,8 +110,8 @@
   "readings_soerensen/concepts6.tex" 1541508172 2101 66066a321d095386ee047d71b210ebaf ""
   "readings_soerensen/concepts8.tex" 1541508172 234 5ff91a3d3a0a9525656d2de520b8d674 ""
   (generated)
-  "main.pdf"
   "main.toc"
+  "main.aux"
   "main.log"
   "main.idx"
-  "main.aux"
+  "main.pdf"
