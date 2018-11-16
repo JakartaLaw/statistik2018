@@ -109,3 +109,6 @@ venv.bak/
 *.fls
 *.fdb_latexmk
 *.aux
+*.idx
+*.ilg
+*.ind
