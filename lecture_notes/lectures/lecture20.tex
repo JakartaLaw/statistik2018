@@ -90,3 +90,111 @@ Uddyb mere i klassen? Spørg klassen.
 
 Kig github.
 \subsubsection{Opgave 5}
+
+\begin{itemize}
+    \item $\Y = \{0, 1, 2, 3\}$
+    \item
+    \begin{equation}
+    P(Y_i = y_i) = \begin{cases}
+        \frac{2\theta}{3} & y_i=0\\
+        \frac{\theta}{3} & y_i=1 \\
+        \frac{2(1-\theta)}{3} & y_i=2 \\
+        \frac{1- \theta}{3} & y_i= 3
+    \end{cases}
+    \end{equation}
+    \item $\theta$ er mellem 0 og 1
+\end{itemize}
+
+\textbf{Del 1) Vis sandsynlighedsfunktionen kan skrives som nedenfor}
+
+\begin{equation}
+    f_{Y_i}(y \mid \theta) = \lp \frac{2}{\theta}\rp^{\1(y_i = 0)} \lp \frac{\theta}{3} \rp^{\1(y_i = 1)} \lp \frac{2(1-\theta)}{3} \rp^{\1(y_i = 2)} \lp  \frac{1- \theta}{3} \rp^{\1(y_i = 3)}
+\end{equation}
+
+Dette er klar hvis man har et udtryk:
+
+\begin{equation}
+    \lp \cdot \rp^{\1(\text{condition})}
+\end{equation}
+
+Hvis betingelsen er sand får man udtrykket i parantesen ellers får man 1, da ethvert udtryk opløftet i 0 er 1.
+
+Uddyb eksempel på tavlen.
+
+\textbf{Opskriv sample likelihood funktionen og loglikelihood funktionen}
+
+VI ser at likelikehood bidraget er:
+
+\begin{equation}
+    l(\theta \mid y_i) = f_{Y_i}(y_i \mid \theta)
+\end{equation}
+
+Og vi har at sample likelihood funktionen er:
+
+\begin{equation}
+    L (\theta \mid y_i) = \prodn l(\theta \mid y_i)
+\end{equation}
+
+\begin{equation}
+    L (\theta \mid y_i) = \prodn \lp \frac{2}{\theta}\rp^{\1(y_i = 0)} \lp \frac{\theta}{3} \rp^{\1(y_i = 1)} \lp \frac{2(1-\theta)}{3} \rp^{\1(y_i = 2)} \lp  \frac{1- \theta}{3} \rp^{\1(y_i = 3)}
+\end{equation}
+
+vi tager logaritmen:
+
+\begin{align}
+    \log L(\theta \mid y_i) &=\sumn \1(y_i = 0) \log \lp \frac{2}{\theta}  \rp + \1(y_i = 1) \log \lp \frac{\theta}{3} \rp \\
+    &+ \1(y_i = 2) \log \lp \frac{2(1-\theta)}{3} \rp +  \1(y_i = 3) \log \lp  \frac{1- \theta}{3} \rp
+\end{align}
+
+Vi kan transformere summen, da vi indser vi har:
+
+\begin{itemize}
+    \item 2 observationer = 0
+    \item 3 observationer = 1
+    \item 3 observationer = 2
+    \item 2 observationer = 3
+\end{itemize}
+
+\begin{align}
+    \log L(\theta \mid y_i) &=2 \log \lp \frac{2}{\theta}  \rp + 3 \log \lp \frac{\theta}{3} \rp \\
+    &+ 3 \log \lp \frac{2(1-\theta)}{3} \rp +  2 \log \lp  \frac{1- \theta}{3} \rp
+\end{align}
+
+Dette kan omskrives til:
+
+\begin{equation}
+    \log L(\theta \mid y_1, y_2 \cdots y_n) = 5 \lsp \log \lp \frac{2}{9}\rp  + \log(\theta - \theta^2) \rsp
+\end{equation}
+
+(Folk kan lave omskrivningen i klassen) - Hint dem til Frederiks rettevejledning.
+
+
+\textbf{Del 3) Tegn $\log L_n$ som funktion af $\theta$}
+
+Kig github.
+
+\textbf{Find maximum likelihood estimatet}
+
+\begin{equation}
+    S(\hat{\theta}) = \frac{\partial}{\partial \hat{\theta}} \log L_n (\hat{\theta } \mid y_i) =5 \frac{1}{\theta - \theta^2} (1 - 2\theta) = 0 \implies \hat{\theta} = 0.5
+\end{equation}
+
+Vi har med givne $\hat{\theta} = 5$:
+
+
+
+\begin{equation}
+    P(Y_i = y_i) = \begin{cases}
+        \frac{2\cdot 0.5}{3} = 1/3 & y_i=0\\
+        \frac{0.5}{3} = 1/6 & y_i=1 \\
+        \frac{2(1-0.5)}{3} = 1/3 & y_i=2 \\
+        \frac{1- 0.5}{3} = 1/6 & y_i= 3
+    \end{cases}
+\end{equation}
+
+
+Observeret:
+
+2/10, 3/10, 3/10, 2/10
+
+Men vi har et småt sample. Det er meget svært at lave konklusioner!
