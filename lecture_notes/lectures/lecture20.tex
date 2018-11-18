@@ -1,11 +1,92 @@
 \horizline
 
-\subsection{Øvelse 19}
+\subsection{Øvelse 20}
 
 \textbf{19/11/2018, opgaver: 3, 4, 5}
 
-\subsubsection{Opgave 1}
-
-\subsubsection{Opgave 2}
-
 \subsubsection{Opgave 3}
+
+\begin{itemize}
+    \item Pærerne fra opgave 2 er ikke identiske fordelt! Deres distribution er rigtigt:
+    \begin{equation}
+    Y_i =
+    \begin{cases}
+        exponential(\theta_1) & i \in \{ 1, 2, 3, \ldots, 75\} \\
+        exponential(\theta_2) & \in \{ 76, 77, \ldots, 120\}
+    \end{cases}
+    \end{equation}
+    \item $Y_i \independent Y_j$, for $i \neq j$
+\end{itemize}
+
+Parameterrummet:
+
+\begin{equation}
+\theta = (\theta_1 , \theta_2) \in \Theta
+\end{equation}
+
+Hvor at $\Theta = (0, \infty)^2$
+
+Vi har likelood sample funktionen:
+
+\begin{equation}
+    L_n (\theta \mid y_i) = \prod_{i=1}^{75} \theta_1 \exp(- \theta_1 y_i) \prod_{i=76}^{120}\theta_2 \exp(- \theta_2 y_i)
+\end{equation}
+
+\textbf{Opskriv log-likelihood funktionen for datasættet $\{ y_i \}^{n}_{i=1}$}
+
+Vi tager logaritmen til udtrykket ovenfor:
+
+\begin{equation}
+    \log L_n (\theta \mid y_i) = 75 \log(\theta_1) - \theta_1 \sum_{i=1}^{75}  y_i + (120 - 75)\log(\theta_2) - \theta_2 \sum_{i=76}^{120}  y_i
+\end{equation}
+
+\textbf{Del 3) Find maximum likelihood estimatoren $\hat{\theta}(Y_1 , \ldots, 120)$}
+
+Vi tager udgangspunkt i store Y nu, da vi skal finde estimatoren. Vi finder første ordens betingelserne:. $\theta_1, \theta_2$
+
+\begin{equation}
+    S(\hat{\theta_1}) = \frac{\partial}{\partial \theta_1} \log L_n (\theta \mid Y_i) = \frac{75}{\hat{\theta_1}} - \sum_{i=1}^{75} Y_i = 0
+\end{equation}
+
+Hvilket løst for $\theta_1$ bliver:
+
+\begin{equation}
+\hat{\theta_1} = \frac{75}{\sum_{i=1}^{75} Y_i }
+\end{equation}
+
+Ligeledes ville det for $\theta_2$ være:
+\begin{equation}
+\hat{\theta_2} = \frac{(120 - 75)}{\sum_{i=76}^{120} Y_i }
+\end{equation}
+
+\textbf{Del 4) Vi får nu fortalt at: $\sum_{i=1}^{75}  y_i = 160$ og $\sum_{i=76}^{120}  y_i = 92$}
+
+
+Vi indsætter i estimatoren og finder estimatet (estimaterne):
+
+\begin{equation}
+    \theta = ( \theta_1, \theta_2) = (0.468, 0.489)
+\end{equation}
+
+Spørg i klassen: Er de nye pærer bedre end de gamle?
+
+\textbf{Del 5) Forklar hvordan man fortolke dette som en betinget model}
+
+Man kan nu betinge levetiden på om det er en ny eller gammel pære! Hvis man har information om dette, kan man sige mere præcist noget om forventet levetid af pæreren.
+
+\subsubsection{Opgave 4}
+
+\begin{itemize}
+    \item Fan chart for inflation fra bank of England.
+\end{itemize}
+
+\textbf{Del 1) Er fordelingen skewed. Hvad kan skyldes dette?}
+
+Man kan forestille sig at historisk har man udregnet momenterne og fundet fordelingen skewed opad. Det vil sige at  engang imellem har man historisk oplevet meget høj inflation, men sjældent meget lav inflation.
+
+Uddyb mere i klassen? Spørg klassen.
+
+\textbf{Del 2) Næste periode (dvs kvartal 4. 2004) er fordelt $N(\mu = 2.6, \sigma^2 = 0.56)$}
+
+Kig github.
+\subsubsection{Opgave 5}
