@@ -1,0 +1,35 @@
+\subsection{Grænseresultater for stokastiske variable}
+
+\textbf{readings:}  Sørensen 7
+
+\subsubsection{Store tals lov}
+
+For $n$ ukorrelerede stokastiske variable med middelværdi $\mu$ og varians $\sigma^2$ vil gennemsnittet (det empiriske) være tæt på middelværdien $\mu$.
+
+Altså gennemsnittet vil konvergere med middelværdien. Gennemsnittet er stadig en stokastisk variabel
+
+\subsubsection{Den centrale grænseværdi sætning}
+
+Her er det værd at notere:
+
+\begin{equation}
+    \E(\bar{X}_n) = \mu
+\end{equation}
+
+Og måske mindre klart:
+
+\begin{equation}
+    \Var(\bar{X}_n) = \frac{1}{n^2} ( \Var(X_1) + \Var(X_2) + \cdots + \Var(X_n)) = \frac{1}{n^2}(n \Var(X_i)) = \frac{1}{n^2} n \sigma^2 = \frac{\sigma^2}{n}
+\end{equation}
+
+Man altså se at vi kan standardisere den stokastiske variabel som er middelværdien:
+
+\begin{equation}
+    U_n = \frac{\bar{X}_n - \mu}{\sigma / \sqrt{n}}
+\end{equation}
+
+Nu er reskaberne til sætningen klar:
+
+En række af stokastiske uafhængige varible, som er identiske. Da vil fordelingen af $U_n$ konvergere mod en standard normalfordeling når $n\rightarrow \infty$
+
+Dette kaldes konvergens i fordeling
