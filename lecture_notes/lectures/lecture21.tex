@@ -5,3 +5,173 @@
 \textbf{26/11/2018, Opgaver: 1, 2, 3}
 
 
+\subsubsection{Opgave 1}
+
+Lav i klassen!
+
+Kig do-files
+
+\subsubsection{Opgave 2}
+
+\begin{itemize}
+    \item $n=573$
+    \item 121 har $y=1$
+    \item 251 har $y=2$
+    \item 201 har $y=3$
+    \item Vi betegner de absolutte frekvenser som $s_j$:
+    \begin{equation}
+        s_j = \sumn \1(y_i = j)
+    \end{equation}
+    \item Vi ser at $s_1 + s_2 + s_3 = n$
+    \item Opstiller en statistik model:
+    \begin{equation}
+    P(Y_i = y) =
+    \begin{cases}
+        p_1 & \text{hvis } y=1 \\
+        p_2 & \text{hvis } y=2 \\
+        p_3 & \text{hvis } y=3
+    \end{cases}
+    \end{equation}
+\end{itemize}
+
+\textbf{Del 1) Hvis at sandsynlighedsunktionen kan skrives som:}
+
+\begin{equation}
+    f_{Y_i}(y \mid p_1, p_2, p_3) = p_1^{\1(y=1)} p_2^{\1(y=2)}p_3^{\1(y=3)}
+\end{equation}
+
+Minder om opgaven til sidste uge:
+
+Man indser først at vi har:
+
+\begin{equation}
+S = (\text{expression})^{\1(\text{condition})}
+\end{equation}
+
+Hvis betingelsen (condition) er sand da må $S=(\text{expression})$. Hvis condition er falsk: $S= (\text{expression})^0 = 1$.
+
+Hvormed det er klart: hvis eksempelvis $(y=1$
+
+\begin{equation}
+    f_{Y_i}(1 \mid p_1, p_2, p_3) = p_1 \cdot 1 \cdot 1
+\end{equation}
+
+Hvilket er det som modellen skulle overholde!
+
+\textbf{Del 2) Opskriv likelihood bidraget samt sample likelihood funktionen}
+
+\begin{equation}
+    l (p_1, p_2, p_3 \mid y_i) =  p_1^{\1(y_i=1)} p_2^{\1(y_i=2)}p_3^{\1(y_i=3)}
+\end{equation}
+
+Vi ser nu sample likelihood funktionen kan skrives op:
+
+\begin{align}
+    L (p_1, p_2, p_3 \mid y_1, y_2 , \cdots , y_{n}) &= \prodn l(p_1, p_2, p_3 \mid y_i) \\
+    &= p_1^{s_1} p_2^{s_2} p_3^{s_3}
+\end{align}
+
+Overvej dette:
+
+for $y_i = 1$ vi har at $l(p_1, p_2, p_3 \mid y_i) = p_1$. Vi har $s_1$ at sådanne tilfælde og vi kan konkludere at vi må have: $p_1 \cdot p_1 \cdots p_1$ i alt $s_1$ gange, som vil svare til $p_1^{s_1}$
+
+\textbf{Del 3) Opskriv $\theta$, og log likelihood funktionen}
+
+Først hvor mange frie parametre har vi?
+
+Vi ved at $p_1 + p_2 + p_3 = 1$. Dette må implicere at $p_3 = 1 - p_1 - p_2$. Vi har altså 2 frie parametre:
+
+\begin{equation}
+    \theta = (\theta_1 ,\theta_2 ) \in \Theta
+\end{equation}
+
+hvor at $\Theta = [0,1] \times [0,1]$
+
+Vi opskriver likelihood funktionen som funktion af de frie parametre $\theta_1, \theta_2$:
+
+\begin{equation}
+    L (\theta_1, \theta_2 \mid y_1, y_2 , \cdots , y_{n}) =  \theta_1^{s_1} \theta_2^{s_2} (1 - \theta_1 - \theta_2)^{s_3}
+\end{equation}
+
+Vi kan opskrive Log likelihood funktionen
+
+\begin{equation}
+   \log L (\theta_1, \theta_2 \mid y_1, y_2 , \cdots , y_{n}) = s_1 \log(\theta_1) + s_2 \log(\theta_2) + s_3 \log(1 -\theta_1 - \theta_2)
+\end{equation}
+
+\textbf{Del 4) Angiv antagelser}
+
+Vi har antaget at vores stokastiske variable er $i.i.d$. Altså de er identiske, uafhængigt distribueret. Uafhængigheden gør at man kan skrive det op som et produkt, og identiske betyder at $\theta_i = \theta$ for alle $Y_i$.
+
+Antagelserne er nok rimelige, da vi ikke har betinget på størrelsen af familen og ikke har informationen. Man altså man ville nok ikke forestille sig den betingede ssh for en familie med en person har 2 biler er den samme som en familie med 2 personer har 2 biler.
+
+\textbf{Del 5) Find estimator og estimat}
+
+Vi finder estimatoren.
+
+FOC:
+
+\begin{equation}
+   \frac{\partial}{\partial \theta_1} \log L (\theta_1, \theta_2 \mid Y_1, Y_2 , \cdots , Y_{n}) = 0
+\end{equation}
+
+
+\begin{equation}
+   \frac{\partial}{\partial \theta_2} \log L (\theta_1, \theta_2 \mid Y_1, Y_2 , \cdots , Y_{n}) = 0
+\end{equation}
+
+Notér: Vi bruger store $Y$ da vi skal finde estimatoren!
+
+Vi ser at for $\theta_1$ får vi:
+
+noter: $\frac{\partial}{\partial \theta_1} log(1 -\theta_1 - \theta_2) = - \frac{1}{1 -\theta_1 - \theta_2}$
+
+\begin{align}
+    \frac{s_1}{\hat{\theta_1}} - \frac{s_3}{1-\hat{\theta_1} - \hat{\theta_2}} &= 0
+\end{align}
+
+Ligeledes finder vi:
+
+\begin{align}
+    \frac{s_2}{\hat{\theta_2}} - \frac{s_3}{1-\hat{\theta_1} - \hat{\theta_2}} &= 0
+\end{align}
+
+Hvilket betyder at:
+
+\begin{equation}
+    \frac{s_2}{ \hat{\theta_2}} = \frac{s_1}{\hat{\theta_1}}
+\end{equation}
+
+
+
+Vi isolerer $\hat{\theta_2} = \frac{\hat{\theta_1} s_2}{s_1}$
+
+Vi indsætter så vi har:
+
+
+\begin{align}
+    \frac{s_1}{\hat{\theta_1}} - \frac{s_3}{1-\hat{\theta_1} - \frac{\hat{\theta_1} s_2}{s_1}} &= 0 \\
+    \frac{s_1}{\hat{\theta_1}} &= \frac{s_3}{1-\hat{\theta_1}(1 + s_2/s_1)}
+\end{align}
+
+Herfra kan man yderligere isolere således at man finder:
+
+\begin{equation}
+    \hat{\theta_1} = \frac{s_1}{s_1 + s_2 + s_3} = \frac{s_1}{n}
+\end{equation}
+
+Ligeledes ville man kunne finde for $\theta_2$.
+
+Vi kan nu finde estimatet:
+
+\begin{equation}
+    \hat{\theta_1} = \frac{s_1}{n} = \frac{121}{573} = 0.211
+\end{equation}
+
+\begin{equation}
+    \hat{\theta_2} = \frac{s_2}{n} = \frac{251}{573} = 0.438
+\end{equation}
+
+Og vi kan finde $p_3 = 1 - \theta_1 -\theta_2 =1 - 0.211 - 0.438  =0.351$
+
+\subsubsection{Opgave 3}
