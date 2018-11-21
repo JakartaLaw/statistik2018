@@ -175,3 +175,80 @@ Vi kan nu finde estimatet:
 Og vi kan finde $p_3 = 1 - \theta_1 -\theta_2 =1 - 0.211 - 0.438  =0.351$
 
 \subsubsection{Opgave 3}
+
+\begin{itemize}
+    \item Vi har en rebproducent
+    \item producerer 2 m i minuttet
+    \item Standard afvigelse på 10 cm
+    \item lad rebproduktionen være beskrevet ved $Y_i$, hvor $i \in \{1, 2, \cdots, n\}$
+    \item Den gennemsnitlige reblængde på $n$ minutter er derfor:
+    \begin{equation}
+        X_n = \frac{1}{n}\sumn Y_i
+    \end{equation}
+    \item Den samlede reblængde er:
+    \begin{equation}
+        n X_n =  \sumn Y_i
+    \end{equation}
+\end{itemize}
+
+\textbf{Del 1) Brug den centrale grænseværdisætning til at karakterisere den approksimative fordeling af den gennemsnitlige reb-længde, når $n$ bliver stor}
+
+Vi husker fra sørensen at:
+
+\begin{equation}
+    U_n = \frac{X_n - \mu}{\sigma / \sqrt{n}}
+\end{equation}
+
+Og vi ved at $U_n$ vil være standard normalt fordelt for $n \rightarrow \infty$
+
+Det betyder også at vi kunne sige at:
+
+\begin{equation}
+    X_n \sim N(200, 100 / n)
+\end{equation}
+
+hvor vi har at $\sigma = 10$ og at $\sigma^2 = 10^2 = 100$.
+
+Transformation af $U_n$ er klar:
+
+\begin{align}
+    U_n
+    &= \frac{X_n - \mu}{\sigma} \\
+    &= \frac{X_n - \mu}{\sqrt{\sigma^2 / n}} \\
+    \implies \qquad \sqrt{\sigma^2 / n} \cdot U_n &= X_n - \mu \\
+    \implies \qquad \sqrt{\sigma^2 / n} \cdot  U_n  + \mu &= X_n
+\end{align}
+
+Vi indser at:
+
+\begin{equation}
+    \sqrt{\sigma^2 / n} \cdot U_n \sim N(0, \sigma^2 / n)
+\end{equation}
+
+og herfra trækker man bare middelværdien fra!
+
+\textbf{Del 2) Brug den asymptotiske distribution til at udregne ssh for at der på en time produceres 125 meter}.
+
+vi kan altså herfra sige:
+
+\begin{equation}
+    125 \cdot 100 / 60 = 208,33
+\end{equation}
+
+Vi kan transformere dette!
+
+\begin{equation}
+    \frac{208.33 - 200}{10 / \sqrt{60}} = 8.33 / 1.2909 = 6.4528
+\end{equation}
+
+Vi kan nu spørge:
+
+\begin{equation}
+    P(U_n > 6.45) = 1 - \Phi(6.45) = 1 - 0.99999999 = 0
+\end{equation}
+
+hvor $\Phi(\cdot)$ er fordelingsfunktionen CDF'en for en standard normalfordeling.
+
+\textbf{Del 3) Hvad hvis det var cauchy fordelingen?}
+
+Så nej! Denne fordeling har ingen momenter!
