@@ -3,3 +3,198 @@
 \subsection{Øvelse 22}
 
 \textbf{30/11/2018, Opgaver: 4, 5}
+
+\subsubsection{Opgave 4}
+
+side 65 i Heino's bog
+
+\begin{itemize}
+    \item $\{Y_i\}_{i=1}^{n}$ er i.i.d. normalt fordelte stokastiske variable
+    \item altså:
+    \begin{equation}
+        Y_i \sim N(\mu, \sigma^2)
+    \end{equation}
+    \item tæthedsfunktionen:
+    \begin{equation}
+        f_{Y_{i}} (y \mid \mu, \sigma^2) = \frac{1}{\sqrt{2\pi \sigma^2}} \exp \lp \frac{-(y- \mu)^2}{2\sigma^2}\rp
+    \end{equation}
+\end{itemize}
+
+\textbf{Del 1.a) Opskriv likelihood funktionen $L(\mu, \sigma^2 \mid Y_1, Y_2 \cdots Y_n)$}
+
+likelihood contribution:
+
+\begin{equation}
+    l (\mu, \sigma^2 \mid Y_i) =  \frac{1}{\sqrt{2\pi \sigma^2}} \exp \lp \frac{-(Y_i - \mu)^2}{2\sigma^2}\rp
+\end{equation}
+
+Likelihood funktionen:
+
+\begin{equation}
+    L (\mu, \sigma^2 \mid Y_i) = \prodn \frac{1}{\sqrt{2\pi \sigma^2}} \exp \lp \frac{-(Y_i - \mu)^2}{2\sigma^2}\rp
+\end{equation}
+
+\textbf{Del 1.b) Opskriv log likelihood funktionen}
+
+Vi tager logaritmen:
+
+\begin{equation}
+    \log L (\mu, \sigma^2 \mid Y_1, Y_2, \cdots Y_n) = \sumn - \frac{1}{2}\log(2\pi) - \frac{1}{2}\log(\sigma^2) + \frac{- (Y_i - \mu)^2}{2\pi^2}
+\end{equation}
+
+\textbf{Del 1.c) Find estimatorerne}
+
+Kig side 70.
+
+\begin{equation}
+    \frac{\partial}{\partial \mu} \log L (\mu, \sigma) = \sumn \frac{Y_i - \mu}{\sigma^2}
+\end{equation}
+
+\begin{equation}
+    - \frac{1}{2\sigma^2} + \frac{(Y_i - \mu)^2}{2\sigma^4}
+\end{equation}
+
+Sæt disse lig med 0 og vi kan se at:
+
+\begin{equation}
+    \hat{\mu} = \frac{1}{n}\sumn Y_i
+\end{equation}
+
+\begin{equation}
+    \hat{\sigma^2} = \frac{1}{n}\sumn (Y_i - \hat{\mu})^2
+\end{equation}
+
+Dette er de samme formler som blev præsenteret i starten af bogen for det empiriske gennemsnit og varians.
+
+\textbf{Del 2) Find estimaterne}
+
+Vi har givet at $\sumn y_i = 627.6$ og $\sumn y_i^2 = 3807.2$. v har at $n=125$
+
+Vi bruger hintet givet i opgaven:
+
+\begin{equation}
+    \frac{1}{n}\sumn (y_i - \hat{\mu})^2 = \sumn y_i^2 + n \hat{\mu}^2 - 2\hat{\mu} \sumn y_i
+\end{equation}
+
+Vi finder først estimatet for $\mu$
+
+\begin{equation}
+    \hat{\mu} = \frac{1}{125} \cdot 627.6 = 5.0208
+\end{equation}
+
+Herefter finder vi det for $\sigma^2$
+
+note: Skriv måske formlen op igen for variansen!
+
+\begin{equation}
+    \hat{\sigma^2} = 3807.2 + 125 \cdot 5.0208^2 - 2\cdot5.0208 \cdot 627.6
+\end{equation}
+
+
+\textbf{Likelihood og Log Likelihood (under equi-dispersion $\mu = \sigma^2 = \phi$)}
+
+
+Dette tilfælde kaldes \textit{equi dispersion}.
+
+tætheden er givet ved:
+
+\begin{equation}
+    f_{Y_i} (y \mid \phi) = \frac{1}{\sqrt{2\pi \phi}} \exp \lp \frac{- (y - \phi)^2 }{2\phi}\rp
+\end{equation}
+
+Vi opskriver Likelihood funktionen:
+
+\begin{equation}
+    L(\phi \mid Y_1, Y_2 \cdots Y_n) = \prodn  \frac{1}{\sqrt{2\pi \phi}} \exp \lp \frac{- (Y_i - \phi)^2 }{2\phi}\rp
+\end{equation}
+
+Vi opskriver også log likelihood funktionen
+
+\begin{equation}
+    \log L( \phi) = \sumn \frac{1}{2}\log(2\pi) - \frac{1}{2}\log (\phi) + \lp -\frac{(Y_i - \phi)^2}{2\phi} \rp
+\end{equation}
+
+Som kan omskrives til:
+
+\begin{equation}
+    \log L( \phi) = \frac{n}{2}\log(2\pi) - \frac{n}{2}\log (\phi)  -\frac{ \sumn (Y_i - \phi)^2}{2\phi}
+\end{equation}
+
+\textbf{Del 4) Udled scoren}
+
+\begin{equation}
+    S(\phi) = \frac{\partial}{\partial \phi} \log L (\phi \mid Y_1, \cdots , Y_n) = \frac{\sumn Y_i - n\phi^2 - n\phi}{2\phi^2}
+\end{equation}
+
+Man ser man kan brække udtrykket (fra før) over i to dele når man differentiere:
+
+
+Den første del $\frac{n}{2}\log (\phi)$
+\begin{equation}
+    \frac{\partial}{\partial\phi} \lp \frac{n}{2}\log (\phi) \rp = \frac{n}{2\phi}
+\end{equation}
+
+Den anden del:
+
+\begin{equation}
+    \frac{\partial}{\partial \phi} \lp  -\frac{ \sumn (Y_i - \phi)^2}{2\phi} \rp = - \sumn \frac{\partial}{\partial \phi} \lp  \frac{ (Y_i - \phi)^2}{2\phi} \rp
+\end{equation}
+
+Dette skrives som (husk hint i første skridt - differentiation af brøker)
+:
+
+\begin{align}
+    - \sumn \frac{\partial}{\partial \phi} \lp  \frac{ (Y_i - \phi)^2}{2\phi} \rp &= - \sumn \frac{(-2(Y_i - \phi)2\phi) - (2(Y_i - \phi)^2)}{4\phi^2} \\
+    &= - \sumn \frac{-4Y_i\phi + 4\phi^2 - 2Y_i^2 - 2\phi^2 + 4Y_i\phi}{4\phi^2} \\
+    &= - \sumn \frac{2 \phi^2 - 2 Y_i^2}{4\phi^2} \\
+    &= - \sumn \frac{\phi^2 - Y_i^2}{2\phi^2} \\
+    &= \frac{\sumn( Y_i ) - n \phi^2}{2\phi^2} \\
+\end{align}
+
+Hvis vi sætter resultaterne sammen får vi:
+
+(husk minusset fra det orindelige udtryk)
+
+\begin{equation}
+     \frac{\sumn( Y_i ) - n \phi^2}{2\phi^2} - \frac{n}{2\phi}  =
+\end{equation}
+
+VI ser at:
+
+\begin{equation}
+    \frac{n}{2\phi}  = \frac{n\phi}{2\phi^2}
+\end{equation}
+
+sådan at:
+
+\begin{equation}
+     \frac{\sumn( Y_i ) - n \phi^2}{2\phi^2} - \frac{n\phi}{2\phi^2}  = \frac{\sumn( Y_i ) - n \phi^2 - n\phi}{2\phi^2}
+\end{equation}
+
+Som var det vi skulle vise!
+
+\textbf{Del 5) Find estimatoren}
+
+\begin{align}
+     \frac{\sumn( Y_i ) - n \hat{\phi}^2 - n \hat{\phi}}{2\hat{\phi}^2} &= 0
+\end{align}
+
+\begin{equation}
+    \implies \qquad \sumn( Y_i ) = n \hat{\phi}^2 + n\hat{\phi}
+\end{equation}
+
+
+Kan løses med solver:
+
+\begin{equation}
+\hat{\phi} = \frac{\sqrt{4 \frac{1}{n} \sumn (Y_i)  + 1} - 1}{2}
+\end{equation}
+
+\textbf{Del 6) Find estimatet}
+
+indsætter $n=125$ og $\sumn Y_i = 627.6$
+
+\begin{equation}
+\hat{\phi} = \frac{\sqrt{4 \cdot \frac{627.6}{125}  + 1} - 1}{2} = (\sqrt{21,08} - 1) / 2 = (4.591 - 1) / 2 = 1,795
+\end{equation}
+
