@@ -1,0 +1,318 @@
+\horizline
+
+\subsection{Øvelse 24}
+
+\textbf{30/11/2018, Opgaver: 4, 5, 6}
+
+\subsubsection{Opgave 4}
+
+Kig opgave tekst for beskrivelse. Der er følgende variable: Survived, female, child, class.
+
+\textbf{Del 1) Opstil en statistisk model for variablen $survived$}
+
+Vi lader $y_i$ være variablen survived. Vi betinger altså ikke på noget af den information, som ellers er tilgængelig i datasættet. Det vil sige vi sandsynligheden for at overleve ens, om man er kvinde, barn eller hvilken klasse man rejste på.
+
+Vi ser at $Y_i$ er en binær variable. Vi vælger altså at modellere med en bernoulli fordeling.
+
+Uddybning: Flere hat spurgt hvordan man vælger fordeling når man modellerer sin data. Her er et godt eksempel. Vi kigger på dataens struktur (den er binær) og herfra beslutter vi os for hvad den korrekte fordeling er. Men bare fordi vi kun observerer to udfald, er det ikke nødvendigvis korrekt at bruge bernoulli fordelingen.
+
+Antag man havde adspurgt 3. årgang på en folkeskole om hvor mange kæledyr de har. Alle svarene er enten $\{0, 1\}$. De besvarer ikke et sandt falsk spørgsmål, og derfor ville jeg ikke mene bernoulli-fordelingen er korrekt at bruge. Dels fordi man kan have flere kæledyr end et, men også fordi at fortolkningen af bernoulli ville være underlig i denne sammenhæng.
+
+Tilbage til eksemplet.
+
+Vi indser at vores parameterrum $\Theta = ]0, 1[$. Således at $\theta \in \Theta$.
+
+\begin{equation}
+    P(Y_i) = \begin{cases}
+        \theta &, Y_i = 1 \\
+        1 - \theta &, Y_1 = 0
+    \end{cases}
+\end{equation}
+
+
+Vores tæthed er:
+
+\begin{equation}
+    f_{Y_i}(y \mid \theta) = \theta^{y}(1- \theta)^{(1 - y)}
+\end{equation}
+
+Hvorfra vi finder vores likelihood contribution:
+
+\begin{equation}
+    l (\theta \mid y_i) = \theta^{y_i}(1- \theta)^{(1- y_i)}
+\end{equation}
+
+Vi har selvfølgelig antaget $i.i.d$ observationer (selvom det er i strid, med vores observationer i datasættet).
+
+Vi opskriver sample likelihood funktionen:
+
+(Kig i heinos bog s. 58)
+
+\begin{equation}
+    L(\theta) = \sumn l (\theta \mid y_i) = \sumn \theta^{y_i}(1- \theta)^{(1 - y_i)}
+\end{equation}
+
+Vi finder log likelihood funktionen
+\begin{equation}
+    \log L(\theta) = \sumn y_i \log (\theta) + (1 - y_i) \log(1- \theta)
+\end{equation}
+
+definér $R_n = \sumn y_i$
+
+\begin{equation}
+    \log L(\theta) = R_n \log (\theta) + (n - R_n) \log (1-\theta)
+\end{equation}
+
+Herfra udledes scoren:
+
+Fra side 68 i bogen finder vi estimatoren $\hat{\theta}(Y_1, Y_2, \cdots Y_n)$:
+(bare differentier og sæt scoren lig 0, og løs for  $\htn$)
+
+\begin{equation}
+    \htn = \frac{1}{n} \sumn y_i
+\end{equation}
+
+Vi bruger dette til at finde estimatet $\hat{\theta}(y_1, y_2, \cdots y_n)$
+
+Vi kan finde i datasættet at:
+$n = 2201$ og at $\sumn y_i = 711$
+
+\begin{equation}
+    \htn = \frac{1}{2201} \cdot 711 = 0.323
+\end{equation}
+
+\textbf{Del 2) Find variansen på estimatoren og angiv den asymptotiske fordeling på estimatoren}
+
+Vi finder variansen på vores estimator på følgende måde ( husk man kan også gøre det ved at bruge informations matricen):
+
+\begin{align}
+    \Var(\htn) &= \Var(\frac{1}{n} \sumn y_i) \\
+    &= \frac{1}{n^2} \Var(\sumn Y_i) \qquad \text{husk i.i.d } Y_i\\
+    &= \sumn \Var(Y_i) \\
+    &= \frac{n}{n^2} \Var(Y_i) \\
+    &= \frac{1}{n} \Var(Y_i)
+\end{align}
+
+Vi finder den asympotiske fordeling:
+
+\begin{align}
+    \sqrt{n} (\htn - \theta_0) &\overset{d}{\ra} N(0, \Omega_0) = N \lp0, \Var(Y_i)\rp  \implies \\
+    \sqrt{n} \frac{(\htn - \theta_0)}{\se(\htn)} &\overset{d}{\ra} N(0,1)
+\end{align}
+
+\textbf{Del 3}
+
+Kig github for do-file. Får samme koefficient.
+
+\textbf{Del 4)}
+
+Kig do-file
+
+\textbf{Del 5) Undersøg om sandsynligheden for at overleve variere mellem mænd og kvinder}
+
+\begin{equation}
+    P(Y_i = 1) = \theta_i = \theta + \delta \cdot female_i
+\end{equation}
+
+\begin{equation}
+    L_n (\theta \mid \delta) = \prodn \theta_i^{y_i} (1- \theta_i)^{(1-y_i)}
+\end{equation}
+
+\begin{equation}
+\log L(\theta, \delta) = \sumn y_i \log(\theta_i) + (1-y_i)\log(1 - \theta_i)
+\end{equation}
+
+Dette kan igen transformeres:
+
+lad $f_i = female_i$ of husk at$\theta_i = \theta + \delta \cdot f_i$
+
+\begin{equation}
+    \log L (\theta, \delta) = \sumn y_i \log(\theta + \delta\cdot f_i) + (1-y_i)\log(1 - (\theta + \delta \cdot f_i))
+\end{equation}
+
+Vi ser altså, at vi ikke er i stand til at sætte noget udenfor sum-tegnet.
+
+Kig do-file for estimation:
+
+Coefficienter:
+
+\begin{itemize}
+    \item $\theta = 0.212$
+    \item $\delta = 0.519$
+\end{itemize}
+
+Vi ser altså sandsynligheden for at overleve som mand nu falder til 0.212. Sandsynligheden for at overleve som Kvinde er noget højere. Vi ser det handler om at $P(Y_i = 1) = \theta_i = \theta + \delta \cdot f_i$. Altså Sandsynlighden for at overleve hvis man er kvinde er $\theta + \delta = 0.212 + 0.519 = 0.731$
+
+\textbf{Del 6) Forklar, hvorfor dette er et eksempel på en betinget fordeling}
+
+Vores første model tog ikke højde for om en person var kvinde eller ej når vi udregnede sandsynligheden for om hvorvidt en person overlevede.
+
+Nu tilføjer vi information og siger: GIVET man er kvinde, hvor stor var sandsynligheden så for, at man overlevede, eller omvendt: GIVET man IKKE var kvinde, hvor stor var ssh. for man overlevede.
+
+Vi udleder de betingede estimatorer nu:
+
+Altså sandsynligheden for en kvinde overlever GIVET det var en kvinde:
+
+\begin{equation}
+    P(Y_i = 1 \mid F_i = 1) = \frac{1}{\sumn F_i} \sumn Y_i F_i
+\end{equation}
+
+Her ses at $\sumn F_i$ må være antallet af kvinder, og at: $Y_i F_i$ er en interaktionsvariabel som kun er 1, hvis $Y_i$ er 1 og $F_1$. Altså hvis man var kvinder OG man overlevede!
+
+Omvendt ville man kunne lave for mænd:
+
+\begin{equation}
+    P(Y_i = 1 \mid F_i = 0) = \frac{1}{\sumn (1 - F_i)} \sumn Y_i (1 - F_i )
+\end{equation}
+
+Hvor man ser at $Y_i(1- F_i)$ kun kan være 1, hvis $F_i = 0 \land Y_i = 1$.
+
+
+\subsubsection{Opgave 5}
+
+Fortsæt med ovenstående analyse af Titanics forlis.
+
+\textbf{Del 1) Opstil ideen om at mænd og kvinder blev behandlet ens under titanics forlis.}
+
+\begin{equation}
+    H_0 : \delta = 0\qquad H_A : \delta \neq 0
+\end{equation}
+
+Det er sværere her at restriktere vores parameter rum $\Theta$. Vi kan sige i den urestrikterede model, må $\theta \in ]0,1[$, da dette er sandsynligheden for mænd overlever. Vi ser nu, at det bliver mere besværligt for $\delta$. Delta kan altså derfor være $\delta \in ]-1, 1[$.
+
+Men faktisk kan vi lave en strammere restriktion. Dette skyldes, at $0< \delta + \theta < 1$
+
+\begin{equation}
+    (\theta, \delta)^{T} \in \Theta = \{(\theta, \delta)^{T} \in \R^2: 0 < \theta < 1, 0 < \theta + \delta < 1\}
+\end{equation}
+
+Vi kan skrive:
+
+\begin{equation}
+    \Theta_0 = \{(\theta, \delta)^T \in \R^2 : 0 < \theta < 1, \delta = 0 \}
+\end{equation}
+
+\begin{equation}
+    \Theta_A = \{(\theta, \delta)^T \in \R^2 : 0 < \theta < 1, \delta \neq 0 \}
+\end{equation}
+
+\textbf{Del 2) Lav en Z-test for vores hypotese}.
+
+Hvis nul hypotesen er forkert divergere man enten mod $-\infty$ eller $\infty$. Hvis $H_0$ er sand, da vil testen være normalt fordelt.
+
+Teststørrelse findes i vores do-file:
+\begin{equation}
+    z = 22.93
+\end{equation}
+
+Alternativt kunne det regnes selv:
+
+Dette gøres ved:
+
+\begin{equation}
+    \frac{\htn - \theta_0}{\se(\delta)} = \frac{0.519 - 0}{\se(0.0226)} = 22,9
+\end{equation}
+
+Hvor der er antaget at vores $H_0$ er sand, således at $\theta_0 = 0$.
+
+Vi afviser vores test med 95 \% > sandsynligheden, at dødeligheden skulle være det samme for mænd og kvinder.
+
+Dette er klart da den kritiske værdi for en dobbelt sidet test er $- 1.96$ og $1.96$, på et 95\% konfidens niveau.
+
+\textbf{Del 3) Test hypotesen med en kvadreret Wald-test}
+
+Vi kvadrerer vores test-størrelse og evaluere i en $\chi^2$-fordeling
+
+\begin{equation}
+    z^2 = 22.93^2 = 525.78
+\end{equation}
+
+Hvilket skal evalueres i $\chi^2$-fordelingen. Vi indser vi har en frihedsgrad: altså $\chi^2_{df=1}(525.78)= $
+
+Hvilket betyder vi afviser da den kritiske værdi for en $\chi^2_{df=1}$, med 95 \% ssh er 3.84.
+
+\textbf{Del 4) test hypotesen med en Likelihood ration test (LR-test)}
+
+Vi husker at $\tilde{\theta}_n$ er vores restrikterede model.
+
+\begin{equation}
+    LR(H_0) = - 2\log \lp \frac{L_n (\tilde{\theta}_n)}{L_n (\htn)}\rp = 2 \lsp \log L_n (\htn) - \log(\tilde{\theta}_n)\rsp
+\end{equation}
+
+Vi kigger på vores værdier i vores output.
+
+\begin{itemize}
+    \item Den restrikterede model: $-1384.7284$
+    Hvor det forstås at, den restrikterede model antog $\delta= 0$. Hvilket svarer til den første model.
+    \item Den urestrikterede model: $-1167.4939$. Altså den model, hvor vi tillader $\delta$ at antage hvilken som helst værdi.
+\end{itemize}
+
+\begin{equation}
+    LR = 2( (- 1167.4939) - (- 1384.7284 )) \approx 434
+\end{equation}
+
+Vi evaluere testen i en $\chi^2_{df=1}$-fordeling. VI ved den kritiske værdi er som før 3.84.
+
+Og vi kan afvise testen.
+
+\begin{equation}
+    p\textbf{-value} = 1 - \chi^2_{df=1}(434) = 0.000
+\end{equation}
+
+\subsubsection{Opgave 6}
+
+Vi fortsætter ovenstående analyse af Titanics forlis.
+
+\textbf{Del 1) Antag at mænd og kvinder blev behandlet ens med $\theta_i = 0$. Opskriv hypotesen}
+
+Antag at mænd og kvinder blev behandlet ens og værdien var $\theta_i = 0.35$. (husk $\theta_i = \theta + \delta\cdot f_i$). Vi kan altså se at $\delta = 0$, da kvinder og mænd antages at behandles ens. Det betyder:
+
+\begin{align}
+    \theta_i &= \theta + \delta\cdot f_i  \qquad (\delta = 0 )\\
+    \implies \qquad \theta_i &= \theta + 0 \cdot f_i \\ \implies \qquad
+    \theta_i &= \theta = 0.35
+\end{align}
+
+\begin{equation}
+    H_0 : \theta = 0.35 \land \delta = 0, \qquad H_A : \theta \neq 0.35 \lor \delta \neq 0
+\end{equation}
+
+Vi opskriver parameterrummet. $\Theta$ er samme som tidligere. Tegn skitse af parameterrummet!
+
+\begin{equation}
+    (\theta, \delta)^T \in \Theta_0 = \{(\theta, \delta)^T \in \R^2 : 0 < \theta < 1, 0 < \delta + \theta < 1\}
+\end{equation}
+
+\begin{equation}
+    (\theta, \delta)^T \in \Theta_0 = \{(\theta, \delta)^T = (0.35, 0)^T \}
+\end{equation}
+
+\textbf{Del 2) test hypotesen med likelihood-ratio test}.
+
+Vi har den urestrikterede model fra tidligere.
+
+Nu skal vi estimere den restrikterede model.
+
+Løses i stata (kig do-file):
+
+For den restrikterede model får vi værdien:
+
+\begin{equation}
+    L_n = -1388.2901
+\end{equation}
+
+Indsættes nu i vores likelihood ratio test:
+
+\begin{equation}
+    LR(H_0) = 2((-1167.4939)  - (-1388.2901) ) = 442
+\end{equation}
+
+hvor $(-1167.4939)$ er værdien for likelikehood under antagelse af at $\theta, \delta$ har de værdier som maximere scoren.
+
+Vi skal evaluere test-værdien i en $\chi^2_{df=2}$ da vi har 2 parametre som estimeres. Vi har en kritisk værdi på $5.99$ for 2 parametre, afviser vi vores nul-hypotese.
+
+\textbf{Del 3)}
+
+Nej z-test kan kun bruges, når der er er en enkel restriktion på data!
+
+

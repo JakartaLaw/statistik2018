@@ -1,0 +1,115 @@
+\subsection{Kapitel 6: Konfidens Intervaller og hypotese test}
+
+\subsubsection{Konfindens Intervaller}
+
+Vi har fra Theorem 4.1
+
+\begin{equation}
+    \sqrt{n}(\hat{\theta} - \theta_0) \rightarrow N(0, \Omega_0)
+\end{equation}
+
+Side (98) viser vi kan herfra komme til udtrykket:
+
+\begin{equation}
+    \frac{\hat{\theta} - \theta_0}{\se(\hat{\theta})} \sim N(0,1)
+\end{equation}
+
+Altså vi har nu konstrueret en stokastisk variabel som er standard normalt fordelt. Vi ved at 95\% af sandsynlighedsmassen ligger i intervallet:
+
+\begin{equation}
+    -1.96 < Z < 1.96
+\end{equation}
+
+Hvor $Z$ er en standard normalt fordelt stokastisk variabel. Alternativt kunne man sige:
+
+\begin{equation}
+    P(-1.96 < Z < 1.96) = 0.95
+\end{equation}
+
+Derfra kan man altså let udlede at:
+
+\begin{equation}
+    P(\hat{\theta} - 1.96\cdot\se(\hat{\theta}) < \theta_0 < \hat{\theta} + 1.96\cdot\se(\hat{\theta})) = 0.95
+\end{equation}
+
+\subsubsection{Hypotese test}
+
+\begin{equation}
+    H_0 : \theta_0 =a
+\end{equation}
+
+\begin{equation}
+    H_A : \theta_0 \neq a
+\end{equation}
+
+Altså vi har en $H_0$ (det vi tester). Og en $H_A$, alternativet. Den urestriktere model kaldes $H_U$. Den urestrikterede model er den vi har arbejdet med i kurset op til dette punkt. Vi husker at $\Theta$ (vores parameter rum) er defineret af $H_U$ Vi kan nu sige at:
+
+Under $H_0$ er parameterrummet:
+
+\begin{equation}
+    \theta \in \Theta_0 = \{a\}
+\end{equation}
+
+Undwe $H_A$ er parameterrummet
+
+\begin{equation}
+    \theta \in \Theta_A = \{\theta \in \Theta : \theta \neq a\}
+\end{equation}
+
+Man ser altså at: $\Theta_0 \cap \Theta_A = \emptyset$ og at: $\Theta_0 \cup \Theta_A = \Theta$
+
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+                  & $H_0$ er sand & $H_0$ er falsk \\ \midrule
+Test afvises ikke & Korrekt       & Type 2 fejl    \\
+test afvises      & Type 1 fejl   & Korrekt        \\ \bottomrule
+\end{tabular}
+\end{table}
+
+
+\subsubsection{Wald-Test}
+
+Kig bog for eksempel.
+
+$H_0 : \theta_0 = a$ og $H_A : \theta_0 \neq a$
+
+\begin{equation}
+    p(\theta_0 = a) = \frac{\hat{\theta} - a}{\se(\hat{\theta})} = k
+\end{equation}
+
+Hvor vi afviser $H_0$ hvis $k$ er større end 1.96 eller mindre end $-1.96$.
+
+Læs nærmere i kapitel for p-værdi.
+
+Man kan også lave en \textit{squared wald-test} Hvor man kvadrere $Z$. Her skal man teste i en $\chi^2$-fordeling.
+
+\subsubsection{LR-test}
+
+Vi definere $\tilde{\theta}$ som:
+
+\begin{equation}
+    \tilde{\theta} = \underset{\theta \in \Theta_0}{\argmax} \sumn \log l(\theta \mid y_i)
+\end{equation}
+
+Faldet i likelihood under restriktionen af $H_0$ can blive måldt med
+
+\begin{equation}
+    \frac{L_n \tilde{\theta}}{L_n \hat{\theta}}
+\end{equation}
+
+Log likelihood ratio $(LR)$
+
+\begin{equation}
+    LR_n (H_0) = -2 \log \lp \frac{ L_n \tilde{\theta}}{ L_n \hat{\theta}} \rp
+\end{equation}
+
+\begin{equation}
+    = 2 \lsp \log L_n (\hat{\theta}) - \log L_n (\tilde{\theta}) \rsp
+\end{equation}
+
+Det kan vises at $ LR_n (H_0)$ konvergerer mod en $\chi^2(v)$-fordeling, under en sand 0 hypotese, hvor $v$ er \textit{antal frihedsgrader}. Som i dette tilfælde er antal restriktioner under $H_0$.
+
+Kig bog for eksempler.

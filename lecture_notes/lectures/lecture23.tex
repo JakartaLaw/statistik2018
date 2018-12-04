@@ -1,0 +1,261 @@
+\horizline
+
+\subsection{Øvelse 23}
+
+\textbf{30/11/2018, Opgaver: 1, 2, 2}
+
+\subsubsection{Opgave 1}
+
+
+\begin{itemize}
+    \item Sample likelihood funktionen angivet
+    \item $L(\theta \mid y_1, \cdots y_n)$
+    \item $\theta \in \Theta = \R$
+    \item $\hat{\theta} =12.41 $
+    \item $\se(\hat{\theta}) = 1.07$
+\end{itemize}
+
+Vi har fået angivet en sample likelihood fi
+
+\textbf{Del 1) Angiv konfidensinterval for den sande parameterværdi $\theta_0$ - giv fortolkning}
+
+\begin{equation}
+    P(\hat{\theta} - 1.96\cdot\se(\hat{\theta}) < \theta_0 < \hat{\theta} + 1.96\cdot\se(\hat{\theta})) = 0.95
+\end{equation}
+
+\begin{equation}
+    P(12.41 - 1.96\cdot 1.07) < \theta_0 < 12.41 + 1.96\cdot1.07) = 0.95
+\end{equation}
+
+\begin{equation}
+    P(10.3128 < \theta_0 < 14.5072 )= 0.95
+\end{equation}
+
+Under antagelse af at vi ikke har misspecificeret vore model, ligger den sande parameter $\theta_0$ i intervallet mellem $10.3$ til $14.5$.
+
+\textbf{Del 2) teori implicerer $\theta_0 = 10$, formuler som statistik hypotese}
+
+\begin{equation}
+    H_0 : \theta_0 = 10\qquad H_a : \theta_0 \neq a
+\end{equation}
+
+Vi kan derfor skrive:
+
+\begin{equation}
+    \Theta_0 = \{10\} \qquad \Theta_A = \Theta \setminus \Theta_0 = \R \setminus \{10\}
+\end{equation}
+
+Hvor parameterrummet for den uretstrikterede model er $\Theta$.
+
+\textbf{Del 3) Test hypotesen med en $z$-test}
+
+
+Test størrelse:
+\begin{equation}
+    \frac{\htn - 10}{\se(\htn)} = \frac{12.41 - 10}{1.07} = 2.252
+\end{equation}
+
+Den kritiske værdi: Den kritiske værdi blev fundet tidligere: $1.96$
+
+Konklusion: Vi kan afvise med over 95\% sandsynlighed at $\theta_0$  er 10.
+
+p-værdi:
+
+\begin{equation}
+    2 (1 - \Phi(2.252)) =2(1 - 0.9878) = 0.0244
+\end{equation}
+
+Her indser vi det følgende:  $\Phi(z)$ er CDF'en for en standard normal fordeling. Vi bruger konstanten $2$ fordi det er en to sidet test.
+
+\textbf{Del 4) Brug en kvadreret Wald-test}
+
+Nu sætter man teststørrelsen i anden:
+
+\begin{equation}
+    \lp \frac{\htn - 10}{\se(\htn)} \rp^2 = 2.252^2 = 5.071
+\end{equation}
+
+Denne skal evalueres i en $\chi^2(v)$-fordeling. Først skal vi finde ud af hvad $v$ er:
+
+Vi indser at vi har 1 frit parameter under vores restriktion - altså $v=1$.
+
+Vores kritiske værdi med 1 frihedsgrad er: $3.8414$. Fundet ved kommandoen i stata:
+
+\begin{verbatim}
+    disp invchi2(1, 0.95)
+\end{verbatim}
+
+Vi kan altså afvise vores $H_0$, da vores test-størrelse er over vores kritiske værdi.
+
+Vores p-værdi er:
+
+\begin{equation}
+    \chi^2_{df=1}(5.071) = 1 - 0.9757
+\end{equation}
+
+også fundet i stata med kommandoen:
+
+\begin{verbatim}
+    disp chi2(1, 5.071)
+\end{verbatim}
+
+Vi ganger ikke med to denne gang da alt massen i $\chi^2$ fordelingen er på den positive reelle akse.
+
+Noter om fordelingsantagelsen:
+
+\begin{align}
+    \sqrt{n}(\htn -\theta_0) &\overset{d}{\rightarrow} N(0, \sigma^2) \\
+    \sqrt{n}(\htn - a - ( \theta_0- a)) &\overset{d}{\rightarrow} N(0, \sigma^2) \qquad \implies \\
+    \sqrt{n} \lp \frac{\htn - a}{\sigma} \rp - \sqrt{n}  \lp \frac{\theta_0 - a}{\sigma}\rp &\overset{d}{\rightarrow} N(0,1)
+\end{align}
+
+Man ser at hvis $H_0$ ikke gælder, vil det bagerste led ikke forsvinde. Husk $H_0 : \theta_0 = a$. Derfor er vores teststørrelse kun normaltfordelt hvis $H_0$ er sand!
+
+\subsubsection{Opgave 2}
+
+\begin{itemize}
+    \item lys-pærer eksempel fra tidligere igen
+    \item $f_{Y_i} (y \mid \theta) = \theta \exp(-\theta y)$
+    \item $y \in \Y = \R_+$
+    \item $\theta \in \Theta = \R_+$
+    \item Vi har at vores stokatiske variable $Y_i$ er fordelt
+    \begin{equation}
+        Y_i \sim \text{Exponential}(\theta_0)
+    \end{equation}
+\end{itemize}
+
+\textbf{Del 1) tætheden skrive til tider: $\mu = \E(Y) = \theta^{-1}$ find maximum likelihood estimatoren}
+
+sample likelihood funktionen:
+
+\begin{equation}
+    L ( \mu ) = \prodn \frac{1}{\mu} \exp\lp - \frac{y_i}{\mu}\rp
+\end{equation}
+
+log likelihood funktionen
+
+\begin{equation}
+    \log L (\mu) = -n\log(\mu) - \frac{1}{\mu}\sumn y_i
+\end{equation}
+
+Scoren:
+
+\begin{equation}
+    S(\mu) = \frac{\partial}{\partial \mu} \log L (\mu) = \frac{-n}{\mu} + \frac{1}{\mu^2} \sumn y_i
+\end{equation}
+
+Vi finder estimatoren:
+
+\begin{align}
+    \frac{-n}{\hat{\mu}} + \frac{1}{\hat{\mu}^2} \sumn y_i &= 0 \\ \implies \qquad n \hat{\mu} &= \sumn y_i
+    \\
+    \implies  \qquad \hat{\mu} &= \frac{1}{n}\sumn y_i
+\end{align}
+
+\textbf{Del 2) Vis estimatoren er middelret}
+
+\begin{align}
+    \E(\mu_0) &= \E \lsp \frac{1}{n}\sumn Y_i \rsp \\
+    &= \frac{1}{n} \sumn \E (Y_i) \\
+    &= \frac{1}{n} \sumn \mu_0 = \mu_0
+\end{align}
+
+\textbf{Del 3) Find variansen af estimatoren $\muhatn$}
+
+\begin{equation}
+    \Var(\muhatn) = \Var \lp \frac{1}{n}\sumn Y_i \rp = \frac{1}{n^2} \sumn \Var(Y_i)
+\end{equation}
+
+Husk nu at normalt er tætheden af en exponential fordeling:
+
+\begin{equation}
+    f_{Y_i}(y \mid \lambda) = \lambda \exp (-\lambda y)
+\end{equation}
+
+
+I dette tilfælde ville $\E(Y_i) = \lambda^{-1}$ og $\Var(Y_i) = \lambda^{-2}$.
+
+Udnyt det vi ved om variansen:
+
+\begin{equation}
+    \frac{1}{n^2} \sumn Var(Y_i) = \frac{1}{n^2} \sumn \mu_0^2 = \frac{1}{n^2} \cdot n \mu_0^2 = \frac{\mu_0^2}{n}
+\end{equation}
+
+
+\textbf{Del 4) Angiv den asympotiske fordeling af estimatoren}
+
+Vi er under antagelse af en urestrikteret model. Dvs sige vores parameterrum er $\mu \in \Theta =  \R$
+
+Vi ved at den centrale grænseværdi sætning vil gælde:
+
+\begin{equation}
+    \sqrt{n} (\mu - \muhatn) \overset{d}{\rightarrow} N(0, \sigma^2) = N(0, \mu^2)
+\end{equation}
+
+HVor man kan gange igennem men $\sqrt{n}$ og få:
+
+\begin{equation}
+    (\mu - \muhatn) \overset{d}{\rightarrow} N(0, \mu^2 /n)
+\end{equation}
+
+\subsubsection{Opgave 3}
+
+Fortsær med udgangspunkt i opgaven ovenfor:
+
+\textbf{Del 1) Opskriv log likelihood bidraget for den generelle model}
+
+\begin{equation}
+    \log l(\mu \mid y_i) =\log \lp \frac{1}{\mu} \exp  \lp - \frac{y_i}{\mu}\rp \rp = - \mu - \frac{y_i}{\mu}
+\end{equation}
+
+\textbf{Del 2) Hesse bidraget betinget på man har maximeret likelihood-scoren}
+
+
+\begin{equation}
+    H_i (\mu_0) = \frac{\partial^2 \log l(\mu \mid y_i)}{\partial \mu^2} \bigg\vert_{\mu = \mu_0}
+\end{equation}
+
+Først finder vi den første afledte:
+
+\begin{equation}
+    \frac{\partial}{\partial \mu} \log l (\mu)  = -\mu^{-1} + y_i \mu^{-2}
+\end{equation}
+
+Hernest findes den anden afledte:
+
+\begin{equation}
+    \frac{\partial^2 \mu}{\partial \mu^2} \log l(\mu) = \mu^{-2} - 2 y_i \mu^{-3}
+\end{equation}
+
+beting nu på at $\mu = \mu_0$.
+
+\begin{equation}
+     \frac{\partial^2 \mu}{\partial \mu^2} \log l(\mu) \bigg \vert_{\mu =\mu_0} = \mu_0^{-2} - 2 y_i \mu_0^{-3}
+\end{equation}
+
+\textbf{Del 3) Find informationsmatricen}
+
+\begin{align}
+    I(\mu_0) = \E(-H_i(\mu_0)) = - \E(H_i(\mu_0)) &= - \E(\mu_0^{-2} - 2 y_i \mu_0^{-3})\\
+    &=\E(-\mu_0^{-2} + 2 y_i \mu_0^{-3})\\
+    &=\E(-\mu_0^{-2}) + \E(2 y_i \mu_0^{-3}) \\
+    &= -\mu_0^{-2} + 2 \mu_0^{-3} \E(y_i) \\
+    &= -\mu_0^{-2} + 2 \mu_0^{-3} \mu_0 \\
+    &= - \mu_0^{-2} + 2 \mu_0^{-2} \\
+    &= \mu_0^{-2}
+\end{align}
+
+Evalueret i estiamtoren bliver det:
+
+\begin{equation}
+    I(\muhatn) = \muhatn^{-2}
+\end{equation}
+
+\textbf{Del 4) Find variansen på estimatoren}
+
+\begin{equation}
+    V(\muhatn^{-2}) = \frac{I(\muhatn^{-1})}{n} = \frac{\mu_0^2}{n}
+\end{equation}
+
+Hvilket er det samme som tidligere fundet!
+
