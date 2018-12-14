@@ -1,0 +1,420 @@
+\horizline
+
+\subsection{Øvelse 25}
+
+\textbf{10/12/2018, opgaver: 1, 2, 3}
+
+\subsubsection{Opgave 1}
+
+\begin{itemize}
+    \item Antag en tæthed givet ved:
+        \begin{equation}
+            f_{Y_i}(y \mid \theta)
+        \end{equation}
+\end{itemize}
+
+\textbf{Del 1) Lav kogebog for MLE}
+
+Først findes likelihood contribution:
+
+\begin{equation}
+    l(\theta \mid y_i)
+\end{equation}
+
+Man husker $i.i.d$ antagelsen om data.
+
+\begin{itemize}
+    \item identisk, således at $\theta_i = \theta$
+    \item Uafhængigt, således at $f_{X , Y}(x,y) = f_Y(y) f_X(x)$. Altså den simultane fordeling kan skrives som produkt af de marginale fordelinger
+\end{itemize}
+
+Man opskriver \textit{sample likelihood funktionen}:
+
+\begin{equation}
+    L (\theta) = \prodn l(\theta \mid y_i)
+\end{equation}
+
+Man tager logaritmen og finder \textit{Log likelihood funktionen}:
+
+\begin{equation}
+    \log L (\theta) = \sumn \log l(\theta \mid y_i)
+\end{equation}
+
+Vi finder scoren:
+
+\begin{align}
+    S(a) &= \frac{\partial}{\partial \theta} \log L(\theta \mid y_1, y_2, \cdots, y_n) \Big\vert_{a= \theta} \\
+    &= \sumn \frac{\partial}{\partial \theta} \log L(\theta \mid y_i) \Big\vert_{a= \theta} \\
+    &= \sumn s_i (a)
+\end{align}
+
+Hvor $s_i$ er bidraget til scoren. Man ville som regel ikke skrive op, at man betinger på dataen (mest af alt af dovenskab), men her for at gøre det klart i dette tilfælde, er det gjort.
+
+Sæt scoren lig $\underbar{0}$ (nulvektoren).
+
+\begin{equation}
+    S(\htn) = \underbar{0}
+\end{equation}
+
+Løs for de enkelte parametre i vektoren $\theta$.
+
+Man bør tjekke om man løser en kovekst optimeringsproblem (således at vi har et unikt maximum), men dette er sjældent nødvendigt at tjekke efter i praksis.
+
+
+\textbf{Del 2) Kogebog for variansen på maximum likelihood estimatoren (udfra Hesse of Informations matricen)}
+
+Tag udgangspunkt i log like li hood contribution
+
+\begin{equation}
+\log l (\theta \mid Y_i)
+\end{equation}
+
+Man kan finde hesse matricen evalueret i $\theta = \theta_0$
+
+\begin{equation}
+    H_i (\theta_0) = \frac{\partial^2 \log l(\theta \mid Y_i)}{\partial \theta \partial \theta'} \bigg \vert_{\theta = \theta_0}
+\end{equation}
+
+Noter her at nævneren er $\partial \theta \partial \theta'$ hvilket er fordi $\theta$ ofte er en vektor af flere parametre. Ved et parameter da er det nok at sige: $\partial \theta^2$ i nævneren.
+
+Den bagerste del (altså):
+
+\begin{equation}
+    \cdots \bigg \vert_{\theta = \theta_0}
+\end{equation}
+
+betyder at man evaluere estimatoren i punktet hvor $\theta = \theta_0$.
+
+Vi kan finde informations matricen nu. Denne er:
+
+\begin{equation}
+    I(\theta_0) = - \E(H_i(\theta_0))
+\end{equation}
+
+På baggrund af dette kan man nu finde den asymptotiske varians $\Omega_0$ på estimatoren:
+
+\begin{equation}
+    \Omega_0 = I(\theta_0)^{-1}
+\end{equation}
+
+Vi kender ikke $\theta_0$, så vi udskifter med vores estimator $\htn$.
+
+Det vil sige at:
+
+\begin{equation}
+    \Omega_0 = I(\theta_0)^{-1} \approx I(\htn)^{-1}
+\end{equation}
+
+Husk nu at:
+
+\begin{equation}
+    \sqrt{n}(\htn - \theta_0) \overset{d}{\rightarrow} N(0, \Omega_0)
+\end{equation}
+
+Og vi har at variansen på vores estimator er:
+
+\begin{equation}
+    V(\theta_0) = \frac{I(\theta_0)}{n} \approx  \frac{I(\htn)}{n}
+\end{equation}
+
+
+\subsubsection{Opgave 2}
+
+\begin{itemize}
+    \item Datasæt undersøger fravær
+    \item variablen $dreng$ angiver kønnet
+    \item variablen $uger$ angiver ugers skole ubrudt af fravær.
+    \item Dette er en geometrisk fordeling. Antal gange før succes.
+    \begin{equation}
+        Y_i \sim Geometrisk(\theta)
+    \end{equation}
+    \item Denne har tætheden:
+    \begin{equation}
+        P(Y_i = y) = (1- \theta)^y \theta
+    \end{equation}
+    \item Hvor vi har at:
+    \begin{equation}
+        Y_i \in \Y = \N_0
+    \end{equation}
+\end{itemize}
+
+\textbf{Del 1) Brug beskrivende statistik til at karakterisere data}
+
+Kig dofile.
+
+Main take aways: 165 observationer. Ca 50 procent drenge.
+
+Histogrammet af dataen viser noget der minder om en geometrisk fordeling, hvilket er hvad man kunne håbe på.
+
+\textbf{Del 2) Angiv en statistisk model}
+
+Vi antager $i.i.d$ variable. Vi har antaget en Geometrisk fordeling. Denne har et parameter rum givet ved:
+
+\begin{equation}
+    \theta \in \Theta = ]0,1[
+\end{equation}
+
+Vi har den følgende tæthed:
+
+\begin{equation}
+    f_{Y_i}(y \mid \theta) = (1- \theta)^y \theta
+\end{equation}
+
+Hvilket implicerer en likelihood contribution givet ved:
+
+\begin{equation}
+    l (\theta \mid y_i) = (1 - \theta)^{y_i} \theta
+\end{equation}
+
+Vi opskriver vores sample likelihood funktion
+
+\begin{equation}
+    L(\theta) = \prodn l (\theta \mid y_i) = \prodn (1 - \theta)^{y_i} \theta
+\end{equation}
+
+\textbf{Del 3) Udledning af estimatoren}
+
+Vi tager logaritmen og finder log likelihood funktionen
+
+\begin{equation}
+    \log L(\theta) = \sumn y_i \log(1 - \theta) + \log (\theta)
+\end{equation}
+
+Hvilket kan omskrives til:
+
+\begin{equation}
+    \log L(\theta) = n \log (\theta) + \log(1- \theta) \sumn y_i
+\end{equation}
+
+Vi konkluderer at den sufficiente statistik er $\sumn y_i$
+
+Scoren findes:
+
+\begin{equation}
+    S(\theta) = \frac{\partial}{\partial \theta} \log L(\theta) = \frac{n}{\theta} + \frac{\sumn y_i}{1- \theta}(-1)
+\end{equation}
+
+hvor at $(-1)$ kommer fra at den indre funktion i logaritmen. Og vi kan altså skrive:
+
+\begin{equation}
+    S(\theta) = \frac{n}{\theta} - \frac{\sumn y_i}{1- \theta}
+\end{equation}
+
+Nu kan vi finder vores estimator $\htn (Y_1, Y_2, \cdots Y_n)$ ved at sætte vores score lig 0:
+
+\begin{align}
+    \frac{n}{\htn} - \frac{\sumn y_i}{1- \htn} &= 0 \\
+    \frac{n}{\htn} &= \frac{\sumn y_i}{1- \htn} \\
+    \frac{1 - \htn}{\htn} &= \frac{\sumn y_i}{n} \\
+    \frac{1}{\htn} &=  \frac{\sumn y_i}{n} + 1 \\
+    \htn &= \lp 1 + \frac{\sumn y_i}{n}\rp^{-1}
+\end{align}
+
+
+\textbf{Del 4) Udregn estimat}
+
+Vi kan udfra dette finde vores estimat $\htn(y_1, y_2, \cdots y_n)$
+
+\begin{equation}
+\htn = \lp 1 + \frac{\sumn y_i}{n}\rp^{-1} = \lp 1 + \frac{609}{165}\rp^{-1} = 0.2131
+\end{equation}
+
+SÅ vi får altså et estimat $\htn(y_1, \cdots, y_n) = 0.21$
+
+\textbf{Del 5) Find Hesse-matricen for log likelihood bidraget}
+
+Vi husker fra tidligere at likelihood bidraget er. Da vi skal finde variansen af vores estimator bruger vi nu store $Y$.
+
+\begin{equation}
+    l (\theta \mid Y_i) = (1 - \theta)^{Y_i} \theta
+\end{equation}
+
+Vi tager logaritmen:
+
+\begin{equation}
+    \log l (\theta \mid Y_i) = Y_i \log(1 - \theta)  + \log(\theta)
+\end{equation}
+
+Vi finder den første afledte:
+
+\begin{equation}
+    \frac{\partial}{\partial \theta} \log l (\theta \mid Y_i) = - \frac{Y_i}{1 -\theta } + \frac{1}{\theta}
+\end{equation}
+
+Den anden afledte altså hesse matricen er:
+
+\begin{equation}
+    H_i (\theta) = \frac{\partial^2 \theta}{\partial \theta^2}  l (\theta \mid Y_i) = -\frac{Y_i}{(1-\theta)^2} -\frac{1}{\theta^2}
+\end{equation}
+
+\textbf{Del 6) Find information og variansen af estimatoren}
+
+Først noteres det at for den geometriske fordeling gælder at: $\E(Y) = \frac{1 - \theta}{\theta}$
+
+Vi ved at information er givet som:
+
+\begin{equation}
+    I(\theta_0) = - \E(H_i(\theta_0))
+\end{equation}
+
+Hvor at man har evalueret $\theta= \theta_0$ i Hesse-matricen.
+
+NOTE: Tegn skitse. og vis hvor man evaluere Hesse-matricen.
+
+\begin{align}
+   I(\theta) &= - \E \lp -\frac{Y_i}{(1-\theta)^2} -\frac{1}{\theta^2} \rp \\&= \frac{\E(Y_i)}{(1-\theta)^2} + \frac{1}{\theta^2} \\
+   &= \frac{\frac{1 - \theta}{\theta}}{(1-\theta)^2} + \frac{1}{\theta^2} \\
+   &= \frac{1}{\theta}\frac{1}{1-\theta} + \frac{1}{\theta^2} \\
+   &= \frac{1}{\theta^2 (1 - \theta)}
+\end{align}
+
+Hvor det sidste skridt findes let, ved at forlænge brøken. Nu evalueres $\theta = \theta_0$
+
+Og vi har at:
+
+\begin{equation}
+    I(\theta_0) = \frac{1}{\theta_0^2 (1 - \theta_0)}
+\end{equation}
+
+Vi kan finde variansen:
+
+Man husker nu at:
+
+\begin{equation}
+    \sqrt{n}(\htn - \theta_0) \rightarrow N(0, \Omega_0)
+\end{equation}
+
+Hvilket medfører:
+
+\begin{equation}
+    \htn - \theta_0 \rightarrow N(0, \Omega_0 / n)
+\end{equation}
+
+og at
+
+\begin{equation}
+    I(\theta_0)^{-1} = \Omega_0
+\end{equation}
+
+\begin{equation}
+    \Var(\htn(Y_1, Y_2, \cdots Y_n)) = \frac{I(\htn)^{-1}}{n} = \frac{\htn^2 (1 - \htn)}{n}
+\end{equation}
+
+\begin{equation}
+    \Var(\htn(y_1, y_2, \cdots y_n)) = \frac{0.21317^2(1 - 0.21317)}{165} = 0.0002111
+\end{equation}
+
+\textbf{Del 7) Angiv et konfidens interval (95\%)}
+
+Først findes standard fejlen på vores estimator:
+
+\begin{equation}
+    \se(\htn) = \sqrt{0.0002111} = 0.0145
+\end{equation}
+
+Vores konfidens interval kan nu opskrives:
+
+\begin{equation}
+    P(\htn - \se(\htn)\cdot 1.96  < \theta_0 < \htn + \se(\htn)\cdot 1.96 ) = 0.95
+\end{equation}
+
+\begin{equation}
+    P(0.2131 - 0.0145 \cdot 1.96 < \theta_0 < 0.2131 + 0.0145 \cdot 1.96) = 0.95
+\end{equation}
+
+\begin{equation}
+    P( 0.1846 < \theta_0 < 0.2415) = 0.95
+\end{equation}
+
+\textbf{Del 8) Illustrer modellen}
+
+Kig dofile. Den estimerede distribution, synes at passe sådan rimeligt!
+
+\textbf{Del 9) Estimer modellen numerisk}
+
+Brug koden nedenfor:
+
+\begin{verbatim}
+mat define init = J(1,1,0.5)
+mlexp (uger*log(1-{theta})+log({theta})), from(init)
+\end{verbatim}
+
+Kig i do-file.
+
+Resultaterne er de samme!
+
+\subsubsection{Opgave 3}
+
+\begin{itemize}
+    \item Fortsæt analysen ovenfor
+    \item definer nu den stokastiske variabel $d_i = \textbf{Dreng}_i$
+    \item \begin{equation}
+        Y_i \mid d_i \sim Geometric(\theta_i)
+    \end{equation}
+    \item Hvor vi har at:
+    \begin{equation}
+        \theta_i = \theta_1 + \theta_2 \cdot d_i
+    \end{equation}
+\end{itemize}
+
+\textbf{Del 1) Opskriv den statistiske model}
+
+Den statistiske model skal indeholde likelihood funktionen og parameter rummet, samt de nødvendige antagelser.
+
+Vi antager $i.i.d$ observationer.
+
+\begin{equation}
+    \theta_i \in \Theta = \{(\theta_1, \theta_2)' \in \R : 0 < \theta_1 < 1, 0 < \theta_1 + \theta_2 < 1\}
+\end{equation}
+
+Vi kan opskrive vores likelihood funktion:
+
+\begin{equation}
+    L(\theta_i ) = \prodn (1- \theta_i)^y \theta_i = \prodn (1 - (\theta_1 + \theta_2 \cdot d_i))^{y_i} (\theta_1 + \theta_2\cdot d_i)
+\end{equation}
+
+\textbf{Del 2) Maximer i Stata}
+
+Kig do file.
+
+VI får parametrene
+
+\begin{equation}
+    \beta_1 = 0.1655 \qquad \beta_2 = 0.1191 \qquad \beta_1 + \beta_2 = 0.2846
+\end{equation}
+
+Vi kan fortolke parametrene:
+
+Vi kan udregne f.x. det forventede fravær for henholdsvis piger og drenge:
+
+\begin{equation}
+    \E(Y_i \mid d_i = 1) = \frac{1 - \theta_i}{\theta_i} = \frac{1 - 0.2846}{0.2846} = 2.5137
+\end{equation}
+
+\begin{equation}
+    \E(Y_i \mid d_i = 0) = \frac{1 - 0.1655}{0.1655} = 5.042
+\end{equation}
+
+\textbf{Del 3) Udregn som modelkontrol depredikterede sandsynligheder for piger henholdsvis drenge, og sammenlign med de observerede frekvenser}
+
+Kig do file
+
+\iffalse
+
+\textbf{Formuler ideen om at drenge har en fraværs-sandsynlighed hver uge som er 10 procent point højere end piger som en statistisk hypotese}
+
+\begin{equation}
+    H_0 : \beta_2 = 0.1 \qquad H_A : \beta_2 \neq A
+\end{equation}
+
+Opskriver parameterrummet:
+
+\begin{equation}
+    \Theta_0 = \{: \R\} \qquad \Theta_A = \{ : \R\}
+\end{equation}
+
+\fi
+
+Få en elev til at formulere hypotesen! og definér parameterrummet
+
+
